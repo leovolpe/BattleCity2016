@@ -33,6 +33,8 @@ public class Gui_Juego extends JFrame {
 		
 	}
 	
+	
+	
 	private void agregar_paneles()
 	{
 		this.getContentPane().add(gj.getPaneljuego());
