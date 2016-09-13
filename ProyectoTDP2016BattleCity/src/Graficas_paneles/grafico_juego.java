@@ -5,20 +5,23 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Entidades_Moviles.Tanque_Jugador;
+
 public class grafico_juego {
 	
 	private JPanel paneljuego;
 	
 	
 	
-	public grafico_juego()
+	public grafico_juego(Tanque_Jugador tanque)
 	{
 		paneljuego = new JPanel();
 		paneljuego.setLayout(null);
-		//paneljuego.setOpaque(false);
+		paneljuego.setOpaque(false);
 		paneljuego.setBounds(0, 0, 780, 600);
-		paneljuego.setBackground(Color.BLUE);
 		
+		
+		paneljuego.add(tanque.getEtiqueta());
 		
 		
 	}
@@ -26,5 +29,7 @@ public class grafico_juego {
 	public JPanel getPaneljuego() {
 		return paneljuego;
 	}
+
+	
 
 }

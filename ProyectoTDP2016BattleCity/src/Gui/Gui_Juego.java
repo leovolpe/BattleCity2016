@@ -7,18 +7,24 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_informacion;
 import Graficas_paneles.grafico_juego;
+import Juego.Juego;
 
 public class Gui_Juego extends JFrame {
 	
 	private JPanel panelppal;
 	private grafico_juego gj;
 	private grafico_informacion gi;
+	private Juego juego;
 	
-	public Gui_Juego()
+	public Gui_Juego(Juego j, Tanque_Jugador tanque)
 	{
-		gj = new grafico_juego();
+		juego=j;
+		
+		
+		gj = new grafico_juego(tanque);
 		gi = new grafico_informacion();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panelppal= new JPanel();
@@ -27,6 +33,7 @@ public class Gui_Juego extends JFrame {
 		panelppal.setLayout(null);
 		panelppal.setPreferredSize(new Dimension(1080, 600));
 		this.pack();
+		this.addKeyListener(juego.getTanque().getTeclado());
 		centrar_pantalla();
 		agregar_paneles();
 		
