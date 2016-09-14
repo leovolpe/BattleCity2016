@@ -2,6 +2,10 @@ package Graficas_Personajes;
 
 import javax.swing.ImageIcon;
 
+/**Clase que se encarga de brindar imagenes para todas las direcciones de las entidades moviles
+ * 
+ *
+ */
 public abstract class graficos_entidad {
 	
 	protected ImageIcon arriba;

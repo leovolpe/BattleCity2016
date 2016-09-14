@@ -2,12 +2,15 @@ package ObjetosDeJuego;
 
 import javax.swing.JLabel;
 
+/**Clase que captura todos las caracteristicas de los objetos que participaran
+ * en el juego como la posicion y su objeto grafico.
+ *
+ */
 public class ObjetoDeJuego {
 	
 	protected int x;
 	protected int y;
 	protected JLabel etiqueta;
-	
 	
 	
 	public int getX() {
@@ -16,6 +19,7 @@ public class ObjetoDeJuego {
 	
 	public void setX(int x) {
 		this.x = x;
+		etiqueta.setLocation(x,y);
 	}
 	
 	public int getY() {
@@ -24,6 +28,7 @@ public class ObjetoDeJuego {
 	
 	public void setY(int y) {
 		this.y = y;
+		etiqueta.setLocation(x,y);
 	}
 	
 	public JLabel getEtiqueta() {

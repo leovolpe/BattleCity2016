@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 
 import Graficas_Personajes.graficos_entidad;
 
+/**Clase que brinda las imagenes para el tanque del jugador
+ * 
+ *
+ */
 public class graficos_tanque extends graficos_entidad {
 	
 	public graficos_tanque()

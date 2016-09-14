@@ -1,6 +1,5 @@
 package Entidades_Moviles;
 
-import java.awt.Point;
 
 import Graficas_Personajes.graficos_entidad;
 import ObjetosDeJuego.ObjetoDeJuego;

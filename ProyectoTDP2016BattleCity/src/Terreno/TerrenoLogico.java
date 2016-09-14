@@ -1,29 +1,29 @@
 package Terreno;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-
-
+import Graficas_paneles.grafico_juego;
 import Obstaculos.Obstaculo;
+
 
 public class TerrenoLogico {
 
-	protected LinkedList<Obstaculo> listaObs;
+	//mantengo la lista de los obtaculos
+	protected LinkedList<Obstaculo> listaObstaculos;
+	//mantengo los graficos correspondientes al juego
+	protected grafico_juego gj;
 	
-	
-	public TerrenoLogico()
+	public TerrenoLogico(grafico_juego g)
 	{
+		gj = g;
 		GeneradorDeMapa generador=new GeneradorDeMapa();
-		listaObs=generador.generarMapa();
+		listaObstaculos=generador.generarMapa();
 		
-		
-		Iterator<Obstaculo> iterable = listaObs.iterator();
-		while (iterable.hasNext())
+		//agrego en pantalla los obstaculos
+		for (Obstaculo o : listaObstaculos)
 		{
-
-			System.out.println(iterable.next());
-			
+			gj.agregar_obstaculo(o);
 		}
+		
 	}
 	
 	

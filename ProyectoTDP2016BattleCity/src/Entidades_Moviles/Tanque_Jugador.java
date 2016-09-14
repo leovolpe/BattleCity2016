@@ -16,19 +16,18 @@ public class Tanque_Jugador extends EntidadMovil {
 	private manejador_teclado_jugador teclado;
 	
 	public Tanque_Jugador(int r, int vm, int vd, int ds, int dp) {
-		super(2, 2, 2, 2, 2,'n');
+		super(r, vm, vd, ds, dp,'n');
+		
 		graficos = new graficos_tanque();
 		
-		//inicializo objetodejuego
-		x=500;
-		y=500;
-		
 		etiqueta = new JLabel(graficos.getArriba());
-		//etiqueta.setBounds(60, 60, x, y);
 		etiqueta.setSize(60, 60);
-		etiqueta.setLocation(x, y);
+		this.setX(0);
+		this.setY(540);
 		
+		//creo el oyente de teclado para manipular el tanque
 		teclado = new manejador_teclado_jugador(this);
+		
 		puntaje=0;
 		vidas=4;
 		inmunidad=false;
@@ -50,6 +49,9 @@ public class Tanque_Jugador extends EntidadMovil {
 	}
 
 
+	/*
+	 * Retorna el oyente encargado de detectar las teclas presionadas
+	 */
 	public manejador_teclado_jugador getTeclado() {
 		return teclado;
 	}

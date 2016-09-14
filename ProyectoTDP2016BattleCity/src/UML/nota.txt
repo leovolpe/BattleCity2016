@@ -1,6 +1,0 @@
-#se omitieron los diagramas extendidos de los distintos tipos de tanques enemigos porque 
-no brindan informacion extra, es decir serian clases vacias y lo unico que los diferenciará
-entre si sera la implementación de sus constructores (inicializacion de atributos).
-
-#no se modelaron las clases "generadordemapas" ni las clases referidas al mapa ya que
-necesitamos conocer mejor como se maneja el aspecto grafico del juego.

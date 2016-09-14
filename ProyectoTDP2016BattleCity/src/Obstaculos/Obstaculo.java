@@ -1,9 +1,13 @@
 package Obstaculos;
 
+import Entidades_Moviles.EntidadMovil;
 import Graficas_Obstaculos.graficos_obstaculo;
-import Graficas_Personajes.graficos_entidad;
 import ObjetosDeJuego.ObjetoDeJuego;
 
+/**
+ * Clase que modela un obstaculo
+ *
+ */
 public abstract class Obstaculo extends ObjetoDeJuego {
 	
 	protected int resistencia;
@@ -15,7 +19,10 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 		graficos=new graficos_obstaculo();
 	}
 	
+	
 	public abstract void recibirDisparo();
+	
+	public abstract void contacto(EntidadMovil e);
 	
 	public void destruirse()
 	{
