@@ -22,11 +22,8 @@ public class TerrenoLogico {
 		for (Obstaculo o : listaObstaculos)
 		{
 			gj.agregar_obstaculo(o);
-		}
-		
+		}		
 	}
-	
-	
 }
 
 
