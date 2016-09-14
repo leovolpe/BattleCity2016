@@ -55,7 +55,52 @@ public class Tanque_Jugador extends EntidadMovil {
 	public manejador_teclado_jugador getTeclado() {
 		return teclado;
 	}
+
+
+	@Override
+	public void destruirse() {
+		// TODO Auto-generated method stub
+		
+	}
 	
+	public void recibirDisparo()
+	{
+		
+	}
 	
+	public void aumentarNivel()
+	{
+		
+	}
+	
+	public void setNivel1()
+	{
+		
+	}
+	
+	public void setNivel2()
+	{
+		
+	}
+	
+	public void setNivel3()
+	{
+		
+	}
+	
+	public void setNivel4()
+	{
+		
+	}
+	
+	public void aumentarPuntaje(int p)
+	{
+		
+	}
+	
+	public void setInmunidad(boolean b)
+	{
+		
+	}
 
 }

@@ -93,6 +93,8 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	public abstract void disparar();
 	
+	public abstract void destruirse();
+	
 	public abstract boolean puede_disparar();
 	
 
