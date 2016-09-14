@@ -50,7 +50,7 @@ public class Gui_Juego extends JFrame {
 		//seteo fondo
 				ImageIcon fondo = new ImageIcon(getClass().getResource("/Imagenes/fondos/fondo.png"));
 				JLabel labelimagen = new JLabel();
-				labelimagen.setBounds(0,0,780,600);
+				labelimagen.setBounds(0,0,750,600);
 				labelimagen.setIcon(fondo);
 				panelppal.add(labelimagen);
 		
