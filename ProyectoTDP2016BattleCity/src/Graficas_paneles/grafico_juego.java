@@ -33,8 +33,7 @@ public class grafico_juego {
 		panel_tanque.setBounds(0, 0, 780, 600);
 		panel_tanque.add(t.getEtiqueta());
 		panel_tanque.repaint();
-		
-		
+			
 	}
 	
 	private void inicializar_panel_obstaculos()
