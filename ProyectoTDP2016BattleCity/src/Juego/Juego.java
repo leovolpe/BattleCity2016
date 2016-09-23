@@ -17,7 +17,7 @@ public class Juego
 	
 	public Juego()
 	{
-		tanque = new Tanque_Jugador(15, 15, 5, 5, 5);
+		tanque = new Tanque_Jugador(15, 30, 5, 5, 5);
 		gui = new Gui_Juego(this, tanque);
 		gui.setVisible(true);
 		
