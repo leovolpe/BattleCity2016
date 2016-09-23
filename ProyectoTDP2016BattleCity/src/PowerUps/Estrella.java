@@ -4,10 +4,17 @@ import Entidades_Moviles.Tanque_Jugador;
 
 public class Estrella extends PowerUp {
 
+	public Estrella(int p) {
+		super(p);
+		// TODO Auto-generated constructor stub
+	}
 
-@override
-public void contacto(Tanque_Jugador ta)
-{
-	
-}
+	@Override
+	protected void destruirse() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 }

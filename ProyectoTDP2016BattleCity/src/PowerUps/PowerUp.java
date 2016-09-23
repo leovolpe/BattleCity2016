@@ -1,6 +1,7 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import ObjetosDeJuego.ObjetoDeJuego;
 
 public abstract class PowerUp extends ObjetoDeJuego {
 	
@@ -16,7 +17,7 @@ public void contacto(Tanque_Jugador ta)
 	
 }
 
-protected abstract destruirse();
+protected abstract void destruirse();
 
  
 

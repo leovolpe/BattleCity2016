@@ -3,6 +3,7 @@ package Entidades_Moviles;
 
 import Graficas_Personajes.graficos_entidad;
 import ObjetosDeJuego.ObjetoDeJuego;
+import Obstaculos.Obstaculo;
 
 public abstract class EntidadMovil extends ObjetoDeJuego {
 	
@@ -13,6 +14,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	private int disparos_en_pantalla;
 	protected graficos_entidad graficos;
 	private char direccion; //'n' 's' 'e' 'o'
+	
 	
 	public EntidadMovil(int r, int vm, int vd, int ds, int dp, char dir)
 	{
@@ -25,12 +27,47 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		direccion = dir;
 	}
 	
+	
+	public void deshacer_mov(Obstaculo o)
+	{
+		switch(direccion)
+		{
+			case 'n':
+			{
+				y=o.getEtiqueta().getY()+o.getEtiqueta().getHeight();
+				//System.out.println(y+" -  "+o.getEtiqueta().getY()+o.getEtiqueta().getHeight());
+				etiqueta.setLocation(x,y);
+				break;
+			}
+			case 's':
+			{
+				y=o.getEtiqueta().getY()-this.getEtiqueta().getHeight();
+				//y=o.getEtiqueta().getY()-o.getEtiqueta().getHeight();
+				etiqueta.setLocation(x,y);
+				break;
+			}
+			case 'i':
+			{
+				//x=x+vel_mov;
+				x = o.getEtiqueta().getX()+o.getEtiqueta().getWidth();
+				etiqueta.setLocation(x,y);
+				break;
+			}
+			case 'd':
+			{
+				//x=x+vel_mov;
+				x = o.getEtiqueta().getX()-this.getEtiqueta().getWidth();
+				etiqueta.setLocation(x,y);
+				break;
+			}
+		}
+	}
+	
 	public void adelante()
 	{
 		if (direccion=='n')
 		{
 			y = y - vel_mov;
-			this.mostrar_coordenada();
 			etiqueta.setLocation(x,y);
 		}
 		else
@@ -48,7 +85,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		if (direccion=='s')
 		{
 			y= y + vel_mov;
-			this.mostrar_coordenada();
 			etiqueta.setLocation(x,y);
 		}
 		else
@@ -64,7 +100,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		if (direccion=='i')
 		{
 			x = x - vel_mov;
-			this.mostrar_coordenada();
 			etiqueta.setLocation(x,y);
 		}
 		else
@@ -72,6 +107,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getIzquierda());
 			direccion='i';
 		}
+		
 	}
 	
 	public void derecha()
@@ -79,7 +115,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		if (direccion=='d')
 		{
 			x= x + vel_mov;
-			this.mostrar_coordenada();
 			etiqueta.setLocation(x,y);
 		}
 		else
@@ -87,6 +122,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getDerecha());
 			direccion='d';
 		}
+		
 	}
 	
 	

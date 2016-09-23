@@ -6,9 +6,21 @@ public class Casco extends PowerUp{
 
 	
 	
-	@override
+	public Casco(int p) {
+		super(p);
+		// TODO Auto-generated constructor stub
+	}
+
+	
 	public void contacto(Tanque_Jugador ta)
 	{
+		
+	}
+
+
+	@Override
+	protected void destruirse() {
+		// TODO Auto-generated method stub
 		
 	}
 	

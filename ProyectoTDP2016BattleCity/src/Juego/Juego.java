@@ -17,13 +17,13 @@ public class Juego
 	
 	public Juego()
 	{
-		tanque = new Tanque_Jugador(5, 5, 5, 5, 5);
+		tanque = new Tanque_Jugador(15, 15, 5, 5, 5);
 		gui = new Gui_Juego(this, tanque);
 		gui.setVisible(true);
 		
 		//le envia por parametro los graficos del sector dodnde se desarrolla el juego
 		//es decir contiene el panel donde estaran los tanques, enemigos, etc.
-		terreno_logico = new TerrenoLogico(gui.getGj()); 
+		terreno_logico = new TerrenoLogico(gui.getGj(), tanque); 
 	
 		
 	}
