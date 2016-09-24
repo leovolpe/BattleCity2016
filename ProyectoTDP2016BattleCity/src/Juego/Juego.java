@@ -1,5 +1,6 @@
 package Juego;
 
+import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
 import Terreno.TerrenoLogico;
@@ -14,10 +15,11 @@ public class Juego
 	private Gui_Juego gui;
 	private Tanque_Jugador tanque;
 	private TerrenoLogico terreno_logico;
+	private boolean hayEnemigo;
 	
 	public Juego()
 	{
-		tanque = new Tanque_Jugador(15, 5, 5, 5, 5);
+		tanque = new Tanque_Jugador(15, 5, 5, 5, 5, this);
 		gui = new Gui_Juego(this, tanque);
 		gui.setVisible(true);
 		
@@ -36,4 +38,24 @@ public class Juego
 		return tanque;
 	}
 
+	public void agregarEnemigo()
+	{
+		Enemigo enemigo=new Enemigo (15, 5, 5, 5, 5, 5);
+		gui.getGj().agregar_enemigo(enemigo);
+	}
+	
+	public void quitarEnemigo()
+	{
+		
+	}
+	
+	public void setHayEnem(boolean h)
+	{
+		hayEnemigo=h;
+	}
+	
+	public boolean hayEnemigo()
+	{
+		return hayEnemigo;
+	}
 }

@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Obstaculos.Obstaculo;
 
@@ -56,6 +57,13 @@ public class grafico_juego {
 		panel_obstaculos.repaint();
 	}
 
+	public void agregar_enemigo(Enemigo e)
+	{
+		panel_tanque.add(e.getEtiqueta());
+		panel_tanque.repaint();
+	}
+
+	
 	/**
 	 * Retorna el panel del tanque
 	 * 

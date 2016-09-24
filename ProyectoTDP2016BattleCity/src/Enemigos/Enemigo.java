@@ -1,6 +1,10 @@
 package Enemigos;
 
+import javax.swing.JLabel;
+
 import Entidades_Moviles.EntidadMovil;
+import Graficas_Personajes.Enemigos.graficos_tanque_basico;
+import Graficas_Personajes.Tanque.graficos_tanque;
 
 public class Enemigo extends EntidadMovil{
 	
@@ -10,6 +14,11 @@ public class Enemigo extends EntidadMovil{
 	{
 		super(r, vm, vd, ds, dp, 's');
 		puntos=p;
+		graficos = new graficos_tanque_basico();
+		etiqueta=new JLabel(graficos.getAbajo());
+		etiqueta.setSize(60, 60);
+		this.setX(0);
+		this.setY(0);
 	}
 
 	@Override

@@ -27,6 +27,8 @@ public class manejador_teclado_jugador implements KeyListener {
 	/**Constante de la tecla para retroceder*/
 	final static int atras = KeyEvent.VK_DOWN;
 	
+	/**Constante de la tecla para agregar/quitar un enemigo*/
+	final static int enemigo = KeyEvent.VK_E;
 	
 	
 	public manejador_teclado_jugador(Tanque_Jugador tanque)
@@ -54,6 +56,19 @@ public class manejador_teclado_jugador implements KeyListener {
 		else if (derecha==e.getKeyCode())
 		{
 			t.derecha();
+		}
+		else if (enemigo==e.getKeyCode())
+		{
+			if (t.getJuego().hayEnemigo())
+			{
+				t.getJuego().quitarEnemigo();
+				t.getJuego().setHayEnem(false);
+			}
+			else
+			{
+				t.getJuego().agregarEnemigo();
+				t.getJuego().setHayEnem(true);
+			}
 		}
 		
 	}
