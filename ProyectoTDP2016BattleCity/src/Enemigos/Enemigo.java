@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import Entidades_Moviles.EntidadMovil;
 import Graficas_Personajes.Enemigos.graficos_tanque_basico;
 import Graficas_Personajes.Tanque.graficos_tanque;
+import Gui.Gui_Juego;
 
 public class Enemigo extends EntidadMovil{
 	
@@ -26,10 +27,15 @@ public class Enemigo extends EntidadMovil{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void destruirse()
+	{
+		
+	}
 
-	@Override
-	public void destruirse() {
-		// TODO Auto-generated method stub
+	public void destruirse(Gui_Juego gui) 
+	{	
+		gui.getGj().getPanel_tanque().remove(this.getEtiqueta());
 		
 	}
 

@@ -16,6 +16,7 @@ public class Juego
 	private Tanque_Jugador tanque;
 	private TerrenoLogico terreno_logico;
 	private boolean hayEnemigo;
+	private Enemigo EnemigoEnPantalla;
 	
 	public Juego()
 	{
@@ -41,12 +42,15 @@ public class Juego
 	public void agregarEnemigo()
 	{
 		Enemigo enemigo=new Enemigo (15, 5, 5, 5, 5, 5);
+		EnemigoEnPantalla=enemigo;
 		gui.getGj().agregar_enemigo(enemigo);
 	}
 	
 	public void quitarEnemigo()
 	{
-		
+		EnemigoEnPantalla.destruirse(gui);
+		gui.getGj().getPanel_tanque().repaint();
+		EnemigoEnPantalla=null;
 	}
 	
 	public void setHayEnem(boolean h)
