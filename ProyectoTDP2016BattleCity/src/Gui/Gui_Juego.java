@@ -3,6 +3,7 @@ package Gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -55,6 +56,8 @@ public class Gui_Juego extends JFrame {
 				panelppal.add(labelimagen);
 		
 	}
+	
+	
 	
 	
 	

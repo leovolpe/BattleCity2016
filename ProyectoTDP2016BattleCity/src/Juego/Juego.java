@@ -1,6 +1,12 @@
 package Juego;
 
+import ControladorDeTeclado.manejador_auxiliar_teclado;
+import ControladorDeTeclado.manejador_teclado_jugador;
 import Enemigos.Enemigo;
+import Enemigos.EnemigoBasico;
+import Enemigos.EnemigoBlindado;
+import Enemigos.EnemigoDePoder;
+import Enemigos.EnemigoRapido;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
 import Terreno.TerrenoLogico;
@@ -15,19 +21,25 @@ public class Juego
 	private Gui_Juego gui;
 	private Tanque_Jugador tanque;
 	private TerrenoLogico terreno_logico;
+	
+	
+	//temporal!!
 	private boolean hayEnemigo;
 	private Enemigo EnemigoEnPantalla;
+	//temporal
 	
 	public Juego()
 	{
-		tanque = new Tanque_Jugador(15, 5, 5, 5, 5, this);
+		tanque = new Tanque_Jugador(15, 5, 5, 5, 5);
 		gui = new Gui_Juego(this, tanque);
 		gui.setVisible(true);
 		
+		gui.addKeyListener(new manejador_auxiliar_teclado(this));
+		terreno_logico = new TerrenoLogico(gui.getGj(), tanque);
 		//le envia por parametro los graficos del sector dodnde se desarrolla el juego
 		//es decir contiene el panel donde estaran los tanques, enemigos, etc.
-		terreno_logico = new TerrenoLogico(gui.getGj(), tanque); 
-	
+		 
+		hayEnemigo=false;
 		
 	}
 
@@ -38,11 +50,11 @@ public class Juego
 	public void quitarObstaculo()
 	{
 	
-		if(terreno_logico!=null)
-		{
-			terreno_logico.quitarObstaculo();
-		}
-		gui.getGj().getPanel_obstaculos().repaint();
+		//if(terreno_logico!=null)
+		//{
+		terreno_logico.quitarObstaculo();
+		//}
+		//gui.getGj().getPanel_obstaculos().repaint();
 	}
 	
 	
@@ -52,17 +64,19 @@ public class Juego
 
 	public void agregarEnemigo()
 	{
-		Enemigo enemigo=new Enemigo (15, 5, 5, 5, 5, 5);
-		EnemigoEnPantalla=enemigo;
-		gui.getGj().agregar_enemigo(enemigo);
+		hayEnemigo=true;
+		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5);
+		gui.getGj().agregar_enemigo(EnemigoEnPantalla);
 	}
 	
 	public void quitarEnemigo()
 	{
-		EnemigoEnPantalla.destruirse(gui);
+		hayEnemigo=false;
+		EnemigoEnPantalla.destruirse(this);
 		gui.getGi().getEtiqueta().setText("Puntaje: "+tanque.getPuntaje());
 		gui.getGi().getPanel_info().repaint();
 		gui.getGj().getPanel_tanque().repaint();
+		tanque.aumentarPuntaje(EnemigoEnPantalla.recibirDisparo());
 		EnemigoEnPantalla=null;
 	}
 	
@@ -71,10 +85,7 @@ public class Juego
 		return EnemigoEnPantalla;
 	}
 	
-	public void setHayEnem(boolean h)
-	{
-		hayEnemigo=h;
-	}
+	
 	
 	public boolean hayEnemigo()
 	{

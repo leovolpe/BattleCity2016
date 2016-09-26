@@ -13,14 +13,14 @@ public class Tanque_Jugador extends EntidadMovil {
 	private int vidas;
 	private boolean inmunidad;
 	private int nivel;
-	private Juego juego;
+	//private Juego juego;
 	
 	private manejador_teclado_jugador teclado;
 	
-	public Tanque_Jugador(int r, int vm, int vd, int ds, int dp, Juego j) {
+	public Tanque_Jugador(int r, int vm, int vd, int ds, int dp) {
 		super(r, vm, vd, ds, dp,'n');
 		
-		juego=j;
+		
 		graficos = new graficos_tanque();
 		
 		etiqueta = new JLabel(graficos.getArriba());
@@ -60,10 +60,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	}
 
 
-	public Juego getJuego()
-	{
-		return juego;
-	}
+	
 	
 	@Override
 	public void destruirse() {

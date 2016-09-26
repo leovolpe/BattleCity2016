@@ -31,7 +31,7 @@ public class TerrenoLogico {
 		{
 			gj.agregar_obstaculo(o);
 		}		
-		control();
+		//control();
 	}
 	
 	public LinkedList<Obstaculo> getLista()
@@ -41,8 +41,11 @@ public class TerrenoLogico {
 	
 	public void quitarObstaculo()
 	{
-		//listaObstaculos.getFirst().destruirse();
+		gj.getPanel_obstaculos().remove(listaObstaculos.removeFirst().getEtiqueta());
 		
+		gj.getPanel_obstaculos().repaint();
+		System.out.println(listaObstaculos.size());
+		/*
 		gj.getPanel_obstaculos().remove(listaObstaculos.getFirst().getEtiqueta());
 		
 		int x=listaObstaculos.getFirst().getX();
@@ -51,6 +54,7 @@ public class TerrenoLogico {
 		generador.borrar(x, y);
 		
 		listaObstaculos.removeFirst();
+		*/
 		
 	}
 	

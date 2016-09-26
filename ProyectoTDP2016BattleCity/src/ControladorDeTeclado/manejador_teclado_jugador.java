@@ -60,7 +60,7 @@ public class manejador_teclado_jugador implements KeyListener {
 		{
 			t.derecha();
 		}
-		else if (enemigo==e.getKeyCode())
+	/*	else if (enemigo==e.getKeyCode())
 		{
 			if (t.getJuego().hayEnemigo())
 			{
@@ -78,7 +78,7 @@ public class manejador_teclado_jugador implements KeyListener {
 		{
 			t.getJuego().quitarObstaculo();
 		}
-		
+		*/
 	}
 
 	

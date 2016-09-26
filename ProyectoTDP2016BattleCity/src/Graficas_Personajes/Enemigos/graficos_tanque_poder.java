@@ -9,10 +9,10 @@ public class graficos_tanque_poder extends graficos_entidad
 	
 	public graficos_tanque_poder()
 	{
-		arriba = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueBasico/tanqueDePoder1.png"));
-		abajo = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueBasico/tanqueDePoder3.png"));
-		derecha = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueBasico/tanqueDePoder2.png"));
-		izquierda = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueBasico/tanqueDePoder4.png"));	
+		arriba = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueDePoder/tanqueDePoder1.png"));
+		abajo = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueDePoder/tanqueDePoder3.png"));
+		derecha = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueDePoder/tanqueDePoder2.png"));
+		izquierda = new ImageIcon(getClass().getResource("/Imagenes/Enemigos/TanqueDePoder/tanqueDePoder4.png"));	
 	}
 
 }
