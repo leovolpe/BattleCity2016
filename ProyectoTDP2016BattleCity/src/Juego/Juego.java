@@ -35,6 +35,17 @@ public class Juego
 		return gui;
 	}
 
+	public void quitarObstaculo()
+	{
+	
+		if(terreno_logico!=null)
+		{
+			terreno_logico.quitarObstaculo();
+		}
+		gui.getGj().getPanel_obstaculos().repaint();
+	}
+	
+	
 	public Tanque_Jugador getTanque() {
 		return tanque;
 	}
@@ -49,8 +60,15 @@ public class Juego
 	public void quitarEnemigo()
 	{
 		EnemigoEnPantalla.destruirse(gui);
+		gui.getGi().getEtiqueta().setText("Puntaje: "+tanque.getPuntaje());
+		gui.getGi().getPanel_info().repaint();
 		gui.getGj().getPanel_tanque().repaint();
 		EnemigoEnPantalla=null;
+	}
+	
+	public Enemigo getEnemigoEnPantalla()
+	{
+		return EnemigoEnPantalla;
 	}
 	
 	public void setHayEnem(boolean h)

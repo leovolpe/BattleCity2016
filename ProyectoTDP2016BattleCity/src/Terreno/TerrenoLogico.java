@@ -16,11 +16,14 @@ public class TerrenoLogico {
 	protected grafico_juego gj;
 	protected Tanque_Jugador tanque;
 	
+	protected GeneradorDeMapa generador;
+	
+	
 	public TerrenoLogico(grafico_juego g, Tanque_Jugador t)
 	{
 		tanque=t;
 		gj = g;
-		GeneradorDeMapa generador=new GeneradorDeMapa();
+		generador=new GeneradorDeMapa();
 		listaObstaculos=generador.generarMapa();
 		
 		//agrego en pantalla los obstaculos
@@ -29,6 +32,26 @@ public class TerrenoLogico {
 			gj.agregar_obstaculo(o);
 		}		
 		control();
+	}
+	
+	public LinkedList<Obstaculo> getLista()
+	{
+		return listaObstaculos;
+	}
+	
+	public void quitarObstaculo()
+	{
+		//listaObstaculos.getFirst().destruirse();
+		
+		gj.getPanel_obstaculos().remove(listaObstaculos.getFirst().getEtiqueta());
+		
+		int x=listaObstaculos.getFirst().getX();
+		int y=listaObstaculos.getFirst().getY();
+		
+		generador.borrar(x, y);
+		
+		listaObstaculos.removeFirst();
+		
 	}
 	
 	public void control()
@@ -44,7 +67,7 @@ public class TerrenoLogico {
 					o.contacto(tanque);
 				}
 			}
-			tanque.mostrar_coordenada();
+			//tanque.mostrar_coordenada();
 		}
 	}
 		

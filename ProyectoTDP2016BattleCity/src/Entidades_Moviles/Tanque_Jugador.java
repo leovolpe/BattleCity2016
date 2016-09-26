@@ -103,7 +103,11 @@ public class Tanque_Jugador extends EntidadMovil {
 	
 	public void aumentarPuntaje(int p)
 	{
-		
+		puntaje+=p;
+	}
+	public int getPuntaje()
+	{
+		return puntaje;
 	}
 	
 	public void setInmunidad(boolean b)

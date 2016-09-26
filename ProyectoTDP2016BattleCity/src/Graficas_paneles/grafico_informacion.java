@@ -12,16 +12,17 @@ import javax.swing.JPanel;
 public class grafico_informacion {
 	
 	private JPanel panel_info;
+	private JLabel etiqueta;
 	
 	public grafico_informacion()
 	{
 		panel_info = new JPanel();
 		panel_info.setLayout(null);
 		panel_info.setBounds(780, 0, 300, 600);
-		JLabel temp = new JLabel("En este espacio se mostrar la informacion");
-		panel_info.add(temp);
-		temp.setLocation(0,0);
-		temp.setSize(300,100);
+		etiqueta = new JLabel("Puntaje: 0");
+		panel_info.add(etiqueta);
+		etiqueta.setLocation(0,0);
+		etiqueta.setSize(300,100);
 		
 	}
 
@@ -33,4 +34,8 @@ public class grafico_informacion {
 		return panel_info;
 	}
 
+	public JLabel getEtiqueta()
+	{
+		return etiqueta;
+	}
 }

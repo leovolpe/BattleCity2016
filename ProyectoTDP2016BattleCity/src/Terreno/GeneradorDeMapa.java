@@ -100,5 +100,10 @@ public class GeneradorDeMapa {
 		
 	}
 	
+	public void borrar(int x, int y)
+	{
+		mapa[x][y]="0";
+	}
+	
 
 }

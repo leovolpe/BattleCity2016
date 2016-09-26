@@ -82,5 +82,9 @@ public class Gui_Juego extends JFrame {
 	public grafico_juego getGj() {
 		return gj;
 	}
+	
+	public grafico_informacion getGi() {
+		return gi;
+	}
 
 }

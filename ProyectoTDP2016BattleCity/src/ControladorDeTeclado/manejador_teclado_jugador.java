@@ -30,6 +30,9 @@ public class manejador_teclado_jugador implements KeyListener {
 	/**Constante de la tecla para agregar/quitar un enemigo*/
 	final static int enemigo = KeyEvent.VK_E;
 	
+	/**Constante de la tecla para quitar una pared*/
+	final static int obstaculo = KeyEvent.VK_P;
+	
 	
 	public manejador_teclado_jugador(Tanque_Jugador tanque)
 	{
@@ -61,6 +64,7 @@ public class manejador_teclado_jugador implements KeyListener {
 		{
 			if (t.getJuego().hayEnemigo())
 			{
+				t.aumentarPuntaje(t.getJuego().getEnemigoEnPantalla().recibirDisparo());
 				t.getJuego().quitarEnemigo();
 				t.getJuego().setHayEnem(false);
 			}
@@ -69,6 +73,10 @@ public class manejador_teclado_jugador implements KeyListener {
 				t.getJuego().agregarEnemigo();
 				t.getJuego().setHayEnem(true);
 			}
+		}
+		else if (obstaculo==e.getKeyCode())
+		{
+			t.getJuego().quitarObstaculo();
 		}
 		
 	}
