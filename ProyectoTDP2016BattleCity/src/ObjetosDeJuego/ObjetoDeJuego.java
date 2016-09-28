@@ -2,6 +2,8 @@ package ObjetosDeJuego;
 
 import javax.swing.JLabel;
 
+import Juego.Juego;
+
 /**Clase que captura todos las caracteristicas de los objetos que participaran
  * en el juego como la posicion y su objeto grafico.
  *
@@ -11,7 +13,12 @@ public class ObjetoDeJuego {
 	protected int x;
 	protected int y;
 	protected JLabel etiqueta;
+	private Juego juego;
 	
+	public ObjetoDeJuego(Juego j)
+	{
+		juego=j;
+	}
 	
 	public int getX() {
 		return x;
@@ -42,6 +49,10 @@ public class ObjetoDeJuego {
 	public void mostrar_coordenada()
 	{
 		System.out.println(" x = "+x+" y = "+y);
+	}
+	
+	protected Juego getJuego() {
+		return juego;
 	}
 	
 

@@ -1,11 +1,12 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 
 public class Timer extends PowerUp {
 
-	public Timer(int p) {
-		super(p);
+	public Timer(int p, Juego j) {
+		super(p,j);
 		// TODO Auto-generated constructor stub
 	}
 

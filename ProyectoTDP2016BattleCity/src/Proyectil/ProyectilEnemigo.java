@@ -1,12 +1,13 @@
 package Proyectil;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 import Obstaculos.Obstaculo;
 
 public class ProyectilEnemigo extends Proyectil {
 
-	public ProyectilEnemigo(Tanque_Jugador t) {
-		super(3);
+	public ProyectilEnemigo(Tanque_Jugador t, Juego j) {
+		super(3,j);
 		// TODO Auto-generated constructor stub
 	}
 

@@ -7,7 +7,7 @@ import ObjetosDeJuego.ObjetoDeJuego;
 
 public abstract class EntidadMovil extends ObjetoDeJuego {
 	
-	private Juego juego;
+	
 	private int resistencia;
 	private int vel_mov;
 	private int vel_disp;
@@ -19,7 +19,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	public EntidadMovil(int r, int vm, int vd, int ds, int dp, char dir, Juego j)
 	{
-		juego=j;
+		super(j);
 		resistencia = r;
 		vel_mov=vm;
 		vel_disp=vd;
@@ -70,7 +70,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		
 			if (direccion=='n')
 			{
-				if (juego.getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+				if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
 				{
 					y = y - getVel_mov();
 					etiqueta.setLocation(x,y);
@@ -91,7 +91,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		
 		if (direccion=='s')
 		{
-			if (juego.getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+			if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				y= y + getVel_mov();
 				etiqueta.setLocation(x,y);
@@ -109,7 +109,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	{
 		if (direccion=='i')
 		{
-			if (juego.getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+			if (getJuego().getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				x = x - getVel_mov();
 				etiqueta.setLocation(x,y);
@@ -127,7 +127,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	{
 		if (direccion=='d')
 		{
-			if (juego.getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+			if (getJuego().getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				x= x + getVel_mov();
 				etiqueta.setLocation(x,y);
@@ -156,9 +156,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	public abstract boolean puede_disparar();
 
-	protected Juego getJuego() {
-		return juego;
-	}
+	
 	
 
 }

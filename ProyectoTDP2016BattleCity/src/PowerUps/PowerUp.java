@@ -1,14 +1,16 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
 
 public abstract class PowerUp extends ObjetoDeJuego {
 	
 protected int puntos;
 
-public PowerUp(int p)
+public PowerUp(int p, Juego j)
 {
+	super(j);
 	puntos=p;
 }
 

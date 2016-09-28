@@ -13,11 +13,11 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 	
 	protected int resistencia;
 	protected graficos_obstaculo graficos;
-	protected Juego juego;
+	
 	
 	public Obstaculo(int r, Juego j)
 	{
-		juego=j;
+		super(j);
 		resistencia=r;
 		graficos=new graficos_obstaculo();
 	}
@@ -30,7 +30,7 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 	
 	public void destruirse()
 	{
-		juego.getGui().getGj().getPanel_obstaculos().remove(this.getEtiqueta());
-		juego.getGui().getGj().getPanel_obstaculos().repaint();
+		getJuego().getGui().getGj().getPanel_obstaculos().remove(this.getEtiqueta());
+		getJuego().getGui().getGj().getPanel_obstaculos().repaint();
 	}
 }

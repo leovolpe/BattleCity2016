@@ -43,7 +43,7 @@ public class Tanque_Jugador extends EntidadMovil {
 
 	@Override
 	public void disparar() {
-		Proyectil p = new ProyectilJugador(this.getX(),this.getEtiqueta().getWidth());
+		Proyectil p = new ProyectilJugador(this.getX(),this.getEtiqueta().getWidth(),getJuego());
 		
 	}
 

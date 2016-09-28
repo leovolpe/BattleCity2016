@@ -1,11 +1,12 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 
 public class Tanque extends PowerUp {
 
-	public Tanque(int p) {
-		super(p);
+	public Tanque(int p, Juego j) {
+		super(p,j);
 		// TODO Auto-generated constructor stub
 	}
 

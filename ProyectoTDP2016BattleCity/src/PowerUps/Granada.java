@@ -1,11 +1,12 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 
 public class Granada extends PowerUp {
 
-	public Granada(int p) {
-		super(p);
+	public Granada(int p, Juego j) {
+		super(p,j);
 		// TODO Auto-generated constructor stub
 	}
 
