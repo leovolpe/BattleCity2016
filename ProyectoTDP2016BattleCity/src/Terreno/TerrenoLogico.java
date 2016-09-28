@@ -20,17 +20,17 @@ public class TerrenoLogico {
 	//mantengo los graficos correspondientes al juego
 	protected Juego juego;
 	//protected grafico_juego gj;
-	protected Tanque_Jugador tanque;
+	//protected Tanque_Jugador tanque;
 	
 	protected GeneradorDeMapa generador;
 	
 	
-	public TerrenoLogico(Tanque_Jugador t, Juego j)
+	public TerrenoLogico(Juego j)
 	{
 		juego=j;
-		tanque=t;
+		//tanque=t;
 	//	gj = g;
-		generador=new GeneradorDeMapa(juego);
+		generador=new GeneradorDeMapa(this);
 		listaObstaculos=generador.generarMapa();
 		
 		//agrego en pantalla los obstaculos
@@ -109,6 +109,11 @@ public class TerrenoLogico {
 		}
 	}
 	*/
+	
+	public Juego getJuego()
+	{
+		return juego;
+	}
 		
 }
 

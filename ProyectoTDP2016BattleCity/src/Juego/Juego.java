@@ -34,7 +34,7 @@ public class Juego
 		gui.setVisible(true);
 		
 		gui.addKeyListener(new manejador_auxiliar_teclado(this));
-		terreno_logico = new TerrenoLogico(tanque, this);
+		terreno_logico = new TerrenoLogico(this);
 		//le envia por parametro los graficos del sector dodnde se desarrolla el juego
 		//es decir contiene el panel donde estaran los tanques, enemigos, etc.
 		 

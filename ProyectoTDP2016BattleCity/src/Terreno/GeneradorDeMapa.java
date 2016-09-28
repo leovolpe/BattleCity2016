@@ -14,7 +14,7 @@ public class GeneradorDeMapa {
 	
 	private String[][] mapa;
 	private final String archivo_mapa_1 = "src/mapascodificados/mapa1.txt";
-	private Juego juego;
+	private TerrenoLogico terreno;
 	
 	/**
 	 * Vacio=0
@@ -25,9 +25,9 @@ public class GeneradorDeMapa {
 	 * aguila=5
 	 */
 	
-	public GeneradorDeMapa(Juego j)
+	public GeneradorDeMapa(TerrenoLogico t)
 	{
-		juego=j;
+		terreno=t;
 	}
 	
 	
@@ -64,27 +64,27 @@ public class GeneradorDeMapa {
 					{
 						case "1":
 						{
-							obs=new ParedAcero(j*60,i*60,juego);
+							obs=new ParedAcero(j*60,i*60,terreno.getJuego());
 							break;
 						}
 						case "2":
 						{
-							obs=new Arbol(j*60,i*60,juego);
+							obs=new Arbol(j*60,i*60,terreno.getJuego());
 							break;
 						}	
 						case "3":
 						{
-							obs=new Agua(j*60,i*60,juego);
+							obs=new Agua(j*60,i*60,terreno.getJuego());
 							break;
 						}	
 						case "4":
 						{
-							obs=new ParedLadrillo(j*60,i*60,juego);
+							obs=new ParedLadrillo(j*60,i*60,terreno.getJuego());
 							break;
 						}
 						case "5":
 						{
-							obs=new Base(j*60,i*60,juego);
+							obs=new Base(j*60,i*60,terreno.getJuego());
 							break;
 						}							
 					}
