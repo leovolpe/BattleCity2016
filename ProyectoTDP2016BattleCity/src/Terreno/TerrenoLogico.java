@@ -49,6 +49,8 @@ public class TerrenoLogico {
 	
 	public void quitarObstaculo()
 	{
+		
+		
 		if (listaObstaculos.size()>0)
 			listaObstaculos.removeFirst().destruirse();
 		
