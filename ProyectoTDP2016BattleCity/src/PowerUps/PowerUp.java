@@ -12,10 +12,7 @@ public PowerUp(int p)
 	puntos=p;
 }
 
-public void contacto(Tanque_Jugador ta)
-{
-	
-}
+public abstract void contacto(Tanque_Jugador ta);
 
 protected abstract void destruirse();
 

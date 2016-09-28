@@ -10,11 +10,18 @@ public class Pala extends PowerUp {
 	}
 
 	@Override
+	public void contacto(Tanque_Jugador ta) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	protected void destruirse() {
 		// TODO Auto-generated method stub
 		
 	}
 
+	
 }
 
 
