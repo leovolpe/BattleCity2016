@@ -19,6 +19,7 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 		graficos=new graficos_obstaculo();
 	}
 	
+	public abstract boolean atravezable();
 	
 	public abstract void recibirDisparo();
 	

@@ -41,7 +41,7 @@ public class ObjetoDeJuego {
 	
 	public void mostrar_coordenada()
 	{
-		//System.out.println(" x = "+x+" y = "+y);
+		System.out.println(" x = "+x+" y = "+y);
 	}
 	
 

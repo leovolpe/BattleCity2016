@@ -25,7 +25,13 @@ public class ParedAcero extends Obstaculo{
 
 	@Override
 	public void contacto(EntidadMovil e) {
-		e.deshacer_mov(this);
 		
+		
+	}
+
+	@Override
+	public boolean atravezable() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

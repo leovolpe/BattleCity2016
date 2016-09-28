@@ -12,9 +12,9 @@ public class Enemigo extends EntidadMovil{
 	
 	protected int puntos;
 	
-	public Enemigo (int r, int vm, int vd, int ds, int dp, int p)
+	public Enemigo (int r, int vm, int vd, int ds, int dp, int p, Juego j)
 	{
-		super(r, vm, vd, ds, dp, 's');
+		super(r, vm, vd, ds, dp, 's',j);
 		puntos=p;
 		
 	}
@@ -46,5 +46,7 @@ public class Enemigo extends EntidadMovil{
 	{
 		return puntos;
 	}
+
+	
 
 }

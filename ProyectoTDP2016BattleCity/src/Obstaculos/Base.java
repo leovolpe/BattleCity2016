@@ -28,4 +28,10 @@ public class Base extends Obstaculo {
 		
 	}
 
+	@Override
+	public boolean atravezable() {
+		return false;
+		
+	}
+
 }

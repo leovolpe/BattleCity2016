@@ -38,4 +38,10 @@ public class grafico_informacion {
 	{
 		return etiqueta;
 	}
+	
+	public void setPuntaje(int p)
+	{
+		etiqueta.setText("Puntaje "+p);
+		panel_info.repaint();
+	}
 }

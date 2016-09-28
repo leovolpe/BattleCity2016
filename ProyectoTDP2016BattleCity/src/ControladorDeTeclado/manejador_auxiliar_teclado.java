@@ -13,6 +13,9 @@ public class manejador_auxiliar_teclado implements KeyListener {
 	/**Constante de la tecla para quitar una pared*/
 	final static int obstaculo = KeyEvent.VK_P;
 	
+	/**Constante de la tecla para aumentar nivel*/
+	final static int aumentar_nivel = KeyEvent.VK_Q;
+	
 	private Juego j;
 	
 	public manejador_auxiliar_teclado(Juego juego)
@@ -42,6 +45,10 @@ public class manejador_auxiliar_teclado implements KeyListener {
 		{
 			System.out.println("obstaculo");
 			j.quitarObstaculo();
+		}
+		else if (e.getKeyCode()==aumentar_nivel)
+		{
+			j.getTanque().aumentarNivel();
 		}
 		// TODO Auto-generated method stub
 		

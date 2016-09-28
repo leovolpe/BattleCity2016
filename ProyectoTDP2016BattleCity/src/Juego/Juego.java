@@ -30,7 +30,7 @@ public class Juego
 	
 	public Juego()
 	{
-		tanque = new Tanque_Jugador(15, 5, 5, 5, 5);
+		tanque = new Tanque_Jugador(this);
 		gui = new Gui_Juego(this, tanque);
 		gui.setVisible(true);
 		
@@ -49,12 +49,7 @@ public class Juego
 
 	public void quitarObstaculo()
 	{
-	
-		//if(terreno_logico!=null)
-		//{
 		terreno_logico.quitarObstaculo();
-		//}
-		//gui.getGj().getPanel_obstaculos().repaint();
 	}
 	
 	
@@ -65,7 +60,7 @@ public class Juego
 	public void agregarEnemigo()
 	{
 		hayEnemigo=true;
-		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5);
+		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5, this);
 		gui.getGj().agregar_enemigo(EnemigoEnPantalla);
 	}
 	
@@ -73,7 +68,6 @@ public class Juego
 	{
 		hayEnemigo=false;
 		EnemigoEnPantalla.destruirse(this);
-		gui.getGi().getEtiqueta().setText("Puntaje: "+tanque.getPuntaje());
 		gui.getGi().getPanel_info().repaint();
 		gui.getGj().getPanel_tanque().repaint();
 		tanque.aumentarPuntaje(EnemigoEnPantalla.recibirDisparo());
@@ -90,5 +84,9 @@ public class Juego
 	public boolean hayEnemigo()
 	{
 		return hayEnemigo;
+	}
+
+	public TerrenoLogico getTerreno_logico() {
+		return terreno_logico;
 	}
 }

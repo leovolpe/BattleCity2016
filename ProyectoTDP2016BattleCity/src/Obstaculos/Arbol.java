@@ -28,4 +28,10 @@ public class Arbol extends Obstaculo{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean atravezable() {
+		return true;
+		
+	}
 }

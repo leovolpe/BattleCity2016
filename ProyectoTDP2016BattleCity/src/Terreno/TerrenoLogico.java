@@ -1,7 +1,11 @@
 package Terreno;
 
+import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.geom.Area;
 import java.util.LinkedList;
+
+import javax.swing.JLabel;
 
 import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_juego;
@@ -58,6 +62,28 @@ public class TerrenoLogico {
 		
 	}
 	
+	//Rectangle(int x, int y, int width, int height)
+	public boolean Puede_Avanzar(int x, int y, int ancho, int largo)
+	{
+		Rectangle r = new Rectangle(x,y,ancho,largo);
+		Area area_entidad = new Area(r);
+		Boolean puede_avanzar=true;
+		
+		 
+		for (Obstaculo o: listaObstaculos)
+		{
+			Area area_obstaculo = new Area(o.getEtiqueta().getBounds());
+			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
+				puede_avanzar = puede_avanzar && o.atravezable();
+		}
+		
+		if (x<0 || x > (gj.getPanel_tanque().getWidth()-60) ||
+			y <0 || y>(gj.getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
+		
+		return puede_avanzar;
+	}
+	
+	/*
 	public void control()
 	{
 		while (true)
@@ -74,6 +100,7 @@ public class TerrenoLogico {
 			//tanque.mostrar_coordenada();
 		}
 	}
+	*/
 		
 }
 

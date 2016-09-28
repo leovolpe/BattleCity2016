@@ -6,19 +6,21 @@ import ControladorDeTeclado.manejador_teclado_jugador;
 import Graficas_Personajes.graficos_entidad;
 import Graficas_Personajes.Tanque.graficos_tanque;
 import Juego.Juego;
+import Niveles_Tanque.*;
 
 public class Tanque_Jugador extends EntidadMovil {
 
 	private int puntaje;
 	private int vidas;
 	private boolean inmunidad;
-	private int nivel;
-	//private Juego juego;
+	private int num_niv;
+	private Nivel nivel;
+	
 	
 	private manejador_teclado_jugador teclado;
 	
-	public Tanque_Jugador(int r, int vm, int vd, int ds, int dp) {
-		super(r, vm, vd, ds, dp,'n');
+	public Tanque_Jugador(Juego j) {
+		super(1, 1, 1, 1, 1,'n',j); //valores por defecto que no se usaran
 		
 		
 		graficos = new graficos_tanque();
@@ -34,7 +36,7 @@ public class Tanque_Jugador extends EntidadMovil {
 		puntaje=0;
 		vidas=4;
 		inmunidad=false;
-		nivel=1;
+		setNivel1();
 	}
 
 
@@ -75,41 +77,70 @@ public class Tanque_Jugador extends EntidadMovil {
 	
 	public void aumentarNivel()
 	{
+		if (num_niv==1 || num_niv==2 || num_niv==3)
+		{
+			setX(0);
+			setY(540);
+		}
+		
+		if (num_niv==1)
+			setNivel2();
+		else if (num_niv==2)
+			setNivel3();
+		else if (num_niv == 3)
+			setNivel4();
+		
 		
 	}
 	
 	public void setNivel1()
 	{
-		
+		num_niv=1;
+		nivel = new Nivel1();
 	}
 	
 	public void setNivel2()
 	{
-		
+		num_niv=2;
+		nivel = new Nivel2();
 	}
 	
 	public void setNivel3()
 	{
+		num_niv=3;
+		nivel = new Nivel3();
 		
 	}
 	
 	public void setNivel4()
 	{
-		
+		num_niv=4;
+		nivel = new Nivel4();
 	}
 	
 	public void aumentarPuntaje(int p)
 	{
 		puntaje+=p;
+		getJuego().getGui().getGi().setPuntaje(puntaje);
 	}
 	public int getPuntaje()
 	{
+		
 		return puntaje;
 	}
 	
 	public void setInmunidad(boolean b)
 	{
 		
+	}
+	
+	
+	/**
+	 * redefinido para que la velocidad se obtenga del nivel (patron state)
+	 */
+	public int getVel_mov()
+	{
+		return nivel.getVel_mov();
 	}
 
 }

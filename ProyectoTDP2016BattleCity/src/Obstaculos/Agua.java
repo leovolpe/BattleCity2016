@@ -27,4 +27,11 @@ public class Agua extends Obstaculo{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean atravezable() {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
 }
