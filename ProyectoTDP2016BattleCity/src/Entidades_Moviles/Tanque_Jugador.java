@@ -79,8 +79,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		if (num_niv==1 || num_niv==2 || num_niv==3)
 		{
-			setX(0);
-			setY(540);
+			reestablecer_posicion();
 		}
 		
 		if (num_niv==1)
@@ -91,6 +90,14 @@ public class Tanque_Jugador extends EntidadMovil {
 			setNivel4();
 		
 		
+	}
+	
+	private void reestablecer_posicion()
+	{
+		setX(0);
+		setY(540);
+		this.getEtiqueta().setIcon(graficos.getArriba());
+		direccion='n';
 	}
 	
 	public void setNivel1()

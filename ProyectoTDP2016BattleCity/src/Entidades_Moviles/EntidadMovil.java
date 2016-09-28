@@ -15,7 +15,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	private int disparos_simultaneos;
 	private int disparos_en_pantalla;
 	protected graficos_entidad graficos;
-	private char direccion; //'n' 's' 'e' 'o'
+	protected char direccion; //'n' 's' 'e' 'o'
 	
 	
 	public EntidadMovil(int r, int vm, int vd, int ds, int dp, char dir, Juego j)
