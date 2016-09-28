@@ -3,13 +3,14 @@ package Obstaculos;
 import javax.swing.JLabel;
 
 import Entidades_Moviles.EntidadMovil;
+import Juego.Juego;
 
 public class Agua extends Obstaculo{
 
 	private final static int resistencia=2;
 	
-	public Agua(int xx, int yy) {
-		super(resistencia);
+	public Agua(int xx, int yy, Juego j) {
+		super(resistencia,j);
 		etiqueta=new JLabel(graficos.getAgua());
 		this.setX(xx);
 		this.setY(yy);
@@ -22,11 +23,11 @@ public class Agua extends Obstaculo{
 		
 	}
 
-	@Override
-	public void contacto(EntidadMovil e) {
+	//@Override
+	//public void contacto(EntidadMovil e) {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 
 	@Override
 	public boolean atravezable() {

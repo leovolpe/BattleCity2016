@@ -3,14 +3,17 @@ package Proyectil;
 import Entidades_Moviles.Tanque_Jugador;
 import ObjetosDeJuego.ObjetoDeJuego;
 import Obstaculos.Obstaculo;
+import graficos_balas.graficos_balas;
 
 public abstract class Proyectil extends ObjetoDeJuego {
 	
 	protected int velocidad;
+	protected graficos_balas gb;
 	
 	public Proyectil(int vel)
 	{
 		velocidad=vel;
+		gb = new graficos_balas();
 	}
 	
 	public void arriba()

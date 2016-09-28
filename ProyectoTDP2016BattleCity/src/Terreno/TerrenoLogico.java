@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 
 import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_juego;
+import Juego.Juego;
 import Obstaculos.Obstaculo;
 
 
@@ -17,23 +18,26 @@ public class TerrenoLogico {
 	//mantengo la lista de los obtaculos
 	protected LinkedList<Obstaculo> listaObstaculos;
 	//mantengo los graficos correspondientes al juego
-	protected grafico_juego gj;
+	protected Juego juego;
+	//protected grafico_juego gj;
 	protected Tanque_Jugador tanque;
 	
 	protected GeneradorDeMapa generador;
 	
 	
-	public TerrenoLogico(grafico_juego g, Tanque_Jugador t)
+	public TerrenoLogico(Tanque_Jugador t, Juego j)
 	{
+		juego=j;
 		tanque=t;
-		gj = g;
-		generador=new GeneradorDeMapa();
+	//	gj = g;
+		generador=new GeneradorDeMapa(juego);
 		listaObstaculos=generador.generarMapa();
 		
 		//agrego en pantalla los obstaculos
 		for (Obstaculo o : listaObstaculos)
 		{
-			gj.agregar_obstaculo(o);
+			//gj.agregar_obstaculo(o);
+			juego.getGui().getGj().agregar_obstaculo(o);
 		}		
 		//control();
 	}
@@ -45,9 +49,13 @@ public class TerrenoLogico {
 	
 	public void quitarObstaculo()
 	{
-		gj.getPanel_obstaculos().remove(listaObstaculos.removeFirst().getEtiqueta());
+		listaObstaculos.removeFirst().destruirse();
 		
-		gj.getPanel_obstaculos().repaint();
+		
+		
+		//juego.getGui().getGj().getPanel_obstaculos().remove(listaObstaculos.removeFirst().getEtiqueta());
+		
+		//juego.getGui().getGj().getPanel_obstaculos().repaint();
 		System.out.println(listaObstaculos.size());
 		/*
 		gj.getPanel_obstaculos().remove(listaObstaculos.getFirst().getEtiqueta());
@@ -77,8 +85,8 @@ public class TerrenoLogico {
 				puede_avanzar = puede_avanzar && o.atravezable();
 		}
 		
-		if (x<0 || x > (gj.getPanel_tanque().getWidth()-60) ||
-			y <0 || y>(gj.getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
+		if (x<0 || x > (juego.getGui().getGj().getPanel_tanque().getWidth()-60) ||
+			y <0 || y>(juego.getGui().getGj().getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
 		
 		return puede_avanzar;
 	}

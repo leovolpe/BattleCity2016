@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import Juego.Juego;
 import Obstaculos.*;
 
 public class GeneradorDeMapa {
@@ -13,7 +14,7 @@ public class GeneradorDeMapa {
 	
 	private String[][] mapa;
 	private final String archivo_mapa_1 = "src/mapascodificados/mapa1.txt";
-	
+	private Juego juego;
 	
 	/**
 	 * Vacio=0
@@ -23,6 +24,11 @@ public class GeneradorDeMapa {
 	 * ladrillo=4
 	 * aguila=5
 	 */
+	
+	public GeneradorDeMapa(Juego j)
+	{
+		juego=j;
+	}
 	
 	
 	public LinkedList<Obstaculo> generarMapa() 
@@ -58,27 +64,27 @@ public class GeneradorDeMapa {
 					{
 						case "1":
 						{
-							obs=new ParedAcero(j*60,i*60);
+							obs=new ParedAcero(j*60,i*60,juego);
 							break;
 						}
 						case "2":
 						{
-							obs=new Arbol(j*60,i*60);
+							obs=new Arbol(j*60,i*60,juego);
 							break;
 						}	
 						case "3":
 						{
-							obs=new Agua(j*60,i*60);
+							obs=new Agua(j*60,i*60,juego);
 							break;
 						}	
 						case "4":
 						{
-							obs=new ParedLadrillo(j*60,i*60);
+							obs=new ParedLadrillo(j*60,i*60,juego);
 							break;
 						}
 						case "5":
 						{
-							obs=new Base(j*60,i*60);
+							obs=new Base(j*60,i*60,juego);
 							break;
 						}							
 					}
@@ -100,10 +106,10 @@ public class GeneradorDeMapa {
 		
 	}
 	
-	public void borrar(int x, int y)
-	{
-		mapa[x][y]="0";
-	}
+		//public void borrar(int x, int y)
+		//{
+		//	mapa[x][y]="0";
+		//}
 	
 
 }

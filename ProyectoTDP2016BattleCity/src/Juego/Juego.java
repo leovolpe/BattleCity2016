@@ -1,11 +1,8 @@
 package Juego;
 
 import ControladorDeTeclado.manejador_auxiliar_teclado;
-import ControladorDeTeclado.manejador_teclado_jugador;
+import Controladores.Controlador_balas;
 import Enemigos.Enemigo;
-import Enemigos.EnemigoBasico;
-import Enemigos.EnemigoBlindado;
-import Enemigos.EnemigoDePoder;
 import Enemigos.EnemigoRapido;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
@@ -22,6 +19,8 @@ public class Juego
 	private Tanque_Jugador tanque;
 	private TerrenoLogico terreno_logico;
 	
+	private Controlador_balas cont_balas;
+	private Thread hilo_balas;
 	
 	//temporal!!
 	private boolean hayEnemigo;
@@ -35,12 +34,18 @@ public class Juego
 		gui.setVisible(true);
 		
 		gui.addKeyListener(new manejador_auxiliar_teclado(this));
-		terreno_logico = new TerrenoLogico(gui.getGj(), tanque);
+		terreno_logico = new TerrenoLogico(tanque, this);
 		//le envia por parametro los graficos del sector dodnde se desarrolla el juego
 		//es decir contiene el panel donde estaran los tanques, enemigos, etc.
 		 
 		hayEnemigo=false;
 		
+		//Agregar despues!
+		//cont_balas = new Controlador_balas();
+		//hilo_balas = new Thread(cont_balas);
+		//hilo_balas.start();
+		
+
 	}
 
 	public Gui_Juego getGui() {

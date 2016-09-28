@@ -3,10 +3,11 @@ package Entidades_Moviles;
 import javax.swing.JLabel;
 
 import ControladorDeTeclado.manejador_teclado_jugador;
-import Graficas_Personajes.graficos_entidad;
 import Graficas_Personajes.Tanque.graficos_tanque;
 import Juego.Juego;
 import Niveles_Tanque.*;
+import Proyectil.Proyectil;
+import Proyectil.ProyectilJugador;
 
 public class Tanque_Jugador extends EntidadMovil {
 
@@ -42,7 +43,7 @@ public class Tanque_Jugador extends EntidadMovil {
 
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
+		Proyectil p = new ProyectilJugador(this.getX(),this.getEtiqueta().getWidth());
 		
 	}
 

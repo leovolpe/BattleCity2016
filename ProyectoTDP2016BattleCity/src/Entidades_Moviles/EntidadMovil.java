@@ -4,7 +4,6 @@ package Entidades_Moviles;
 import Graficas_Personajes.graficos_entidad;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
-import Obstaculos.Obstaculo;
 
 public abstract class EntidadMovil extends ObjetoDeJuego {
 	
