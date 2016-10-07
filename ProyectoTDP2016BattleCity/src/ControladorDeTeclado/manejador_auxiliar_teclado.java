@@ -16,6 +16,10 @@ public class manejador_auxiliar_teclado implements KeyListener {
 	/**Constante de la tecla para aumentar nivel*/
 	final static int aumentar_nivel = KeyEvent.VK_Q;
 	
+	/**Constante de la tecla para disparar*/
+	final static int disparar = KeyEvent.VK_SPACE;
+	
+	
 	private Juego j;
 	
 	public manejador_auxiliar_teclado(Juego juego)
@@ -49,6 +53,10 @@ public class manejador_auxiliar_teclado implements KeyListener {
 		else if (e.getKeyCode()==aumentar_nivel)
 		{
 			j.getTanque().aumentarNivel();
+		}
+		else if (e.getKeyCode()==disparar)
+		{
+			j.getTanque().disparar();
 		}
 		// TODO Auto-generated method stub
 		

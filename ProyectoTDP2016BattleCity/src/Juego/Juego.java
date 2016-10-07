@@ -9,6 +9,7 @@ import Enemigos.Enemigo;
 import Enemigos.EnemigoRapido;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
+import Proyectil.Proyectil;
 import Terreno.TerrenoLogico;
 
 
@@ -115,5 +116,11 @@ public class Juego
 
 	public TerrenoLogico getTerreno_logico() {
 		return terreno_logico;
+	}
+	
+	public void agregar_proyectil(Proyectil p)
+	{
+		gui.getGj().agregar_proyectil(p);
+		this.cont_balas.add_proyectil(p);
 	}
 }

@@ -7,7 +7,7 @@ import Obstaculos.Obstaculo;
 public class ProyectilEnemigo extends Proyectil {
 
 	public ProyectilEnemigo(Tanque_Jugador t, Juego j) {
-		super(3,j);
+		super(3,'s',j);
 		// TODO Auto-generated constructor stub
 	}
 
