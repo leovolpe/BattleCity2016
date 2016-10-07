@@ -1,6 +1,9 @@
 package Juego;
 
+import java.util.Random;
+
 import ControladorDeTeclado.manejador_auxiliar_teclado;
+import Controladores.Controlador_Enemigos;
 import Controladores.Controlador_balas;
 import Enemigos.Enemigo;
 import Enemigos.EnemigoRapido;
@@ -22,6 +25,9 @@ public class Juego
 	private Controlador_balas cont_balas;
 	private Thread hilo_balas;
 	
+	private Controlador_Enemigos cont_ene;
+	private Thread hilo_enemigos;
+	
 	//temporal!!
 	private boolean hayEnemigo;
 	private Enemigo EnemigoEnPantalla;
@@ -41,9 +47,13 @@ public class Juego
 		hayEnemigo=false;
 		
 		//Agregar despues!
-		//cont_balas = new Controlador_balas();
-		//hilo_balas = new Thread(cont_balas);
-		//hilo_balas.start();
+		cont_balas = new Controlador_balas();
+		hilo_balas = new Thread(cont_balas);
+		hilo_balas.start();
+		
+		cont_ene = new Controlador_Enemigos();
+		hilo_enemigos = new Thread(cont_ene);
+		hilo_enemigos.start();
 		
 
 	}
@@ -66,7 +76,18 @@ public class Juego
 	{
 		hayEnemigo=true;
 		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5, this);
+		
+		Random  rnd = new Random();
+		//int posx = (int) (rnd.nextDouble() * 13)*60 ;
+		
+		int posx = (rnd.nextInt()%13)*60;
+		if (posx<0) posx*=-1;
+		System.out.println(posx);
+		
+		
+		EnemigoEnPantalla.setX(posx);
 		gui.getGj().agregar_enemigo(EnemigoEnPantalla);
+		cont_ene.add_Enemigo(EnemigoEnPantalla);
 	}
 	
 	public void quitarEnemigo()
@@ -76,6 +97,7 @@ public class Juego
 		gui.getGi().getPanel_info().repaint();
 		gui.getGj().getPanel_tanque().repaint();
 		tanque.aumentarPuntaje(EnemigoEnPantalla.recibirDisparo());
+		cont_ene.elim_enemigo(EnemigoEnPantalla);
 		EnemigoEnPantalla=null;
 	}
 	

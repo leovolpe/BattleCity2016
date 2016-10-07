@@ -1,5 +1,7 @@
 package Enemigos;
 
+import java.util.Random;
+
 import javax.swing.JLabel;
 
 import Entidades_Moviles.EntidadMovil;
@@ -18,6 +20,27 @@ public class Enemigo extends EntidadMovil{
 		puntos=p;
 		
 	}
+	
+	
+	public void mover()
+	{
+		Random r = new Random();
+		int n = r.nextInt()%8;
+		if (n<0) n*=-1;
+		System.out.println("randommmmmm................................."+n);
+		switch(n)
+		{
+			case 0 : {adelante(); break;}
+			case 1 : {atras(); break;}
+			case 2 : {atras(); break;}
+			case 3 : {atras(); break;}
+			case 4 : {atras(); break;}
+			case 5 : {atras(); break;}
+			case 6 : {izquierda(); break;}
+			case 7 : {derecha(); break;}
+		}
+	}
+	
 
 	@Override
 	public void disparar() {
