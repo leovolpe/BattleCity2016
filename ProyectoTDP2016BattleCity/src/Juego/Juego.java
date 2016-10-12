@@ -48,11 +48,11 @@ public class Juego
 		hayEnemigo=false;
 		
 		//Agregar despues!
-		cont_balas = new Controlador_balas();
+		cont_balas = new Controlador_balas(this);
 		hilo_balas = new Thread(cont_balas);
 		hilo_balas.start();
 		
-		cont_ene = new Controlador_Enemigos();
+		cont_ene = new Controlador_Enemigos(this);
 		hilo_enemigos = new Thread(cont_ene);
 		hilo_enemigos.start();
 		
@@ -75,7 +75,7 @@ public class Juego
 
 	public void agregarEnemigo()
 	{
-		hayEnemigo=true;
+		//hayEnemigo=true;
 		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5, this);
 		
 		Random  rnd = new Random();
@@ -93,13 +93,13 @@ public class Juego
 	
 	public void quitarEnemigo()
 	{
-		hayEnemigo=false;
-		EnemigoEnPantalla.destruirse(this);
-		gui.getGi().getPanel_info().repaint();
-		gui.getGj().getPanel_tanque().repaint();
-		tanque.aumentarPuntaje(EnemigoEnPantalla.recibirDisparo());
-		cont_ene.elim_enemigo(EnemigoEnPantalla);
-		EnemigoEnPantalla=null;
+		//hayEnemigo=false;
+		//EnemigoEnPantalla.destruirse(this);
+		//gui.getGi().getPanel_info().repaint();
+		//gui.getGj().getPanel_tanque().repaint();
+		//tanque.aumentarPuntaje(EnemigoEnPantalla.recibirDisparo());
+		//cont_ene.elim_enemigo(EnemigoEnPantalla);
+		//EnemigoEnPantalla=null;
 	}
 	
 	public Enemigo getEnemigoEnPantalla()
@@ -118,9 +118,31 @@ public class Juego
 		return terreno_logico;
 	}
 	
+	
 	public void agregar_proyectil(Proyectil p)
 	{
 		gui.getGj().agregar_proyectil(p);
 		this.cont_balas.add_proyectil(p);
+	}
+	
+	public void eliminar_proyectil(Proyectil p)
+	{
+		cont_balas.remove_proyectil(p);
+		gui.getGj().borrar_proyectil(p);
+	}
+	
+	public void eliminar_enemigo(Enemigo e)
+	{
+		cont_ene.elim_enemigo(e);
+		gui.getGj().borrar_enemigo(e);
+	}
+
+	public Controlador_Enemigos getCont_ene() {
+		return cont_ene;
+	}
+	
+	public void setPuntajeJugador(int pts)
+	{
+		gui.getGi().setPuntaje(pts);
 	}
 }

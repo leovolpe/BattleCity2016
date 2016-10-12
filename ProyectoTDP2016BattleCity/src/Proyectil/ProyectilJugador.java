@@ -2,14 +2,18 @@ package Proyectil;
 
 import javax.swing.JLabel;
 
+import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
 
-public class ProyectilJugador extends Proyectil {
+public class ProyectilJugador extends Proyectil 
+{
+	private Tanque_Jugador tanque;
 
-	public ProyectilJugador(char d,/*Enemigo e*/int x, int ancho, int y, int largo, Juego j) {
+	public ProyectilJugador(Tanque_Jugador t,char d,int x, int ancho, int y, int largo, Juego j) {
 		super(8,d,j);
+		tanque=t;
 		etiqueta = new JLabel(gb.get_bala_jugador());
 		this.getEtiqueta().setSize(10,10);
 		//this.getEtiqueta().setLocation(x+(ancho/2)-10, y-10);
@@ -51,13 +55,34 @@ public class ProyectilJugador extends Proyectil {
 	}
 
 	@Override
-	public void impactar(Tanque_Jugador t) {
+	public void impactar(Tanque_Jugador t) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void impactar(Obstaculo o) {
+	public void impactar(Obstaculo o) 
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destruirse() 
+	{
+		System.out.println("llame a destruirse");
+		tanque.reducir_disparo();
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void impactar(Enemigo e) 
+	{
+		int pts = e.recibirDisparo();
+		tanque.aumentarPuntaje(pts);
+		getJuego().eliminar_proyectil(this);
 		// TODO Auto-generated method stub
 		
 	}

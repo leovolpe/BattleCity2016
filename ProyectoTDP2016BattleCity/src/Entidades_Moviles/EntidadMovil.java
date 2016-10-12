@@ -12,7 +12,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	private int vel_mov;
 	private int vel_disp;
 	private int disparos_simultaneos;
-	private int disparos_en_pantalla;
+	protected int disparos_en_pantalla;
 	protected graficos_entidad graficos;
 	protected char direccion; //'n' 's' 'e' 'o'
 	
@@ -82,7 +82,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 				direccion = 'n';
 			}
 		
-			this.mostrar_coordenada();
+			//this.mostrar_coordenada();
 		
 	}
 	
@@ -102,7 +102,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getAbajo());
 			direccion='s';
 		}
-		this.mostrar_coordenada();
+		//this.mostrar_coordenada();
 	}
 	
 	public void izquierda()
@@ -120,7 +120,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getIzquierda());
 			direccion='i';
 		}
-		this.mostrar_coordenada();
+		//this.mostrar_coordenada();
 	}
 	
 	public void derecha()
@@ -138,7 +138,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getDerecha());
 			direccion='d';
 		}
-		this.mostrar_coordenada();
+		//this.mostrar_coordenada();
 	}
 	
 	
@@ -148,6 +148,10 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		return vel_mov;
 	}
 	
+	public void reducir_disparo()
+	{
+		disparos_en_pantalla--;
+	}
 	
 	
 	public abstract void disparar();

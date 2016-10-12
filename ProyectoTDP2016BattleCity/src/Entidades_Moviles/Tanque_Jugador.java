@@ -20,8 +20,9 @@ public class Tanque_Jugador extends EntidadMovil {
 	
 	private manejador_teclado_jugador teclado;
 	
-	public Tanque_Jugador(Juego j) {
-		super(1, 1, 1, 1, 1,'n',j); //valores por defecto que no se usaran
+	public Tanque_Jugador(Juego j) 
+	{
+		super(1, 1, 1, 1, 0,'n',j); //valores por defecto que no se usaran
 		
 		
 		graficos = new graficos_tanque();
@@ -42,8 +43,15 @@ public class Tanque_Jugador extends EntidadMovil {
 
 
 	@Override
-	public void disparar() {
-		Proyectil p = new ProyectilJugador(direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego());
+	public void disparar() 
+	{
+		
+		if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
+		{
+			disparos_en_pantalla++;
+			Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego());
+		}
+		System.out.println("disparos en pantalla = " +disparos_en_pantalla);
 		
 	}
 
@@ -129,7 +137,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	public void aumentarPuntaje(int p)
 	{
 		puntaje+=p;
-		getJuego().getGui().getGi().setPuntaje(puntaje);
+		getJuego().setPuntajeJugador(puntaje);
 	}
 	public int getPuntaje()
 	{
@@ -150,5 +158,6 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		return nivel.getVel_mov();
 	}
+	
 
 }

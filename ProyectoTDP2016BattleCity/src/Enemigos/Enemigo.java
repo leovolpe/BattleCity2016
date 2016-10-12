@@ -27,7 +27,7 @@ public class Enemigo extends EntidadMovil{
 		Random r = new Random();
 		int n = r.nextInt()%8;
 		if (n<0) n*=-1;
-		System.out.println("randommmmmm................................."+n);
+		
 		switch(n)
 		{
 			case 0 : {adelante(); break;}
@@ -50,12 +50,12 @@ public class Enemigo extends EntidadMovil{
 	
 	public void destruirse()
 	{
-		
+		getJuego().eliminar_enemigo(this);
 	}
 
 	public void destruirse(Juego j) 
 	{	
-		j.getGui().getGj().getPanel_tanque().remove(this.getEtiqueta());
+		//j.getGui().getGj().getPanel_tanque().remove(this.getEtiqueta());
 		
 	}
 
@@ -67,6 +67,7 @@ public class Enemigo extends EntidadMovil{
 	
 	public int recibirDisparo()
 	{
+		destruirse();
 		return puntos;
 	}
 

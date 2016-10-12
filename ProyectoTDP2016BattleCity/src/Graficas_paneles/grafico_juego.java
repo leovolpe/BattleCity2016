@@ -98,9 +98,21 @@ public class grafico_juego {
 
 	public void agregar_proyectil(Proyectil p) 
 	{
-		panel_tanque.add(p.getEtiqueta());
-		panel_tanque.repaint();
+		panel_balas.add(p.getEtiqueta());
+		panel_balas.repaint();
 		//panel_balas.add(p.getEtiqueta());
+	}
+	
+	public void borrar_proyectil(Proyectil p)
+	{
+		panel_balas.remove(p.getEtiqueta());
+		panel_balas.repaint();
+	}
+
+	public void borrar_enemigo(Enemigo e) 
+	{
+		panel_tanque.remove(e.getEtiqueta());
+		panel_tanque.repaint();
 		
 	}
 

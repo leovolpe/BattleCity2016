@@ -1,5 +1,6 @@
 package Proyectil;
 
+import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
@@ -72,13 +73,10 @@ public abstract class Proyectil extends ObjetoDeJuego {
 	
 	
 	public abstract void impactar(Tanque_Jugador t);
-	//public abstract void impactar(Enemigo  e); aun no estan implementados los enemigos
+	public abstract void impactar(Enemigo  e);
 	public abstract void impactar(Obstaculo o);
 	
-	private void destruirse()
-	{
-		
-	}
+	public abstract void destruirse();
 	
 
 }
