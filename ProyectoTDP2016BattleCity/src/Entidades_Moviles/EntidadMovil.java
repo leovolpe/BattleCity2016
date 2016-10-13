@@ -150,7 +150,9 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	public void reducir_disparo()
 	{
-		disparos_en_pantalla--;
+			disparos_en_pantalla--;
+			if (disparos_en_pantalla<0)
+				disparos_en_pantalla=0;
 	}
 	
 	

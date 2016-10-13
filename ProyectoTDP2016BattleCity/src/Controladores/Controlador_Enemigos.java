@@ -47,6 +47,7 @@ public class Controlador_Enemigos implements Runnable
 	
 	public void eliminar_enemigos()
 	{
+		System.out.println("voy a borrar");
 		for (int i=0; i<lista_enemigos_borrar.size();i++)
 		{
 			//juego.eliminar_enemigo(lista_enemigos_borrar.get(0));
@@ -70,6 +71,7 @@ public class Controlador_Enemigos implements Runnable
 	
 	public void control_impacto_proyectil(Proyectil p)
 	{
+		System.out.println("voy a controlar impactos");
 		Area a_proy = new Area(p.getEtiqueta().getBounds());
 		for (Enemigo e : lista_enemigos)
 		{

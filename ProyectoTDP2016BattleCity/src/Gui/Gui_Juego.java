@@ -1,9 +1,9 @@
 package Gui;
 
-import java.awt.Color;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.KeyListener;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -63,8 +63,8 @@ public class Gui_Juego extends JFrame {
 	
 	private void agregar_paneles()
 	{
-		this.getContentPane().add(gj.getPanel_tanque());
 		this.getContentPane().add(gj.getPanel_obstaculos());
+		this.getContentPane().add(gj.getPanel_tanque());
 		this.getContentPane().add(gi.getPanel_info());
 		this.getContentPane().add(gj.getPanel_balas());
 	}

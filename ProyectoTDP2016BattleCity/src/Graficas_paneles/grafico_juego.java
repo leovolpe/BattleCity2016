@@ -1,15 +1,15 @@
 package Graficas_paneles;
 
-import java.awt.Color;
 
-import javax.swing.JLabel;
+
+
 import javax.swing.JPanel;
 
 import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Obstaculos.Obstaculo;
 import Proyectil.Proyectil;
-import Proyectil.ProyectilJugador;
+
 
 /**Clase encargada de mantener los paneles que contienen las entidades del juego
  * 
