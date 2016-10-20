@@ -9,6 +9,7 @@ import Enemigos.Enemigo;
 import Enemigos.EnemigoRapido;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
+import Obstaculos.Obstaculo;
 import Proyectil.Proyectil;
 import Terreno.TerrenoLogico;
 
@@ -81,15 +82,22 @@ public class Juego
 		Random  rnd = new Random();
 		//int posx = (int) (rnd.nextDouble() * 13)*60 ;
 		
-		int posx = (rnd.nextInt()%13)*60;
-		if (posx<0) posx*=-1;
-		System.out.println(posx);
-		
-		
-		EnemigoEnPantalla.setX(posx);
-		gui.getGj().agregar_enemigo(EnemigoEnPantalla);
-		cont_ene.add_Enemigo(EnemigoEnPantalla);
+		boolean agregue=false;
+		while (!agregue)
+		{
+			int posx = (rnd.nextInt()%13)*60;
+			if (posx<0) posx*=-1;
+			if (cont_ene.se_puede_agregar(posx,EnemigoEnPantalla.getEtiqueta().getHeight() , EnemigoEnPantalla.getEtiqueta().getWidth()))
+			{
+				System.out.println("agregue");
+				agregue=true;
+				EnemigoEnPantalla.setX(posx);
+				gui.getGj().agregar_enemigo(EnemigoEnPantalla);
+				cont_ene.add_Enemigo(EnemigoEnPantalla);
+			}
+		}	
 	}
+	
 	
 	public void quitarEnemigo()
 	{
@@ -144,5 +152,12 @@ public class Juego
 	public void setPuntajeJugador(int pts)
 	{
 		gui.getGi().setPuntaje(pts);
+	}
+	
+	public void eliminar_obstaculo(Obstaculo o)
+	{
+		gui.getGj().getPanel_obstaculos().remove(o.getEtiqueta());
+		gui.getGj().getPanel_obstaculos().repaint();
+		terreno_logico.eliminar_obstaculo(o);
 	}
 }

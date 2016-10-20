@@ -4,6 +4,8 @@ import Entidades_Moviles.EntidadMovil;
 import Graficas_Obstaculos.graficos_obstaculo;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
+import Proyectil.Proyectil;
+import Visitor_Proyectiles.Visitor_Proyectil;
 
 /**
  * Clase que modela un obstaculo
@@ -30,7 +32,8 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 	
 	public void destruirse()
 	{
-		getJuego().getGui().getGj().getPanel_obstaculos().remove(this.getEtiqueta());
-		getJuego().getGui().getGj().getPanel_obstaculos().repaint();
+		getJuego().eliminar_obstaculo(this);
 	}
+	
+	public abstract void aceptar_visitor_proyectil(Visitor_Proyectil v);
 }

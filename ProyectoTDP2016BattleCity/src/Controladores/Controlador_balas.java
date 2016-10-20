@@ -28,7 +28,6 @@ public class Controlador_balas implements Runnable
 	
 	public void remove_proyectil(Proyectil p)
 	{
-		p.destruirse();
 		listaProyectilesaEliminar.add(p);
 	}
 	
@@ -67,16 +66,17 @@ public class Controlador_balas implements Runnable
 	private void mover_Proyectiles() 
 	{
 		
-		for(Proyectil p: listaProyectiles)
+		for (int i=0; i< listaProyectiles.size(); i++)
 		{
+			Proyectil p = listaProyectiles.get(i);
 			p.mover();
 			if (fuera_de_rango(p))
-				juego.eliminar_proyectil(p);
+				p.destruirse();
 			else
 			{
 				juego.getCont_ene().control_impacto_proyectil(p);
+				juego.getTerreno_logico().control_balas(p);
 			}
-				
 		}
 		
 	}

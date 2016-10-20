@@ -1,5 +1,6 @@
 package Controladores;
 
+import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,23 @@ public class Controlador_Enemigos implements Runnable
 		terminar_hilo=false;
 	}
 	
+	//retorba true si se puede agregar un enemigo en este lugar
+	//el y recibido es cero
+	public boolean se_puede_agregar(int x,int l, int a)
+	{
+		boolean puede=true;
+		Rectangle r = new Rectangle(x,0,l,a);
+		Area area = new Area(r);
+		
+		for (int i=0; i<lista_enemigos.size(); i++)
+		{
+			Area ae = new Area(lista_enemigos.get(i).getEtiqueta().getBounds());
+			if (area.intersects(ae.getBounds2D()))
+				puede=false;
+		}
+		return puede;
+	}
+	
 	public void add_Enemigo(Enemigo e)
 	{
 		lista_enemigos_agregar.add(e);
@@ -47,7 +65,7 @@ public class Controlador_Enemigos implements Runnable
 	
 	public void eliminar_enemigos()
 	{
-		System.out.println("voy a borrar");
+		
 		for (int i=0; i<lista_enemigos_borrar.size();i++)
 		{
 			//juego.eliminar_enemigo(lista_enemigos_borrar.get(0));
@@ -64,17 +82,19 @@ public class Controlador_Enemigos implements Runnable
 	
 	private void mover_enemigos()
 	{
-		for (Enemigo e: lista_enemigos)
-			e.mover();
+		for (int i=0; i<lista_enemigos.size(); i++)
+			lista_enemigos.get(i).mover();
+		
 	}
 	
 	
 	public void control_impacto_proyectil(Proyectil p)
 	{
-		System.out.println("voy a controlar impactos");
 		Area a_proy = new Area(p.getEtiqueta().getBounds());
-		for (Enemigo e : lista_enemigos)
+		
+		for (int i=0; i<lista_enemigos.size();i++)
 		{
+			Enemigo e = lista_enemigos.get(i);
 			Area a_ene = new Area(e.getEtiqueta().getBounds());
 			if (a_proy.intersects(a_ene.getBounds2D()))
 			{

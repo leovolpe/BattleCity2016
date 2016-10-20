@@ -6,6 +6,7 @@ import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
+import Visitor_Proyectiles.Visitor_proyectil_jugador;
 
 public class ProyectilJugador extends Proyectil 
 {
@@ -64,17 +65,14 @@ public class ProyectilJugador extends Proyectil
 	@Override
 	public void impactar(Obstaculo o) 
 	{
-		// TODO Auto-generated method stub
-		
+		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugador(this));
 	}
 
 	@Override
 	public void destruirse() 
 	{
-		System.out.println("llame a destruirse");
 		tanque.reducir_disparo();
-		// TODO Auto-generated method stub
-		
+		getJuego().eliminar_proyectil(this);
 	}
 
 	@Override
@@ -82,7 +80,7 @@ public class ProyectilJugador extends Proyectil
 	{
 		int pts = e.recibirDisparo();
 		tanque.aumentarPuntaje(pts);
-		getJuego().eliminar_proyectil(this);
+		destruirse();
 		// TODO Auto-generated method stub
 		
 	}

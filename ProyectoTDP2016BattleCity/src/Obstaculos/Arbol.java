@@ -4,6 +4,8 @@ import javax.swing.JLabel;
 
 import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
+import Proyectil.Proyectil;
+import Visitor_Proyectiles.Visitor_Proyectil;
 
 public class Arbol extends Obstaculo{
 
@@ -18,11 +20,7 @@ public class Arbol extends Obstaculo{
 		
 	}
 
-	@Override
-	public void recibirDisparo() {
-
-		
-	}
+	
 
 	//@Override
 	//public void contacto(EntidadMovil e) {
@@ -35,4 +33,21 @@ public class Arbol extends Obstaculo{
 		return true;
 		
 	}
+
+
+
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	@Override
+	public void aceptar_visitor_proyectil(Visitor_Proyectil v) 
+	{
+		v.visitar(this);
+		
+	}
+	
 }

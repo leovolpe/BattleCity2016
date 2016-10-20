@@ -13,10 +13,13 @@ import Juego.Juego;
 public class Enemigo extends EntidadMovil{
 	
 	protected int puntos;
+	protected int cant_movs;
+	protected int num_random;
 	
 	public Enemigo (int r, int vm, int vd, int ds, int dp, int p, Juego j)
 	{
 		super(r, vm, vd, ds, dp, 's',j);
+		cant_movs=0;
 		puntos=p;
 		
 	}
@@ -24,20 +27,49 @@ public class Enemigo extends EntidadMovil{
 	
 	public void mover()
 	{
-		Random r = new Random();
-		int n = r.nextInt()%8;
-		if (n<0) n*=-1;
 		
-		switch(n)
+		if (cant_movs==0)
 		{
-			case 0 : {adelante(); break;}
-			case 1 : {atras(); break;}
-			case 2 : {atras(); break;}
-			case 3 : {atras(); break;}
-			case 4 : {atras(); break;}
-			case 5 : {atras(); break;}
-			case 6 : {izquierda(); break;}
-			case 7 : {derecha(); break;}
+			cant_movs=30;
+			Random r = new Random();
+			num_random = r.nextInt()%4;
+			if (num_random<0) num_random*=-1;
+		}
+		else
+			cant_movs--;
+		
+		switch(num_random)
+		{
+			case 0 : 
+					{
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+							adelante(); 
+						else
+							cant_movs=0;
+							
+						break;
+					}
+			case 1 : {
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+							atras();
+						else
+							cant_movs=0;
+						break;
+					}
+			case 2 : {
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+							izquierda();
+						else
+							cant_movs=0;
+						break;
+					}
+			case 3 : {
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+							derecha();
+						else
+							cant_movs=0;
+						break;
+					}
 		}
 	}
 	

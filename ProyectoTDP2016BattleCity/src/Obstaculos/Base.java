@@ -4,6 +4,8 @@ import javax.swing.JLabel;
 
 import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
+import Proyectil.Proyectil;
+import Visitor_Proyectiles.Visitor_Proyectil;
 
 public class Base extends Obstaculo {
 	
@@ -17,11 +19,7 @@ public class Base extends Obstaculo {
 		etiqueta.setSize(60, 60);
 	}
 
-	@Override
-	public void recibirDisparo() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	//@Override
 	//public void contacto(EntidadMovil e) {
@@ -34,5 +32,21 @@ public class Base extends Obstaculo {
 		return false;
 		
 	}
+
+
+
+	@Override
+	public void recibirDisparo() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void aceptar_visitor_proyectil(Visitor_Proyectil v) 
+	{
+		v.visitar(this);
+		
+	}
+	
 
 }

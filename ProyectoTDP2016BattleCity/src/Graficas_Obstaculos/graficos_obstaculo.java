@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 public class graficos_obstaculo {
 
 	protected ImageIcon ladrillo;
+	protected ImageIcon ladrillo_fuego;
 	protected ImageIcon acero;
 	protected ImageIcon agua;
 	protected ImageIcon arbol;
@@ -17,6 +18,7 @@ public class graficos_obstaculo {
 	public graficos_obstaculo()
 	{
 		ladrillo = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/ladrillo.png"));
+		ladrillo_fuego = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/ladrillof.gif"));
 		acero = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/acero.png"));
 		agua = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/agua.png"));
 		arbol = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/arbol.png"));
@@ -38,6 +40,10 @@ public class graficos_obstaculo {
 
 	public ImageIcon getBase() {
 		return base;
+	}
+
+	public ImageIcon getLadrillo_fuego() {
+		return ladrillo_fuego;
 	}
 
 	

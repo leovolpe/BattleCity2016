@@ -11,6 +11,7 @@ import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_juego;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
+import Proyectil.Proyectil;
 
 
 public class TerrenoLogico {
@@ -47,6 +48,24 @@ public class TerrenoLogico {
 		return listaObstaculos;
 	}
 	
+	public void control_balas(Proyectil p)
+	{
+		Area ap = new Area(p.getEtiqueta().getBounds());
+		
+		for (int i=0; i<listaObstaculos.size(); i++)
+		{
+			Obstaculo obs = listaObstaculos.get(i);
+			Area ao = new Area(obs.getEtiqueta().getBounds());
+			if (ap.intersects(ao.getBounds2D()))
+				p.impactar(obs);
+		}
+	}
+	
+	public void eliminar_obstaculo(Obstaculo o)
+	{
+		listaObstaculos.remove(o);
+	}
+	
 	public void quitarObstaculo()
 	{
 		
@@ -80,9 +99,10 @@ public class TerrenoLogico {
 		Area area_entidad = new Area(r);
 		Boolean puede_avanzar=true;
 		
-		 
-		for (Obstaculo o: listaObstaculos)
+		
+		for (int i=0; i< listaObstaculos.size(); i++)
 		{
+			Obstaculo o = listaObstaculos.get(i);
 			Area area_obstaculo = new Area(o.getEtiqueta().getBounds());
 			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
 				puede_avanzar = puede_avanzar && o.atravezable();
