@@ -4,7 +4,7 @@ public class Nivel4 extends Nivel {
 
 	public Nivel4() 
 	{
-		super(4, 10, 1, 3);
+		super(4, 10, 9, 3);
 	}
 
 }

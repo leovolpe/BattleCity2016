@@ -8,7 +8,7 @@ import ObjetosDeJuego.ObjetoDeJuego;
 public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	
-	private int resistencia;
+	protected int resistencia;
 	private int vel_mov;
 	private int vel_disp;
 	private int disparos_simultaneos;
@@ -17,14 +17,14 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	protected char direccion; //'n' 's' 'e' 'o'
 	
 	
-	public EntidadMovil(int r, int vm, int vd, int ds, int dp, char dir, Juego j)
+	public EntidadMovil(int r, int vm, int vd, int ds, char dir, Juego j)
 	{
 		super(j);
 		resistencia = r;
 		vel_mov=vm;
 		vel_disp=vd;
 		disparos_simultaneos = ds;
-		disparos_en_pantalla = dp;
+		disparos_en_pantalla = 0;
 		direccion = dir;
 	}
 	

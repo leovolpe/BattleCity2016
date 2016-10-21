@@ -45,11 +45,6 @@ public class manejador_auxiliar_teclado implements KeyListener {
 			}
 			
 		}
-		else if (e.getKeyCode()==obstaculo)
-		{
-			System.out.println("obstaculo");
-			j.quitarObstaculo();
-		}
 		else if (e.getKeyCode()==aumentar_nivel)
 		{
 			j.getTanque().aumentarNivel();

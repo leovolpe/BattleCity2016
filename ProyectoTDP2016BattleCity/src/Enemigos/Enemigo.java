@@ -9,16 +9,18 @@ import Graficas_Personajes.Enemigos.graficos_tanque_basico;
 import Graficas_Personajes.Tanque.graficos_tanque;
 import Gui.Gui_Juego;
 import Juego.Juego;
+import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
+import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
-public class Enemigo extends EntidadMovil{
+public abstract class Enemigo extends EntidadMovil{
 	
 	protected int puntos;
 	protected int cant_movs;
 	protected int num_random;
 	
-	public Enemigo (int r, int vm, int vd, int ds, int dp, int p, Juego j)
+	public Enemigo (int r, int vm, int vd, int ds, int p, Juego j)
 	{
-		super(r, vm, vd, ds, dp, 's',j);
+		super(r, vm, vd, ds, 's',j);
 		cant_movs=0;
 		puntos=p;
 		
@@ -101,12 +103,19 @@ public class Enemigo extends EntidadMovil{
 		return false;
 	}
 	
+	
 	public int recibirDisparo()
 	{
-		destruirse();
+		resistencia--;
+		if (resistencia==0)
+			destruirse();
 		return puntos;
 	}
+	
+	
+	
 
+	public abstract void accept(Visitor_Proyectil_enemigos v);
 	
 
 }

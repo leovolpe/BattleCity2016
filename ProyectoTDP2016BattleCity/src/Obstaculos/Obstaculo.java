@@ -5,7 +5,7 @@ import Graficas_Obstaculos.graficos_obstaculo;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
 import Proyectil.Proyectil;
-import Visitor_Proyectiles.Visitor_Proyectil;
+import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
 /**
  * Clase que modela un obstaculo
@@ -35,5 +35,5 @@ public abstract class Obstaculo extends ObjetoDeJuego {
 		getJuego().eliminar_obstaculo(this);
 	}
 	
-	public abstract void aceptar_visitor_proyectil(Visitor_Proyectil v);
+	public abstract void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v);
 }

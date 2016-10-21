@@ -3,7 +3,11 @@ package Visitor_Proyectiles;
 import Obstaculos.*;
 import Proyectil.Proyectil;
 
-public abstract class Visitor_Proyectil 
+/**Visitor para que los proyectiles puedan afectar a los obstaculos
+ * 
+ *
+ */
+public abstract class Visitor_Proyectil_obstaculo 
 {
 	protected Proyectil proy;
 	

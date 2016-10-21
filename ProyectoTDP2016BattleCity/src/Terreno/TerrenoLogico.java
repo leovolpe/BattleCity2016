@@ -1,14 +1,8 @@
 package Terreno;
 
 import java.awt.Rectangle;
-import java.awt.Shape;
 import java.awt.geom.Area;
 import java.util.LinkedList;
-
-import javax.swing.JLabel;
-
-import Entidades_Moviles.Tanque_Jugador;
-import Graficas_paneles.grafico_juego;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
 import Proyectil.Proyectil;
@@ -18,36 +12,29 @@ public class TerrenoLogico {
 
 	//mantengo la lista de los obtaculos
 	protected LinkedList<Obstaculo> listaObstaculos;
-	//mantengo los graficos correspondientes al juego
 	protected Juego juego;
-	//protected grafico_juego gj;
-	//protected Tanque_Jugador tanque;
-	
 	protected GeneradorDeMapa generador;
 	
 	
 	public TerrenoLogico(Juego j)
 	{
 		juego=j;
-		//tanque=t;
-	//	gj = g;
-		generador=new GeneradorDeMapa(this);
-		listaObstaculos=generador.generarMapa();
+		generador=new GeneradorDeMapa(juego);	//creo un generador de mapa
+		listaObstaculos=generador.generarMapa1(); //obtengo los obtaculos correspondientes al mapa 1
 		
 		//agrego en pantalla los obstaculos
 		for (Obstaculo o : listaObstaculos)
 		{
-			//gj.agregar_obstaculo(o);
-			juego.getGui().getGj().agregar_obstaculo(o);
+			juego.agregar_obstaculo_graficamente(o);
 		}		
-		//control();
 	}
 	
-	public LinkedList<Obstaculo> getLista()
-	{
-		return listaObstaculos;
-	}
 	
+	/**Controla si el proyectil p intersecta con algun obstaculo, 
+	 * en caso de que esto ocurra se ejecuta el metodo intersectar de proyectil
+	 * 
+	 * @param p proyectil
+	 */
 	public void control_balas(Proyectil p)
 	{
 		Area ap = new Area(p.getEtiqueta().getBounds());
@@ -56,87 +43,57 @@ public class TerrenoLogico {
 		{
 			Obstaculo obs = listaObstaculos.get(i);
 			Area ao = new Area(obs.getEtiqueta().getBounds());
-			if (ap.intersects(ao.getBounds2D()))
+			if (ap.intersects(ao.getBounds2D()))//si la bala y el obstaculo estan en el mismo lugar
 				p.impactar(obs);
 		}
 	}
 	
+	/**	Elimina el obstaculo de la lista que lo contiene
+	 * 	
+	 * @param o obstaculo
+	 */
 	public void eliminar_obstaculo(Obstaculo o)
 	{
 		listaObstaculos.remove(o);
 	}
 	
-	public void quitarObstaculo()
-	{
-		
-		
-		if (listaObstaculos.size()>0)
-			listaObstaculos.removeFirst().destruirse();
-		
-		
-		
-		//juego.getGui().getGj().getPanel_obstaculos().remove(listaObstaculos.removeFirst().getEtiqueta());
-		
-		//juego.getGui().getGj().getPanel_obstaculos().repaint();
-		System.out.println(listaObstaculos.size());
-		/*
-		gj.getPanel_obstaculos().remove(listaObstaculos.getFirst().getEtiqueta());
-		
-		int x=listaObstaculos.getFirst().getX();
-		int y=listaObstaculos.getFirst().getY();
-		
-		generador.borrar(x, y);
-		
-		listaObstaculos.removeFirst();
-		*/
-		
-	}
+	
+
 	
 	//Rectangle(int x, int y, int width, int height)
+	/**
+	 * consulta usada por las entidades moviles al intentar avanzar
+	 * Recibe la posicion (x,y), el largo y verifica si pueden avanzar a ese lugar en el mapa
+	 * @param x
+	 * @param y
+	 * @param ancho
+	 * @param largo
+	 * @return
+	 */
 	public boolean Puede_Avanzar(int x, int y, int ancho, int largo)
 	{
 		Rectangle r = new Rectangle(x,y,ancho,largo);
 		Area area_entidad = new Area(r);
+		
 		Boolean puede_avanzar=true;
 		
-		
+		//cada obstaculo implementa el metodo atravezable el cual indica si puede ser transpasado por una entidad movil
 		for (int i=0; i< listaObstaculos.size(); i++)
 		{
 			Obstaculo o = listaObstaculos.get(i);
 			Area area_obstaculo = new Area(o.getEtiqueta().getBounds());
 			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
-				puede_avanzar = puede_avanzar && o.atravezable();
+				puede_avanzar = puede_avanzar && o.atravezable();		
+			//en el caso de que algun obstaculo con el que chocaria le impide avanzar, entonces el valor de puede_avanzar sera falso
 		}
 		
+		//no se le permite a la entidad movil sobrepasar los limites
 		if (x<0 || x > (juego.getGui().getGj().getPanel_tanque().getWidth()-60) ||
 			y <0 || y>(juego.getGui().getGj().getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
 		
 		return puede_avanzar;
 	}
 	
-	/*
-	public void control()
-	{
-		while (true)
-		{
-			Area a = new Area(tanque.getEtiqueta().getBounds());
-			for (Obstaculo o : listaObstaculos)
-			{
-				Area a_obs = new Area(o.getEtiqueta().getBounds());
-				if (a.intersects(a_obs.getBounds2D()))
-				{
-					o.contacto(tanque);
-				}
-			}
-			//tanque.mostrar_coordenada();
-		}
-	}
-	*/
-	
-	public Juego getJuego()
-	{
-		return juego;
-	}
 		
 }
 

@@ -9,10 +9,10 @@ import Proyectil.Proyectil;
 
 
 
-public class Visitor_proyectil_jugador extends Visitor_Proyectil
+public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obstaculo
 {
 	
-	public Visitor_proyectil_jugador(Proyectil p)
+	public Visitor_proyectil_jugador_obstaculo(Proyectil p)
 	{
 		proy = p;
 	}
@@ -21,13 +21,13 @@ public class Visitor_proyectil_jugador extends Visitor_Proyectil
 	public void visitar(Agua a) 
 	{
 		// TODO Auto-generated method stub
-		
+		//si el proyectil toca agua no hay nada que hacer
 	}
 
 	@Override
 	public void visitar(Arbol a) {
 		// TODO Auto-generated method stub
-		
+		//si el proyectil toca arboles no hay nada que hacer
 	}
 
 	@Override

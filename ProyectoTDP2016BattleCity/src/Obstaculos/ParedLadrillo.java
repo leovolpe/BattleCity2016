@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
 import Proyectil.Proyectil;
-import Visitor_Proyectiles.Visitor_Proyectil;
+import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
 public class ParedLadrillo extends Obstaculo{
 
@@ -57,7 +57,7 @@ public class ParedLadrillo extends Obstaculo{
 
 
 	@Override
-	public void aceptar_visitor_proyectil(Visitor_Proyectil v) 
+	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
 		

@@ -6,7 +6,8 @@ import ControladorDeTeclado.manejador_auxiliar_teclado;
 import Controladores.Controlador_Enemigos;
 import Controladores.Controlador_balas;
 import Enemigos.Enemigo;
-import Enemigos.EnemigoRapido;
+import Enemigos.EnemigoBlindado;
+import Enemigos.*;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
 import Obstaculos.Obstaculo;
@@ -64,10 +65,7 @@ public class Juego
 		return gui;
 	}
 
-	public void quitarObstaculo()
-	{
-		terreno_logico.quitarObstaculo();
-	}
+	
 	
 	
 	public Tanque_Jugador getTanque() {
@@ -77,7 +75,21 @@ public class Juego
 	public void agregarEnemigo()
 	{
 		//hayEnemigo=true;
-		EnemigoEnPantalla=new EnemigoRapido(15, 5, 5, 5, 5, 5, this);
+		
+		Random r = new Random();
+		int num_random = r.nextInt()%4;
+		if (num_random<0) num_random*=-1;
+		
+		switch(num_random)
+		{
+			case 0: {EnemigoEnPantalla=new EnemigoBasico(this); break;}
+			case 1: {EnemigoEnPantalla=new EnemigoBlindado(this); break;}
+			case 2: {EnemigoEnPantalla=new EnemigoDePoder(this); break;}
+			case 3: {EnemigoEnPantalla=new EnemigoRapido(this); break;}
+			
+		}
+		
+		
 		
 		Random  rnd = new Random();
 		//int posx = (int) (rnd.nextDouble() * 13)*60 ;
@@ -159,5 +171,14 @@ public class Juego
 		gui.getGj().getPanel_obstaculos().remove(o.getEtiqueta());
 		gui.getGj().getPanel_obstaculos().repaint();
 		terreno_logico.eliminar_obstaculo(o);
+	}
+	
+	/**Agrega graficamente al obstaculo o
+	 * 
+	 * @param o
+	 */
+	public void agregar_obstaculo_graficamente(Obstaculo o)
+	{
+		getGui().getGj().agregar_obstaculo(o);
 	}
 }

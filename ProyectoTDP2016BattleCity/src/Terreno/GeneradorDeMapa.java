@@ -9,12 +9,17 @@ import java.util.*;
 import Juego.Juego;
 import Obstaculos.*;
 
+/**Para cada mapa disponible (por ahora uno) carga el archivo de texto codificado en una matriz, y luego
+ * crea los obstaculos correspondientes seteandoles su posicion
+ * 
+ *
+ */
 public class GeneradorDeMapa {
 
 	
-	private String[][] mapa;
+	private String[][] mapa; //aca se cargara la codificacion
 	private final String archivo_mapa_1 = "src/mapascodificados/mapa1.txt";
-	private TerrenoLogico terreno;
+	private Juego juego;
 	
 	/**
 	 * Vacio=0
@@ -25,13 +30,17 @@ public class GeneradorDeMapa {
 	 * aguila=5
 	 */
 	
-	public GeneradorDeMapa(TerrenoLogico t)
+	
+	public GeneradorDeMapa(Juego j)
 	{
-		terreno=t;
+		juego=j;
 	}
 	
-	
-	public LinkedList<Obstaculo> generarMapa() 
+	/**
+	 * Genera una lista con los obtaculos del mapa cargandolos de un archivo de texto
+	 * @return
+	 */
+	public LinkedList<Obstaculo> generarMapa1() 
 	{
 		LinkedList<Obstaculo> listaObs=new LinkedList<Obstaculo>();
 		
@@ -41,12 +50,13 @@ public class GeneradorDeMapa {
 			BufferedReader contenido=new BufferedReader(lector);
 			
 			mapa = new String[10][13];
-			//genera la primer fila vacia
+			
+			//genera la primer fila vacia ya que alli por convención no habran obstaculos
 			for (int i=0; i<13; i++)
 				mapa[0][i]="0";
 			
 			
-			//lleno la matriz con la codificacion
+			//lleno la matriz con la codificación
 			for (int i=1; i<10; i++)
 			{
 				String fila = contenido.readLine();
@@ -54,7 +64,7 @@ public class GeneradorDeMapa {
 			}
 			
 					
-			//creo los obstaculos de acuerdo a la codificacion del archivo
+			//creo los obstaculos de acuerdo a la codificación del archivo
 			for (int i=1; i<10; i++)
 			{
 				for(int j=0;j<mapa[0].length;j++)
@@ -64,27 +74,27 @@ public class GeneradorDeMapa {
 					{
 						case "1":
 						{
-							obs=new ParedAcero(j*60,i*60,terreno.getJuego());
+							obs=new ParedAcero(j*60,i*60,juego); //sabiendo que cada obstaculo mide 60x60 se calcula su ubicación
 							break;
 						}
 						case "2":
 						{
-							obs=new Arbol(j*60,i*60,terreno.getJuego());
+							obs=new Arbol(j*60,i*60,juego);
 							break;
 						}	
 						case "3":
 						{
-							obs=new Agua(j*60,i*60,terreno.getJuego());
+							obs=new Agua(j*60,i*60,juego);
 							break;
 						}	
 						case "4":
 						{
-							obs=new ParedLadrillo(j*60,i*60,terreno.getJuego());
+							obs=new ParedLadrillo(j*60,i*60,juego);
 							break;
 						}
 						case "5":
 						{
-							obs=new Base(j*60,i*60,terreno.getJuego());
+							obs=new Base(j*60,i*60,juego);
 							break;
 						}							
 					}
@@ -93,7 +103,7 @@ public class GeneradorDeMapa {
 				}
 			}
 				
-		
+		contenido.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,10 +116,7 @@ public class GeneradorDeMapa {
 		
 	}
 	
-		//public void borrar(int x, int y)
-		//{
-		//	mapa[x][y]="0";
-		//}
+	
 	
 
 }
