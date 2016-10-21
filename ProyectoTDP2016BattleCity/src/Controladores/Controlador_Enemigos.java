@@ -104,6 +104,24 @@ public class Controlador_Enemigos implements Runnable
 		
 	}
 	
+	public boolean interseccion_entre_enemigos(Enemigo e, int x, int y)
+	{
+		Rectangle r = new Rectangle(x,y,e.getEtiqueta().getWidth(),e.getEtiqueta().getHeight());
+		Area a_ene = new Area(r.getBounds());
+		boolean intersecta = false;
+		for (int i=0; i<lista_enemigos.size(); i++)
+		{
+			Enemigo ene = lista_enemigos.get(i);
+			if (ene!=e)
+			{
+				Area a2 = new Area(ene.getEtiqueta().getBounds());
+				if (a_ene.intersects(a2.getBounds2D()))
+					intersecta=true;
+			}
+		}
+		return intersecta;
+	}
+	
 	@Override
 	public void run() 
 	{

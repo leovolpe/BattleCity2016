@@ -42,7 +42,8 @@ public class Enemigo extends EntidadMovil{
 		{
 			case 0 : 
 					{
-						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight())
+								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y-this.getVel_mov()))
 							adelante(); 
 						else
 							cant_movs=0;
@@ -50,21 +51,24 @@ public class Enemigo extends EntidadMovil{
 						break;
 					}
 			case 1 : {
-						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight())
+								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y+this.getVel_mov()))
 							atras();
 						else
 							cant_movs=0;
 						break;
 					}
 			case 2 : {
-						if (getJuego().getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight())
+								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x-this.getVel_mov(),y))
 							izquierda();
 						else
 							cant_movs=0;
 						break;
 					}
 			case 3 : {
-						if (getJuego().getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+						if (getJuego().getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight())
+								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x+this.getVel_mov(),y))
 							derecha();
 						else
 							cant_movs=0;
