@@ -12,15 +12,16 @@ import Proyectil.Proyectil;
 
 
 /**Clase encargada de mantener los paneles que contienen las entidades del juego
+ * hay un panel para los tanques, otro para los obstaculos y otro para las balas
  * 
  *
  */
 public class grafico_juego {
 	
 	
-	private JPanel panel_tanque;
-	private JPanel panel_obstaculos;
-	private JPanel panel_balas;
+	private JPanel panel_tanque;		//panel del tanque
+	private JPanel panel_obstaculos;	//panel de los obstaculos
+	private JPanel panel_balas;			//panel de balas
 	
 	
 	public grafico_juego(Tanque_Jugador tanque)
@@ -31,6 +32,10 @@ public class grafico_juego {
 		
 	}
 	
+	/**inicializa el panel del tanque
+	 * 
+	 * @param t
+	 */
 	private void inicializar_panel_tanque(Tanque_Jugador t)
 	{
 		panel_tanque = new JPanel();
@@ -42,6 +47,9 @@ public class grafico_juego {
 
 	}
 	
+	/**inicializa el panel de los obstaculos
+	 * 
+	 */
 	private void inicializar_panel_obstaculos()
 	{
 		panel_obstaculos = new JPanel();
@@ -51,6 +59,9 @@ public class grafico_juego {
 
 	}
 	
+	/**inicializa el panel de las balas
+	 * 
+	 */
 	private void inicializar_panel_balas()
 	{
 		panel_balas = new JPanel();
@@ -70,10 +81,25 @@ public class grafico_juego {
 		panel_obstaculos.repaint();
 	}
 
+	/**Agraga un enemigo
+	 * 
+	 * @param e
+	 */
 	public void agregar_enemigo(Enemigo e)
 	{
 		panel_tanque.add(e.getEtiqueta());
 		panel_tanque.repaint();
+	}
+	
+	/**Elimina el enemigo e de su panel
+	 * 
+	 * @param e
+	 */
+	public void borrar_enemigo(Enemigo e) 
+	{
+		panel_tanque.remove(e.getEtiqueta());
+		panel_tanque.repaint();
+		
 	}
 
 	
@@ -81,40 +107,49 @@ public class grafico_juego {
 	 * Retorna el panel del tanque
 	 * 
 	 */
-	public JPanel getPanel_tanque() {
+	public JPanel getPanel_tanque() 
+	{
 		return panel_tanque;
 	}
 	
 	/**Retorna el panel de los obstaculos
 	 * 
 	 */
-	public JPanel getPanel_obstaculos() {
+	public JPanel getPanel_obstaculos() 
+	{
 		return panel_obstaculos;
 	}
 
-	public JPanel getPanel_balas() {
+	/**Retorna el panel de las balas
+	 * 
+	 */
+	public JPanel getPanel_balas() 
+	{
 		return panel_balas;
 	}
 
+	/**Agraga un nuevo proyectil a su panel
+	 * 
+	 * @param p
+	 */
 	public void agregar_proyectil(Proyectil p) 
 	{
 		panel_balas.add(p.getEtiqueta());
 		panel_balas.repaint();
-		//panel_balas.add(p.getEtiqueta());
 	}
 	
+	/**elimina un proyectil de su panel
+	 * 
+	 * @param p
+	 */
 	public void borrar_proyectil(Proyectil p)
 	{
 		panel_balas.remove(p.getEtiqueta());
 		panel_balas.repaint();
 	}
 
-	public void borrar_enemigo(Enemigo e) 
-	{
-		panel_tanque.remove(e.getEtiqueta());
-		panel_tanque.repaint();
-		
-	}
+	
+	
 
 	
 

@@ -8,7 +8,10 @@ import Obstaculos.ParedLadrillo;
 import Proyectil.Proyectil;
 
 
-
+/**Visitor de un proyectil lanzado por el jugador afectando a los obstaculos
+ * 
+ *
+ */
 public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obstaculo
 {
 	
@@ -33,6 +36,7 @@ public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obsta
 	@Override
 	public void visitar(Base b) {
 		// TODO Auto-generated method stub
+		//implementacion mas adelante
 		
 	}
 
@@ -40,6 +44,7 @@ public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obsta
 	public void visitar(ParedAcero p) 
 	{
 		// TODO Auto-generated method stub
+		//las balas comunes no le afectan
 		
 	}
 

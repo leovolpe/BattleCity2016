@@ -7,6 +7,10 @@ import Enemigos.EnemigoRapido;
 import Entidades_Moviles.Tanque_Jugador;
 import Proyectil.Proyectil;
 
+/**Visitor de un proyectil del jugador afectando a los enemigos
+ * 
+ *
+ */
 public class Visitor_proyectil_jugador_enemigos extends Visitor_Proyectil_enemigos 
 {
 	protected Tanque_Jugador tanque;

@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 
 import Graficas_Personajes.graficos_entidad;
 
+/**Graficos del tanque de poder
+ * 
+ *
+ */
 public class graficos_tanque_poder extends graficos_entidad 
 {
 	

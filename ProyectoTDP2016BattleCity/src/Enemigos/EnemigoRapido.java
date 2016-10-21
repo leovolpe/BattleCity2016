@@ -6,10 +6,14 @@ import Graficas_Personajes.Enemigos.graficos_tanque_rapido;
 import Juego.Juego;
 import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 
+/**Enemigo rapido
+ *
+ */
 public class EnemigoRapido extends Enemigo
 {
 
-	public EnemigoRapido( Juego j) {
+	public EnemigoRapido( Juego j) 
+	{
 		super(1, 8, 1, 1, 200, j);
 		graficos = new graficos_tanque_rapido();
 		etiqueta=new JLabel(graficos.getAbajo());

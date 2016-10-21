@@ -7,6 +7,10 @@ import ObjetosDeJuego.ObjetoDeJuego;
 import Obstaculos.Obstaculo;
 import graficos_balas.graficos_balas;
 
+/**Clase que representa un proyectil que se mueve por pantalla y puede impactar a otras entidades
+ * 
+ *
+ */
 public abstract class Proyectil extends ObjetoDeJuego {
 	
 	protected int velocidad;
@@ -28,6 +32,9 @@ public abstract class Proyectil extends ObjetoDeJuego {
 	}
 	
 	
+	/**De acuerdo a la direccion, el proyectil se mueve
+	 * 
+	 */
 	public void mover()
 	{
 		switch(direccion)

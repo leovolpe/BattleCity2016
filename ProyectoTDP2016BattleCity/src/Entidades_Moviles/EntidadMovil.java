@@ -5,12 +5,18 @@ import Graficas_Personajes.graficos_entidad;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
 
+/**Representa a las entidades que se mueven por pantalla (tanque y tanques enemigos)
+ * 
+ *
+ */
 public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	
 	protected int resistencia;
 	private int vel_mov;
+	@SuppressWarnings("unused")
 	private int vel_disp;
+	@SuppressWarnings("unused")
 	private int disparos_simultaneos;
 	protected int disparos_en_pantalla;
 	protected graficos_entidad graficos;
@@ -28,48 +34,14 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		direccion = dir;
 	}
 	
-	/*
-	public void deshacer_mov(Obstaculo o)
-	{
-		switch(direccion)
-		{
-			case 'n':
-			{
-				y=o.getEtiqueta().getY()+o.getEtiqueta().getHeight();
-				//System.out.println(y+" -  "+o.getEtiqueta().getY()+o.getEtiqueta().getHeight());
-				etiqueta.setLocation(x,y);
-				break;
-			}
-			case 's':
-			{
-				y=o.getEtiqueta().getY()-this.getEtiqueta().getHeight();
-				//y=o.getEtiqueta().getY()-o.getEtiqueta().getHeight();
-				etiqueta.setLocation(x,y);
-				break;
-			}
-			case 'i':
-			{
-				//x=x+vel_mov;
-				x = o.getEtiqueta().getX()+o.getEtiqueta().getWidth();
-				etiqueta.setLocation(x,y);
-				break;
-			}
-			case 'd':
-			{
-				//x=x+vel_mov;
-				x = o.getEtiqueta().getX()-this.getEtiqueta().getWidth();
-				etiqueta.setLocation(x,y);
-				break;
-			}
-		}
-	}
-	*/
+
 	
 	public void adelante()
 	{
 		
 			if (direccion=='n')
 			{
+				//le preguna al terreno logico si puede avanzar en esa direccion
 				if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
 				{
 					y = y - getVel_mov();
@@ -82,8 +54,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 				direccion = 'n';
 			}
 		
-			//this.mostrar_coordenada();
-		
 	}
 	
 	public void atras()
@@ -91,6 +61,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 		
 		if (direccion=='s')
 		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
 			if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				y= y + getVel_mov();
@@ -102,13 +73,13 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getAbajo());
 			direccion='s';
 		}
-		//this.mostrar_coordenada();
 	}
 	
 	public void izquierda()
 	{
 		if (direccion=='i')
 		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
 			if (getJuego().getTerreno_logico().Puede_Avanzar(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				x = x - getVel_mov();
@@ -120,13 +91,14 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getIzquierda());
 			direccion='i';
 		}
-		//this.mostrar_coordenada();
 	}
+	
 	
 	public void derecha()
 	{
 		if (direccion=='d')
 		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
 			if (getJuego().getTerreno_logico().Puede_Avanzar(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
 			{
 				x= x + getVel_mov();
@@ -138,7 +110,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getDerecha());
 			direccion='d';
 		}
-		//this.mostrar_coordenada();
 	}
 	
 	
@@ -156,11 +127,19 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	}
 	
 	
+	/**
+	 * la entidad movil realiza un disparo
+	 */
 	public abstract void disparar();
 	
+	
+	/**
+	 * la entidad movil se destruye
+	 */
 	public abstract void destruirse();
 	
-	public abstract boolean puede_disparar();
+	
+	
 
 	
 	

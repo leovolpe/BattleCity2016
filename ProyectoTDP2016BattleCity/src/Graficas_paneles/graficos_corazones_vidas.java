@@ -3,6 +3,10 @@ package Graficas_paneles;
 
 import javax.swing.ImageIcon;
 
+/**Graficos de los corazones que representan las vidas
+ * 
+ *
+ */
 public class graficos_corazones_vidas 
 {
 	

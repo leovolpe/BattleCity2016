@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 
 import Graficas_Personajes.graficos_entidad;
 
+/**Graficos del tanque rapido
+ * 
+ *
+ */
 public class graficos_tanque_rapido extends graficos_entidad {
 	
 	public graficos_tanque_rapido()

@@ -2,31 +2,27 @@ package Enemigos;
 
 import java.util.Random;
 
-import javax.swing.JLabel;
-
 import Entidades_Moviles.EntidadMovil;
-import Graficas_Personajes.Enemigos.graficos_tanque_basico;
-import Graficas_Personajes.Tanque.graficos_tanque;
-import Gui.Gui_Juego;
 import Juego.Juego;
 import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
-import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
 public abstract class Enemigo extends EntidadMovil{
 	
-	protected int puntos;
-	protected int cant_movs;
-	protected int num_random;
+	protected int puntos;		//puntos que entrega
+	protected int cant_movs;	//cantidad de movimientos seguidos que realizara
+	protected int num_random;	//random que se genera, puede ser 0,1,2,3 y representa una direccion
 	
 	public Enemigo (int r, int vm, int vd, int ds, int p, Juego j)
 	{
 		super(r, vm, vd, ds, 's',j);
 		cant_movs=0;
 		puntos=p;
-		
 	}
 	
 	
+	/**
+	 * genera un valor aleatorio e intenta mover "cant_movs" veces al enemigo en esa direccion
+	 */
 	public void mover()
 	{
 		
@@ -48,7 +44,7 @@ public abstract class Enemigo extends EntidadMovil{
 								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y-this.getVel_mov()))
 							adelante(); 
 						else
-							cant_movs=0;
+							cant_movs=0; //en caso de que no pueda avanzar o de que este por chocar a otro enemigo entonces deja de moverse en esa direccion
 							
 						break;
 					}
@@ -57,7 +53,7 @@ public abstract class Enemigo extends EntidadMovil{
 								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y+this.getVel_mov()))
 							atras();
 						else
-							cant_movs=0;
+							cant_movs=0;//en caso de que no pueda avanzar o de que este por chocar a otro enemigo entonces deja de moverse en esa direccion
 						break;
 					}
 			case 2 : {
@@ -65,7 +61,7 @@ public abstract class Enemigo extends EntidadMovil{
 								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x-this.getVel_mov(),y))
 							izquierda();
 						else
-							cant_movs=0;
+							cant_movs=0;//en caso de que no pueda avanzar o de que este por chocar a otro enemigo entonces deja de moverse en esa direccion
 						break;
 					}
 			case 3 : {
@@ -73,7 +69,7 @@ public abstract class Enemigo extends EntidadMovil{
 								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x+this.getVel_mov(),y))
 							derecha();
 						else
-							cant_movs=0;
+							cant_movs=0;//en caso de que no pueda avanzar o de que este por chocar a otro enemigo entonces deja de moverse en esa direccion
 						break;
 					}
 		}
@@ -91,19 +87,11 @@ public abstract class Enemigo extends EntidadMovil{
 		getJuego().eliminar_enemigo(this);
 	}
 
-	public void destruirse(Juego j) 
-	{	
-		//j.getGui().getGj().getPanel_tanque().remove(this.getEtiqueta());
-		
-	}
-
-	@Override
-	public boolean puede_disparar() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
-	
+	/**
+	 * al recibir un disparo se reduce en uno la resistencia
+	 * @return
+	 */
 	public int recibirDisparo()
 	{
 		resistencia--;

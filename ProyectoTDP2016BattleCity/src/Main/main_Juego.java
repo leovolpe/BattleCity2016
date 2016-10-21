@@ -3,7 +3,11 @@ package Main;
 
 import Juego.Juego;
 
-public class main_Juego {
+/**Crea el juego
+ *
+ */
+public class main_Juego 
+{
 	
 	public static void main(String args[])
 	{

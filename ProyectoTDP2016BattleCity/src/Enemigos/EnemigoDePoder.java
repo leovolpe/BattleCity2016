@@ -6,10 +6,15 @@ import Graficas_Personajes.Enemigos.graficos_tanque_poder;
 import Juego.Juego;
 import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 
+/**Enemigo de poder
+ * 
+ *
+ */
 public class EnemigoDePoder extends Enemigo
 {
 
-	public EnemigoDePoder( Juego j) {
+	public EnemigoDePoder( Juego j) 
+	{
 		super(1, 6, 1, 1,300, j);
 		graficos = new graficos_tanque_poder();
 		etiqueta=new JLabel(graficos.getAbajo());

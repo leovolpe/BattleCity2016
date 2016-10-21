@@ -2,17 +2,21 @@ package Obstaculos;
 
 import javax.swing.JLabel;
 
-import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
-import Proyectil.Proyectil;
 import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
-public class ParedLadrillo extends Obstaculo{
+/**Obstaculo pared de ladrillo
+ * 
+ *
+ */
+public class ParedLadrillo extends Obstaculo
+{
 
 	
 	
-	public ParedLadrillo(int xx, int yy, Juego j) {
-		super(5,j);
+	public ParedLadrillo(int xx, int yy, Juego j) 
+	{
+		super(4,j);
 		etiqueta=new JLabel(graficos.getLadrillo());
 		this.setX(xx);
 		this.setY(yy);
@@ -22,33 +26,20 @@ public class ParedLadrillo extends Obstaculo{
 
 	
 
-	//@Override
-	//public void contacto(EntidadMovil e) {
-		
-		// TODO Auto-generated method stub
-		
-	//}
-
 	@Override
-	public boolean atravezable() {
-		// TODO Auto-generated method stub
+	public boolean atravesable() 
+	{
+		//no es atravesable
 		return false;
 	}
 
 
 
-	@Override
-	public void recibirDisparo() 
-	{
-		
-		
-	}
-	
+	//redefinido para setear un nuevo grafico cuando esta con la resistencia a la mitad
 	public void reducir_energia()
 	{
-		System.out.println("recibio disparo ");
 		resistencia--;
-		if (resistencia==3)
+		if (resistencia==2)
 			this.getEtiqueta().setIcon(graficos.getLadrillo_fuego());
 		if (resistencia==0)
 			super.destruirse();
@@ -56,11 +47,10 @@ public class ParedLadrillo extends Obstaculo{
 
 
 
-	@Override
+	
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
-		
 	}
 
 	

@@ -2,17 +2,19 @@ package Obstaculos;
 
 import javax.swing.JLabel;
 
-import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
-import Proyectil.Proyectil;
 import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
+/**Obstaculo pared de acero
+ * 
+ */
 public class ParedAcero extends Obstaculo{
 
-	private final static int resistencia=8;
 	
-	public ParedAcero(int xx, int yy, Juego j) {
-		super(resistencia,j);
+	
+	public ParedAcero(int xx, int yy, Juego j) 
+	{
+		super(4,j);
 		etiqueta=new JLabel(graficos.getAcero());
 		this.setX(xx);
 		this.setY(yy);
@@ -21,25 +23,17 @@ public class ParedAcero extends Obstaculo{
 
 	
 
-	//@Override
-	//public void contacto(EntidadMovil e) {
-		
-		
-	//}
 
 	@Override
-	public boolean atravezable() {
-		// TODO Auto-generated method stub
+	public boolean atravesable() 
+	{
 		return false;
+		//la pared de acero no es atravesable
 	}
 
 
 
-	@Override
-	public void recibirDisparo() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	@Override
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 

@@ -1,5 +1,9 @@
 package Niveles_Tanque;
 
+/**Usando el patron de diseño state, un nivel representa un estado interno del tanque
+ *
+ *
+ */
 public abstract class Nivel 
 {
 	
@@ -16,16 +20,23 @@ public abstract class Nivel
 		disparos_simultaneos = ds;
 	}
 	
-	public int getResistencia() {
+	public int getResistencia() 
+	{
 		return resistencia;
 	}
-	public int getVel_mov() {
+	
+	public int getVel_mov() 
+	{
 		return vel_mov;
 	}
-	public int getVel_disp() {
+	
+	public int getVel_disp() 
+	{
 		return vel_disp;
 	}
-	public int getDisparos_simultaneos() {
+	
+	public int getDisparos_simultaneos() 
+	{
 		return disparos_simultaneos;
 	}
 	

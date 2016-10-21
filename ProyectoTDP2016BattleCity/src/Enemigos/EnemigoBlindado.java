@@ -6,6 +6,10 @@ import Graficas_Personajes.Enemigos.graficos_tanque_blindado;
 import Juego.Juego;
 import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 
+/**Enemigo blindado
+ * 
+ *
+ */
 public class EnemigoBlindado extends Enemigo
 {
 
@@ -16,7 +20,7 @@ public class EnemigoBlindado extends Enemigo
 		etiqueta.setSize(60, 60);
 		this.setX(0);
 		this.setY(0);
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	@Override

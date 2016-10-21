@@ -6,10 +6,13 @@ import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
-import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 import Visitor_Proyectiles.Visitor_proyectil_jugador_enemigos;
 import Visitor_Proyectiles.Visitor_proyectil_jugador_obstaculo;
 
+/**Proyectil que es lanzado por un jugador
+ * 
+ *
+ */
 public class ProyectilJugador extends Proyectil 
 {
 	private Tanque_Jugador tanque;
@@ -109,8 +112,6 @@ public class ProyectilJugador extends Proyectil
 		//en caso de impactar un enemigo 
 		e.accept(new Visitor_proyectil_jugador_enemigos(this,tanque));
 		destruirse();
-		// TODO Auto-generated method stub
-		
 	}
 
 }

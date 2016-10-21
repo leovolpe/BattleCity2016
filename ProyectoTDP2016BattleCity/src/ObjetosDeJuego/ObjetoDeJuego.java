@@ -10,9 +10,9 @@ import Juego.Juego;
  */
 public class ObjetoDeJuego {
 	
-	protected int x;
-	protected int y;
-	protected JLabel etiqueta;
+	protected int x;		//posicion x
+	protected int y;		//posicion y
+	protected JLabel etiqueta;	//etiqueta grafica
 	private Juego juego;
 	
 	public ObjetoDeJuego(Juego j)
@@ -20,38 +20,57 @@ public class ObjetoDeJuego {
 		juego=j;
 	}
 	
-	public int getX() {
+	/**
+	 * 
+	 * @return posicion x
+	 */
+	public int getX() 
+	{
 		return x;
 	}
 	
-	public void setX(int x) {
+	/**
+	 * 
+	 * @param x posicion x que se desea setear
+	 */
+	public void setX(int x) 
+	{
 		this.x = x;
 		etiqueta.setLocation(x,y);
 	}
 	
-	public int getY() {
+	/**
+	 * 
+	 * @return posicion y
+	 */
+	public int getY() 
+	{
 		return y;
 	}
 	
-	public void setY(int y) {
+	/**
+	 * 
+	 * @param y posicion y que se desea setear
+	 */
+	public void setY(int y) 
+	{
 		this.y = y;
 		etiqueta.setLocation(x,y);
 	}
 	
-	public JLabel getEtiqueta() {
+	/**
+	 * 
+	 * @return etiqueta del objeto de juego
+	 */
+	public JLabel getEtiqueta() 
+	{
 		return etiqueta;
 	}
 	
-	public void setEtiqueta(JLabel etiqueta) {
-		this.etiqueta = etiqueta;
-	}
+
 	
-	public void mostrar_coordenada()
+	protected Juego getJuego() 
 	{
-		System.out.println(" x = "+x+" y = "+y);
-	}
-	
-	protected Juego getJuego() {
 		return juego;
 	}
 	

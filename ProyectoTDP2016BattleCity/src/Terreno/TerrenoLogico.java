@@ -83,7 +83,7 @@ public class TerrenoLogico {
 			Obstaculo o = listaObstaculos.get(i);
 			Area area_obstaculo = new Area(o.getEtiqueta().getBounds());
 			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
-				puede_avanzar = puede_avanzar && o.atravezable();		
+				puede_avanzar = puede_avanzar && o.atravesable();		
 			//en el caso de que algun obstaculo con el que chocaria le impide avanzar, entonces el valor de puede_avanzar sera falso
 		}
 		

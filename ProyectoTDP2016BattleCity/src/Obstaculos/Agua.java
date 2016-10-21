@@ -2,17 +2,21 @@ package Obstaculos;
 
 import javax.swing.JLabel;
 
-import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
-import Proyectil.Proyectil;
 import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 
-public class Agua extends Obstaculo{
+/**Obstaculo agua
+ * 
+ *
+ */
+public class Agua extends Obstaculo
+{
 
-	private final static int resistencia=2;
 	
-	public Agua(int xx, int yy, Juego j) {
-		super(resistencia,j);
+	
+	public Agua(int xx, int yy, Juego j) 
+	{
+		super(2,j);
 		etiqueta=new JLabel(graficos.getAgua());
 		this.setX(xx);
 		this.setY(yy);
@@ -21,26 +25,16 @@ public class Agua extends Obstaculo{
 
 
 
-	//@Override
-	//public void contacto(EntidadMovil e) {
-		// TODO Auto-generated method stub
-		
-	//}
 
 	@Override
-	public boolean atravezable() {
+	public boolean atravesable() 
+	{
 		return false;
-		// TODO Auto-generated method stub
-		
+		//el agua no es atravesable
 	}
 
 
 
-	@Override
-	public void recibirDisparo() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 

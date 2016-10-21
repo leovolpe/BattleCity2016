@@ -5,8 +5,15 @@ import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
 
+/**Proyectil que es lanzado por los enemigos, es el mismo proyectil para todos
+ *
+ */
 public class ProyectilEnemigo extends Proyectil {
 
+	
+	//ATENCION
+	//Esta clase no esta implementada correctamente aun!
+	
 	public ProyectilEnemigo(Tanque_Jugador t, Juego j) 
 	{
 		super(3,'s',j);

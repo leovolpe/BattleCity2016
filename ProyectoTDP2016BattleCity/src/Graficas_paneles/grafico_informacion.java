@@ -26,10 +26,7 @@ public class grafico_informacion {
 		panel_info = new JPanel();
 		panel_info.setLayout(null);
 		panel_info.setBounds(780, 0, 300, 600);
-		//etiqueta = new JLabel("Puntaje: 0");
-		//panel_info.add(etiqueta);
-		//etiqueta.setLocation(0,0);
-		//etiqueta.setSize(300,100);
+		
 		
 		inicializar_etiqueta_puntaje();
 		inicializar_etiqueta_texto_vidas();
@@ -66,7 +63,6 @@ public class grafico_informacion {
 		etiqueta_vidas.setLocation(0,150);
 		etiqueta_vidas.setSize(300,300);
 		etiqueta_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
-		//etiqueta_txt_vidas.setFont(new Font("Serif", Font.BOLD, 30));
 		panel_info.add(etiqueta_vidas);
 	}
 
@@ -74,7 +70,8 @@ public class grafico_informacion {
 	 * Retorna el panel que contiene la informacion
 	 * 
 	 */
-	public JPanel getPanel_info() {
+	public JPanel getPanel_info() 
+	{
 		return panel_info;
 	}
 

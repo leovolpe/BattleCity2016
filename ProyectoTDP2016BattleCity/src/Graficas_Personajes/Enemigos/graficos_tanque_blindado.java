@@ -4,6 +4,11 @@ import javax.swing.ImageIcon;
 
 import Graficas_Personajes.graficos_entidad;
 
+/**Graficos del tanque blindado
+ * 
+ * @author Javier
+ *
+ */
 public class graficos_tanque_blindado extends graficos_entidad 
 {
 	

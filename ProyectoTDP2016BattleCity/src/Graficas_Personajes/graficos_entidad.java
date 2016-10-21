@@ -13,16 +13,23 @@ public abstract class graficos_entidad {
 	protected ImageIcon izquierda;
 	protected ImageIcon derecha;
 	
-	public ImageIcon getArriba() {
+	public ImageIcon getArriba() 
+	{
 		return arriba;
 	}
-	public ImageIcon getAbajo() {
+	
+	public ImageIcon getAbajo() 
+	{
 		return abajo;
 	}
-	public ImageIcon getIzquierda() {
+	
+	public ImageIcon getIzquierda() 
+	{
 		return izquierda;
 	}
-	public ImageIcon getDerecha() {
+	
+	public ImageIcon getDerecha() 
+	{
 		return derecha;
 	}
 	

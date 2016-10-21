@@ -10,11 +10,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ControladorDeTeclado.manejador_teclado_jugador;
 import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_informacion;
 import Graficas_paneles.grafico_juego;
-import Juego.Juego;
 
+
+/**Gui del juego, maneja la parte grafica
+ * 
+ *
+ */
 @SuppressWarnings("serial")
 public class Gui_Juego extends JFrame {
 	
@@ -22,11 +27,11 @@ public class Gui_Juego extends JFrame {
 	private JPanel panelppal; //panel de fondo
 	private grafico_juego gj; //contiene los paneles del juego
 	private grafico_informacion gi; //contiene el panel de la informacion
-	private Juego juego;
 	
-	public Gui_Juego(Juego j, Tanque_Jugador tanque)
+	
+	public Gui_Juego(Tanque_Jugador tanque)
 	{
-		juego=j;
+		
 		
 		gj = new grafico_juego(tanque);
 		gi = new grafico_informacion();
@@ -35,13 +40,9 @@ public class Gui_Juego extends JFrame {
 		panelppal= new JPanel();
 		setContentPane(panelppal);
 		
-		
 		panelppal.setLayout(null);
 		panelppal.setPreferredSize(new Dimension(1080, 600));
 		this.pack();
-		
-		//seteo a la pantalla el oyente
-		this.addKeyListener(juego.getTanque().getTeclado());
 		
 		
 		centrar_pantalla();
@@ -57,10 +58,15 @@ public class Gui_Juego extends JFrame {
 		
 	}
 	
+	public void agregar_manejador_teclado (manejador_teclado_jugador mt)
+	{
+		this.addKeyListener(mt);
+	}
 	
 	
-	
-	
+	/**
+	 * Agraga los paneles
+	 */
 	private void agregar_paneles()
 	{
 		this.getContentPane().add(gj.getPanel_obstaculos());
@@ -70,6 +76,9 @@ public class Gui_Juego extends JFrame {
 	}
 	
 	
+	/**Centra el juego en pantalla
+	 * 
+	 */
 	public void centrar_pantalla()
 	{
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

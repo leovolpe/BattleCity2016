@@ -7,11 +7,8 @@ import Juego.Juego;
 
 public class manejador_auxiliar_teclado implements KeyListener {
 
-	/**Constante de la tecla para agregar/quitar un enemigo*/
+	/**Constante de la tecla para agregar un enemigo*/
 	final static int enemigo = KeyEvent.VK_E;
-	
-	/**Constante de la tecla para quitar una pared*/
-	final static int obstaculo = KeyEvent.VK_P;
 	
 	/**Constante de la tecla para aumentar nivel*/
 	final static int aumentar_nivel = KeyEvent.VK_Q;
@@ -32,17 +29,7 @@ public class manejador_auxiliar_teclado implements KeyListener {
 		
 		if (e.getKeyCode()==enemigo)
 		{
-			if (j.hayEnemigo())
-			{
-				System.out.println("quito enemigo");
-				j.quitarEnemigo();
-				
-			}
-			else
-			{
-				System.out.println("agrego enemigo");
 				j.agregarEnemigo();
-			}
 			
 		}
 		else if (e.getKeyCode()==aumentar_nivel)
@@ -53,7 +40,7 @@ public class manejador_auxiliar_teclado implements KeyListener {
 		{
 			j.getTanque().disparar();
 		}
-		// TODO Auto-generated method stub
+		
 		
 	}
 
