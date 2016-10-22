@@ -1,6 +1,6 @@
 Teclas para el jugador
 
-movimiento: arriba-abajo-derecha-izquierda
+Movimiento: arriba-abajo-derecha-izquierda
 
 	disparar: "barra espaciadora"
 	aumetnar nivel: "q"
