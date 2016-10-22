@@ -114,7 +114,6 @@ public class Juego
 			if (posx<0) posx*=-1;
 			if (cont_ene.se_puede_agregar(posx,EnemigoEnPantalla.getEtiqueta().getHeight() , EnemigoEnPantalla.getEtiqueta().getWidth()))
 			{
-				System.out.println("agregue");
 				agregue=true;
 				EnemigoEnPantalla.setX(posx);
 				gui.getGj().agregar_enemigo(EnemigoEnPantalla);

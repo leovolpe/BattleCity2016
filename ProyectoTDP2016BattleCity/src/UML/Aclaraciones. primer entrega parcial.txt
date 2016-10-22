@@ -1,0 +1,20 @@
+Teclas para el jugador
+
+movimiento: arriba-abajo-derecha-izquierda
+
+	disparar: "barra espaciadora"
+	aumetnar nivel: "q"
+	agregar un enemigo: "e"
+
+
+
+*Si bien los disparos afectan a los enemigos de la misma forma (reduciendole un punto de resistencia), usamos el visitor para poder facilitar modificaciones
+futuras en caso de que cada proyectil afecte de manera distinta a cada enemigo.
+
+*Por ahora esta implementado el comportamiento del impacto de una bala solo con la pared de ladrillo.
+
+*Los powerups aun no estan implementados adecuadamente, solo estan las clases
+
+*Al cambiar de nivel el tanque vuelve a la posicion inicial, esto sera corregido luego
+
+*Por ahora si una bala choca a dos obstaculos al mismo tiempo afecta a los dos, esto se vera mas adelante si queda asi.
