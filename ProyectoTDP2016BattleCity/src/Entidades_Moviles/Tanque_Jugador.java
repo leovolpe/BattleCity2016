@@ -15,7 +15,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	private int vidas;
 	@SuppressWarnings("unused")
 	private boolean inmunidad;
-	private int num_niv;
+	//private int num_niv;
 	private Nivel nivel;
 	
 	
@@ -68,38 +68,29 @@ public class Tanque_Jugador extends EntidadMovil {
 	
 	public void aumentarNivel()
 	{
-		if (num_niv==1 || num_niv==2 || num_niv==3)
-		{
-			reestablecer_posicion();
-		}
-		
-		if (num_niv==1)
-			setNivel2();
-		else if (num_niv==2)
-			setNivel3();
-		else if (num_niv == 3)
-			setNivel4();
-		
-		
+		nivel.aumentar_nivel(this);
 	}
 	
 	/**
 	 * ubica al tanque en su lugar original
 	 */
+	/*
 	private void reestablecer_posicion()
 	{
+		
 		setX(0);
 		setY(540);
 		this.getEtiqueta().setIcon(graficos.getArriba());
 		direccion='n';
 	}
+	*/
 	
 	/**
 	 * setea nivel 1
 	 */
 	public void setNivel1()
 	{
-		num_niv=1;
+		//num_niv=1;
 		nivel = new Nivel1();
 	}
 	
@@ -108,8 +99,8 @@ public class Tanque_Jugador extends EntidadMovil {
 	 */
 	public void setNivel2()
 	{
-		num_niv=2;
-		nivel = new Nivel2();
+		//num_niv=2;
+		nivel = new Nivel2(this);
 	}
 	
 	/**
@@ -117,8 +108,8 @@ public class Tanque_Jugador extends EntidadMovil {
 	 */
 	public void setNivel3()
 	{
-		num_niv=3;
-		nivel = new Nivel3();
+		//num_niv=3;
+		nivel = new Nivel3(this);
 		
 	}
 	
@@ -127,8 +118,8 @@ public class Tanque_Jugador extends EntidadMovil {
 	 */
 	public void setNivel4()
 	{
-		num_niv=4;
-		nivel = new Nivel4();
+		//num_niv=4;
+		nivel = new Nivel4(this);
 	}
 	
 	
