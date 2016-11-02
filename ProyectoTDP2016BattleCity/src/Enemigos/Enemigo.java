@@ -4,6 +4,7 @@ import java.util.Random;
 
 import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
+import Proyectil.ProyectilEnemigo;
 import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 
 public abstract class Enemigo extends EntidadMovil{
@@ -25,6 +26,15 @@ public abstract class Enemigo extends EntidadMovil{
 	 */
 	public void mover()
 	{
+		//random par ver si dispara
+		Random ran = new Random();
+		int aleatorio = ran.nextInt()%10;
+		if (aleatorio<0) aleatorio*=-1;
+		if (aleatorio==5) disparar();
+		
+		//random para ver si dispara
+		  
+		 
 		
 		if (cant_movs==0)
 		{
@@ -77,8 +87,23 @@ public abstract class Enemigo extends EntidadMovil{
 	
 
 	@Override
-	public void disparar() {
-		// TODO Auto-generated method stub
+	public void disparar() 
+	{
+		/*
+		 * if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
+		{
+			disparos_en_pantalla++;
+			
+			//Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
+			nivel.nuevo_disparo_jugador(this, direccion, this.getX(), this.getEtiqueta().getWidth(), this.getY(), this.getEtiqueta().getHeight(), getJuego());
+		}
+		 */
+		if (disparos_en_pantalla<disparos_simultaneos)
+		{
+			disparos_en_pantalla++;
+			new ProyectilEnemigo(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),vel_disp);
+		}
+		System.out.println("bang!");
 		
 	}
 	

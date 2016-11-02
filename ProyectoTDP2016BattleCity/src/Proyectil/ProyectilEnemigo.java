@@ -1,9 +1,12 @@
 package Proyectil;
 
+import javax.swing.JLabel;
+
 import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
+import Visitor_Proyectiles.Visitor_proyectil_enemigo_obstaculo;
 
 /**Proyectil que es lanzado por los enemigos, es el mismo proyectil para todos
  *
@@ -11,35 +14,48 @@ import Obstaculos.Obstaculo;
 public class ProyectilEnemigo extends Proyectil {
 
 	
-	//ATENCION
-	//Esta clase no esta implementada correctamente aun!
+	private Enemigo enemigo;
 	
-	public ProyectilEnemigo(Tanque_Jugador t, Juego j) 
+	public ProyectilEnemigo(Enemigo e,char d,int x, int ancho, int y, int largo, Juego j, int vd) 
 	{
-		super(3,'s',j);
+		super(vd,d,j);
+		enemigo=e;
+		etiqueta = new JLabel(gb.getBala_Ebasico());
+		etiqueta.setSize(10,10);
+		
+		super.setPosicion_inicial(d, x, y, ancho, largo);
+		getJuego().agregar_proyectil(this);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void impactar(Tanque_Jugador t) {
+	public void impactar(Tanque_Jugador t) 
+	{
 		// TODO Auto-generated method stub
+		System.out.println("toque tanque");
 		
 	}
 
 	@Override
-	public void impactar(Obstaculo o) {
-		// TODO Auto-generated method stub
+	public void impactar(Obstaculo o) 
+	{
+		o.aceptar_visitor_proyectil(new Visitor_proyectil_enemigo_obstaculo(this));
 		
 	}
 
 	@Override
-	public void destruirse() {
-		// TODO Auto-generated method stub
+	public void destruirse() 
+	{
+		enemigo.reducir_disparo();
+		getJuego().eliminar_proyectil(this);
 		
 	}
 
 	@Override
-	public void impactar(Enemigo e) {
+	public void impactar(Enemigo e) 
+	{
+		//si se dispara a si mismo entonces la bala desaparece pero no hace daño
+		destruirse();
 		// TODO Auto-generated method stub
 		
 	}

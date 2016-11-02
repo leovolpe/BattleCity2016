@@ -14,7 +14,7 @@ public class EnemigoRapido extends Enemigo
 
 	public EnemigoRapido( Juego j) 
 	{
-		super(1, 8, 1, 1, 200, j);
+		super(1, 8, 20, 1, 200, j);
 		graficos = new graficos_tanque_rapido();
 		etiqueta=new JLabel(graficos.getAbajo());
 		etiqueta.setSize(60, 60);

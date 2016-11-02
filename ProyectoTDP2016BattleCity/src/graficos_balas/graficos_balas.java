@@ -10,16 +10,43 @@ public class graficos_balas
 {
 	//por ahora hay un solo grafico
 	private ImageIcon bala_jugador;
+	private ImageIcon bala_Ebasico;
+	private ImageIcon bala_Eblindado;
+	private ImageIcon bala_Epoder;
+	private ImageIcon bala_Erapido;
 	
-	/**
-	 * retorna el grafico del proyectil
-	 * @return
-	 */
-	public ImageIcon get_bala_jugador()
+	public graficos_balas()
 	{
-		if (bala_jugador==null)
-			bala_jugador = new ImageIcon(getClass().getResource("/Imagenes/Balas/bala_tanque.png"));
+		bala_jugador = new ImageIcon(getClass().getResource("/Imagenes/Balas/bala_tanque.png"));
+		bala_Ebasico = new ImageIcon(getClass().getResource("/Imagenes/Balas/basico.png"));
+		bala_Eblindado = new ImageIcon(getClass().getResource("/Imagenes/Balas/blindado.png"));
+		bala_Epoder = new ImageIcon(getClass().getResource("/Imagenes/Balas/poder.png"));
+		bala_Erapido = new ImageIcon(getClass().getResource("/Imagenes/Balas/rapido.png"));
+		
+	}
+
+	public ImageIcon getBala_jugador() {
 		return bala_jugador;
 	}
+
+	public ImageIcon getBala_Ebasico() {
+		return bala_Ebasico;
+	}
+
+	public ImageIcon getBala_Eblindado() {
+		return bala_Eblindado;
+	}
+
+	public ImageIcon getBala_Epoder() {
+		return bala_Epoder;
+	}
+
+	public ImageIcon getBala_Erapido() {
+		return bala_Erapido;
+	}
+	
+	
+	
+	
 
 }

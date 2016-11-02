@@ -11,6 +11,7 @@ public class graficos_obstaculo {
 	protected ImageIcon ladrillo;
 	protected ImageIcon ladrillo_fuego;
 	protected ImageIcon acero;
+	protected ImageIcon acerof;
 	protected ImageIcon agua;
 	protected ImageIcon arbol;
 	protected ImageIcon base;
@@ -20,6 +21,7 @@ public class graficos_obstaculo {
 		ladrillo = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/ladrillo.png"));
 		ladrillo_fuego = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/ladrillof.gif"));
 		acero = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/acero.png"));
+		acerof = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/acero_fuego.gif"));
 		agua = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/agua.png"));
 		arbol = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/arbol.png"));
 		base = new ImageIcon(getClass().getResource("/Imagenes/Obstaculo/base.png"));
@@ -44,6 +46,10 @@ public class graficos_obstaculo {
 
 	public ImageIcon getLadrillo_fuego() {
 		return ladrillo_fuego;
+	}
+
+	public ImageIcon getAcerof() {
+		return acerof;
 	}
 
 	

@@ -1,6 +1,7 @@
 package Niveles_Tanque;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Juego.Juego;
 
 /**Usando el patron de diseño state, un nivel representa un estado interno del tanque
  *
@@ -46,7 +47,7 @@ public abstract class Nivel
 	
 	public abstract void aumentar_nivel(Tanque_Jugador t);
 	
-	
+	public abstract void nuevo_disparo_jugador(Tanque_Jugador t, char d, int x, int ancho, int y, int largo, Juego j);
 
 
 }

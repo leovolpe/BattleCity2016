@@ -15,7 +15,7 @@ public class EnemigoDePoder extends Enemigo
 
 	public EnemigoDePoder( Juego j) 
 	{
-		super(1, 6, 1, 1,300, j);
+		super(1, 6, 7, 1,300, j);
 		graficos = new graficos_tanque_poder();
 		etiqueta=new JLabel(graficos.getAbajo());
 		etiqueta.setSize(60, 60);

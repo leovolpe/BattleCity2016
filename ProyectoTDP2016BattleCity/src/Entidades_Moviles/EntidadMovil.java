@@ -14,10 +14,8 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	protected int resistencia;
 	private int vel_mov;
-	@SuppressWarnings("unused")
-	private int vel_disp;
-	@SuppressWarnings("unused")
-	private int disparos_simultaneos;
+	protected int vel_disp;
+	protected int disparos_simultaneos;
 	protected int disparos_en_pantalla;
 	protected graficos_entidad graficos;
 	protected char direccion; //'n' 's' 'e' 'o'

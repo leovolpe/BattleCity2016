@@ -130,7 +130,7 @@ public class Controlador_balas implements Runnable
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			System.out.println("X = "+juego.getTanque().getX()+" - "+juego.getTanque().getY());
+			
 		}
 	}
 

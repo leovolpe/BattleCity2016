@@ -62,6 +62,44 @@ public abstract class Proyectil extends ObjetoDeJuego {
 		}
 	}
 	
+	/**Basado en las coordenadas y el tamaño del tanque, ubica el proyectil en el mapa
+	 * 
+	 * @param d	direccion
+	 * @param x	posicion x del tanque
+	 * @param y	posicion y del tanque
+	 * @param a	ancho del tanque
+	 * @param l	largo del tanque
+	 */
+	protected void setPosicion_inicial(char d, int x, int y, int a, int l)
+	{
+		switch(d)
+		{
+			case'n' :
+			{
+				this.setX(x+(a/2)-5);
+				this.setY(y-10);
+				break;
+			}
+			case 's' :
+			{
+				this.setX(x+(a/2)-5);
+				this.setY(y+60);
+				break;
+			}
+			case 'd':
+			{
+				this.setX(x+60);
+				this.setY(y+(l/2)-5);
+				break;
+			}
+			case 'i':
+			{
+				this.setX(x-10);
+				this.setY(y+(l/2)-5);
+				break;
+			}
+		}
+	}
 	
 	
 	

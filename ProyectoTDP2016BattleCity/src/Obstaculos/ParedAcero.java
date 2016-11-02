@@ -8,7 +8,8 @@ import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 /**Obstaculo pared de acero
  * 
  */
-public class ParedAcero extends Obstaculo{
+public class ParedAcero extends Obstaculo
+{
 
 	
 	
@@ -33,6 +34,16 @@ public class ParedAcero extends Obstaculo{
 
 
 
+	@Override
+	public void reducir_energia()
+	{
+		resistencia--;
+		if (resistencia==2)
+			this.getEtiqueta().setIcon(graficos.getAcerof());
+		if (resistencia==0)
+			super.destruirse();
+	}
+	
 	
 
 	@Override

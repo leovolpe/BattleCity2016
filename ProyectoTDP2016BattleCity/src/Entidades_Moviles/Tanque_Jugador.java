@@ -48,8 +48,9 @@ public class Tanque_Jugador extends EntidadMovil {
 		if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
 		{
 			disparos_en_pantalla++;
-			@SuppressWarnings("unused")
-			Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
+			
+			//Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
+			nivel.nuevo_disparo_jugador(this, direccion, this.getX(), this.getEtiqueta().getWidth(), this.getY(), this.getEtiqueta().getHeight(), getJuego());
 		}
 		
 	}

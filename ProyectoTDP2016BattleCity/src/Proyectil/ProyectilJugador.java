@@ -31,61 +31,25 @@ public class ProyectilJugador extends Proyectil
 	public ProyectilJugador(Tanque_Jugador t,char d,int x, int ancho, int y, int largo, Juego j, int vd) {
 		super(vd,d,j);
 		tanque=t;
-		etiqueta = new JLabel(gb.get_bala_jugador());
+		etiqueta = new JLabel(gb.getBala_jugador());
 		this.getEtiqueta().setSize(10,10);
 		
-		//calcula donde se ubicara el proyectil en el mapa
-		setPosicion_inicial(d,x,y,ancho,largo);
+		//calcula donde se ubicara el proyectil en el mapa (va super aca o solo set?)
+		super.setPosicion_inicial(d,x,y,ancho,largo);
 		//le pide al juego que agregue el proyectil
 		getJuego().agregar_proyectil(this);
 		
 	
 	}
 	
-	/**Basado en las coordenadas y el tamaño del tanque, ubica el proyectil en el mapa
-	 * 
-	 * @param d	direccion
-	 * @param x	posicion x del tanque
-	 * @param y	posicion y del tanque
-	 * @param a	ancho del tanque
-	 * @param l	largo del tanque
-	 */
-	private void setPosicion_inicial(char d, int x, int y, int a, int l)
-	{
-		switch(d)
-		{
-			case'n' :
-			{
-				this.setX(x+(a/2)-5);
-				this.setY(y-10);
-				break;
-			}
-			case 's' :
-			{
-				this.setX(x+(a/2)-5);
-				this.setY(y+60);
-				break;
-			}
-			case 'd':
-			{
-				this.setX(x+60);
-				this.setY(y+(l/2)-5);
-				break;
-			}
-			case 'i':
-			{
-				this.setX(x-10);
-				this.setY(y+(l/2)-5);
-				break;
-			}
-		}
-	}
+	
 
 	
 	@Override
 	public void impactar(Tanque_Jugador t) 
 	{
 		//vacio, si un tanque toca a su proyectil no se vera afectado
+		
 		
 	}
 
