@@ -59,8 +59,8 @@ public abstract class Enemigo extends EntidadMovil{
 						break;
 					}
 			case 1 : {
-						if (getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight())
-								&& !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y+this.getVel_mov()))
+						if (/*getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight())
+								&&*/ !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y+this.getVel_mov()))
 							atras();
 						else
 							cant_movs=0;//en caso de que no pueda avanzar o de que este por chocar a otro enemigo entonces deja de moverse en esa direccion
@@ -103,7 +103,7 @@ public abstract class Enemigo extends EntidadMovil{
 			disparos_en_pantalla++;
 			new ProyectilEnemigo(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),vel_disp);
 		}
-		System.out.println("bang!");
+		
 		
 	}
 	
