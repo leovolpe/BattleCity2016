@@ -10,14 +10,17 @@ import Proyectil.ProyectilJugador;
 public class Nivel1 extends Nivel {
 
 	//resistencia, velocidad de movimiento, velocidad de disparo, disparos simultaneos permitidos
-	public Nivel1() 
+	public Nivel1(Tanque_Jugador t) 
 	{
 		super(1, 2, 3, 1);
+		nueva_pos(t);
 	}
 
 	@Override
-	public void nueva_pos(Tanque_Jugador t) {
-		// TODO Auto-generated method stub
+	public void nueva_pos(Tanque_Jugador t) 
+	{
+		t.setX(0);
+		t.setY(540);
 		
 	}
 

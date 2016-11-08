@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enemigos.Enemigo;
+import Juego.Juego;
 import Proyectil.Proyectil;
 
 /**Controla a los enemigos
@@ -19,15 +20,29 @@ public class Controlador_Enemigos implements Runnable
 	private List<Enemigo> lista_enemigos_borrar;
 	private List<Enemigo> lista_enemigos_agregar;
 	private boolean terminar_hilo;
+	private boolean pausa;
 	
 	
 	public Controlador_Enemigos()
 	{
-		
+		pausa=false;
 		lista_enemigos = new ArrayList<Enemigo>();
 		lista_enemigos_borrar = new ArrayList<Enemigo>();
 		lista_enemigos_agregar = new ArrayList<Enemigo>();
 		terminar_hilo=false;
+	}
+	
+	public void destruir_todos(Juego j)
+	{
+		for (int i=0; i<lista_enemigos.size();i++)
+		{
+			j.eliminar_enemigo(lista_enemigos.get(i));
+		}
+	}
+	
+	public void set_pausa(Boolean b)
+	{
+		pausa=b;
 	}
 	
 	//retorna true si se puede agregar un enemigo en este lugar
@@ -157,14 +172,18 @@ public class Controlador_Enemigos implements Runnable
 		{
 			eliminar_enemigos();		//elimina los eliminables
 			agregar_enemigos();			//agrega los agregables
-			mover_enemigos();			//mueve los enemigos
+			if (!pausa)
+			{
+				mover_enemigos();			//mueve los enemigos
+			}	
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 			
 		}
 		

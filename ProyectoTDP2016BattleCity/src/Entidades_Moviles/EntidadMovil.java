@@ -51,7 +51,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 				etiqueta.setIcon(graficos.getArriba());
 				direccion = 'n';
 			}
-		
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	public void atras()
@@ -71,6 +71,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getAbajo());
 			direccion='s';
 		}
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	public void izquierda()
@@ -89,6 +90,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getIzquierda());
 			direccion='i';
 		}
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	
@@ -108,6 +110,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getDerecha());
 			direccion='d';
 		}
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	

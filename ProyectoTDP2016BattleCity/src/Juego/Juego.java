@@ -12,6 +12,8 @@ import Enemigos.*;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
 import Obstaculos.Obstaculo;
+
+import PowerUps.*;
 import Proyectil.Proyectil;
 import Terreno.TerrenoLogico;
 
@@ -195,4 +197,35 @@ public class Juego
 	{
 		getGui().getGj().agregar_obstaculo(o);
 	}
+	
+	public void agregar_powerup_graficamente(PowerUp p)
+	{
+		getGui().getGj().agregar_pwp(p);
+	}
+
+
+	public void agregar_pwp() 
+	{
+		
+		PowerUp p = new Timer(this,0,0);
+		terreno_logico.addPwp(p);
+		//aca va a ir la creacion y se agregara en sus lugares correspondientes
+		
+	}
+
+
+	public void destruir_pwp(PowerUp p) 
+	{
+		terreno_logico.removePwp(p);
+		getGui().getGj().borrar_pwp(p);
+		
+	}
+
+
+	public void set_vidas(int vidas) 
+	{
+		gui.getGi().setVidas(vidas);
+	}
+	
+	
 }

@@ -2,16 +2,23 @@ package Terreno;
 
 import java.awt.Rectangle;
 import java.awt.geom.Area;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
+
+import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
 import Obstaculos.Obstaculo;
+import PowerUps.PowerUp;
 import Proyectil.Proyectil;
+import intercambio_paredes.Temporizador_intercambio_paredes;
 
 
 public class TerrenoLogico {
 
 	//mantengo la lista de los obtaculos
 	protected LinkedList<Obstaculo> listaObstaculos;
+	protected List<PowerUp>	pwps_en_pantalla;
 	protected Juego juego;
 	protected GeneradorDeMapa generador;
 	
@@ -21,12 +28,34 @@ public class TerrenoLogico {
 		juego=j;
 		generador=new GeneradorDeMapa(juego);	//creo un generador de mapa
 		listaObstaculos=generador.generarMapa1(); //obtengo los obtaculos correspondientes al mapa 1
+		pwps_en_pantalla = new LinkedList<PowerUp>();
 		
 		//agrego en pantalla los obstaculos
 		for (Obstaculo o : listaObstaculos)
 		{
 			juego.agregar_obstaculo_graficamente(o);
 		}		
+	}
+	
+	public void paredes_acero()
+	{
+		Temporizador_intercambio_paredes t = new Temporizador_intercambio_paredes(listaObstaculos,juego,10);
+		new Thread(t).start();
+		
+	}
+	
+	
+	public void addPwp(PowerUp p)
+	{
+		pwps_en_pantalla.add(p);
+		juego.agregar_powerup_graficamente(p);
+	}
+	
+	public void removePwp(PowerUp p)
+	{
+		pwps_en_pantalla.remove(p);
+		System.out.println(pwps_en_pantalla.size());
+		
 	}
 	
 	
@@ -92,6 +121,23 @@ public class TerrenoLogico {
 			y <0 || y>(juego.getGui().getGj().getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
 		
 		return puede_avanzar;
+	}
+	
+	public void control_tanque_pwp(Tanque_Jugador t)
+	{
+	
+		Area atanque = new Area(t.getEtiqueta().getBounds());
+		for (int i=0; i<pwps_en_pantalla.size();i++)
+		{
+			PowerUp p = pwps_en_pantalla.get(i);
+			Area apwp = new Area(p.getEtiqueta().getBounds());
+			if (atanque.intersects(apwp.getBounds2D()))
+			{
+				System.out.println("contacto");
+				p.contacto(t);
+			}
+			
+		}
 	}
 	
 		

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Obstaculos.Obstaculo;
+import PowerUps.PowerUp;
 import Proyectil.Proyectil;
 
 
@@ -147,6 +148,20 @@ public class grafico_juego {
 		panel_balas.remove(p.getEtiqueta());
 		panel_balas.repaint();
 	}
+
+	public void agregar_pwp(PowerUp p) 
+	{
+		panel_obstaculos.add(p.getEtiqueta());
+		panel_obstaculos.repaint();
+	}
+	
+	public void borrar_pwp(PowerUp p)
+	{
+		panel_obstaculos.remove(p.getEtiqueta());
+		panel_obstaculos.repaint();
+	}
+
+
 
 	
 	

@@ -3,6 +3,7 @@ package Entidades_Moviles;
 import javax.swing.JLabel;
 
 import Graficas_Personajes.Tanque.graficos_tanque;
+import Graficas_Personajes.Tanque.graficos_tanque_inmunidad;
 import Juego.Juego;
 import Niveles_Tanque.*;
 import Proyectil.Proyectil;
@@ -11,9 +12,7 @@ import Proyectil.ProyectilJugador;
 public class Tanque_Jugador extends EntidadMovil {
 
 	private int puntaje;
-	@SuppressWarnings("unused")
 	private int vidas;
-	@SuppressWarnings("unused")
 	private boolean inmunidad;
 	//private int num_niv;
 	private Nivel nivel;
@@ -30,14 +29,14 @@ public class Tanque_Jugador extends EntidadMovil {
 		
 		etiqueta = new JLabel(graficos.getArriba());
 		etiqueta.setSize(60, 60);
-		this.setX(0);
-		this.setY(540);
-		
+		//this.setX(0);
+		//this.setY(540);
+		setNivel1();
 		
 		puntaje=0;
 		vidas=4;
 		inmunidad=false;
-		setNivel1();
+		
 	}
 
 
@@ -55,6 +54,11 @@ public class Tanque_Jugador extends EntidadMovil {
 		
 	}
 
+	public void aumentar_vida()
+	{
+		vidas++;
+		getJuego().set_vidas(vidas);
+	}
 
 	
 
@@ -92,7 +96,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	public void setNivel1()
 	{
 		//num_niv=1;
-		nivel = new Nivel1();
+		nivel = new Nivel1(this);
 	}
 	
 	/**
@@ -147,6 +151,44 @@ public class Tanque_Jugador extends EntidadMovil {
 	
 	public void setInmunidad(boolean b)
 	{
+		inmunidad=b;
+		if (inmunidad)
+		{
+			graficos = new graficos_tanque_inmunidad();
+			switch(direccion)
+			{
+				case 'n' : {this.getEtiqueta().setIcon(graficos.getArriba()); break;}
+				case 's' : {this.getEtiqueta().setIcon(graficos.getAbajo()); break;}
+				case 'i' : {this.getEtiqueta().setIcon(graficos.getIzquierda()); break;}
+				case 'd' : {this.getEtiqueta().setIcon(graficos.getDerecha()); break;}
+			}
+		}
+		else
+		{
+			graficos = new graficos_tanque();
+			switch(direccion)
+			{
+				case 'n' : {this.getEtiqueta().setIcon(graficos.getArriba()); break;}
+				case 's' : {this.getEtiqueta().setIcon(graficos.getAbajo()); break;}
+				case 'i' : {this.getEtiqueta().setIcon(graficos.getIzquierda()); break;}
+				case 'd' : {this.getEtiqueta().setIcon(graficos.getDerecha()); break;}
+			}
+		}
+	}
+	
+	public void reducir_vida()
+	{
+		if (!inmunidad)
+		{
+			vidas--;
+			getJuego().set_vidas(vidas);
+			setNivel1();
+			this.getEtiqueta().setIcon(graficos.getArriba());
+			direccion='n';
+			
+			
+		}
+		
 		
 	}
 	
@@ -159,5 +201,29 @@ public class Tanque_Jugador extends EntidadMovil {
 		return nivel.getVel_mov();
 	}
 	
+	public void adelante()
+	{
+		//extendiendo funcionalidad
+		super.adelante();
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+	}
+	
+	public void atras()
+	{
+		super.atras();
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+	}
+	
+	public void izquierda()
+	{
+		super.izquierda();
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+	}
+	
+	public void derecha()
+	{
+		super.derecha();
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+	}
 
 }

@@ -1,6 +1,7 @@
 package PowerUps;
 
 import Entidades_Moviles.Tanque_Jugador;
+import Graficas_powerup.graficos_powerup;
 import Juego.Juego;
 import ObjetosDeJuego.ObjetoDeJuego;
 
@@ -9,15 +10,13 @@ import ObjetosDeJuego.ObjetoDeJuego;
  */
 public abstract class PowerUp extends ObjetoDeJuego {
 	
-protected int puntos;
+protected final int puntos=500;
+protected graficos_powerup graficos;
 
-//ATENCION
-//LOS POWERUPS NO ESTAN IMPLEMENTADOS AUN
-
-public PowerUp(int p, Juego j)
+protected PowerUp(Juego j)
 {
 	super(j);
-	puntos=p;
+	graficos = new graficos_powerup();
 }
 
 
@@ -31,9 +30,10 @@ public abstract void contacto(Tanque_Jugador ta);
 /**
  * Elimina al powerup
  */
-protected abstract void destruirse();
-
- 
-
+protected void destruirse() 
+{
+	getJuego().destruir_pwp(this);
+	
+}
 	
 }

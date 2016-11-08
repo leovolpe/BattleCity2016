@@ -1,5 +1,6 @@
 package Controladores;
 
+import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,6 +83,20 @@ public class Controlador_balas implements Runnable
 		else return false;
 
 	}
+	
+	public void control_tanque()
+	{
+		Area atanque = new Area(juego.getTanque().getEtiqueta().getBounds());
+		for (int i=0; i< listaProyectiles.size(); i++)
+		{
+			Proyectil p = listaProyectiles.get(i);
+			Area ap = new Area(p.getEtiqueta().getBounds());
+			if (atanque.intersects(ap.getBounds2D()))
+			{
+				p.impactar(juego.getTanque());
+			}
+		}
+	}
 
 	/**
 	 * mueve los proyectiles y controla intersecciones
@@ -97,10 +112,12 @@ public class Controlador_balas implements Runnable
 				p.destruirse();
 			else
 			{
+				
 				juego.getCont_ene().control_impacto_proyectil(p); //CONTROLA SI IMPACTA CON UN ENEMIGO
 				juego.getTerreno_logico().control_balas(p);			//CONTROLA SI IMPACTA CON UN OBSTACULO
 			}
 		}
+		control_tanque();	//controla si alguna choca con el tanque
 		
 	}
 	

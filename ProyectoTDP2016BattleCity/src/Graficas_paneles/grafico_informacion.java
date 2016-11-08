@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 public class grafico_informacion {
 	
 	private JPanel panel_info;
-	private JLabel etiqueta_puntaje, etiqueta_txt_vidas, etiqueta_vidas;
+	private JLabel etiqueta_puntaje, etiqueta_txt_vidas; //, etiqueta_vidas;
 	
 	
 	private graficos_corazones_vidas graficos_corazones;
@@ -30,7 +30,7 @@ public class grafico_informacion {
 		
 		inicializar_etiqueta_puntaje();
 		inicializar_etiqueta_texto_vidas();
-		inicializar_etiqueta_vidas();
+		//inicializar_etiqueta_vidas();
 		
 	}
 	
@@ -48,7 +48,7 @@ public class grafico_informacion {
 	public void inicializar_etiqueta_texto_vidas()
 	{
 		//etiqueta puntaje inicializacion
-		etiqueta_txt_vidas = new JLabel("Vidas",SwingConstants.CENTER);
+		etiqueta_txt_vidas = new JLabel("Vidas : 4",SwingConstants.CENTER);
 		etiqueta_txt_vidas.setLocation(0,100);
 		etiqueta_txt_vidas.setSize(300,50);
 		etiqueta_txt_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
@@ -56,6 +56,7 @@ public class grafico_informacion {
 		panel_info.add(etiqueta_txt_vidas);
 	}
 	
+	/*
 	public void inicializar_etiqueta_vidas()
 	{
 		//etiqueta puntaje inicializacion
@@ -65,6 +66,7 @@ public class grafico_informacion {
 		etiqueta_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
 		panel_info.add(etiqueta_vidas);
 	}
+	*/
 
 	/**
 	 * Retorna el panel que contiene la informacion
@@ -75,7 +77,11 @@ public class grafico_informacion {
 		return panel_info;
 	}
 
-	
+	public void setVidas(int v)
+	{
+		String vid = "Vidas "+v;
+		etiqueta_txt_vidas.setText(vid);
+	}
 	
 	public void setPuntaje(int p)
 	{

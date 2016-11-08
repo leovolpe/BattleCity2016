@@ -16,6 +16,8 @@ public class manejador_auxiliar_teclado implements KeyListener {
 	/**Constante de la tecla para disparar*/
 	final static int disparar = KeyEvent.VK_SPACE;
 	
+	final static int powerup = KeyEvent.VK_Z;
+	
 	
 	private Juego j;
 	
@@ -39,6 +41,10 @@ public class manejador_auxiliar_teclado implements KeyListener {
 		else if (e.getKeyCode()==disparar)
 		{
 			j.getTanque().disparar();
+		}
+		else if (e.getKeyCode()==powerup)
+		{
+			j.agregar_pwp();
 		}
 		
 		

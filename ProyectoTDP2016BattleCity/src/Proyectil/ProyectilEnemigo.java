@@ -31,9 +31,8 @@ public class ProyectilEnemigo extends Proyectil {
 	@Override
 	public void impactar(Tanque_Jugador t) 
 	{
-		// TODO Auto-generated method stub
-		System.out.println("toque tanque");
-		
+		t.reducir_vida();
+		destruirse();
 	}
 
 	@Override
