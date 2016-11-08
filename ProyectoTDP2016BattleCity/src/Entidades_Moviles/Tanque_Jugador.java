@@ -12,6 +12,7 @@ import Proyectil.ProyectilJugador;
 public class Tanque_Jugador extends EntidadMovil {
 
 	private int puntaje;
+	private int puntaje_temporal;
 	private int vidas;
 	private boolean inmunidad;
 	//private int num_niv;
@@ -34,8 +35,11 @@ public class Tanque_Jugador extends EntidadMovil {
 		setNivel1();
 		
 		puntaje=0;
+		puntaje_temporal=0;
 		vidas=4;
 		inmunidad=false;
+		
+		
 		
 	}
 
@@ -135,6 +139,12 @@ public class Tanque_Jugador extends EntidadMovil {
 	public void aumentarPuntaje(int p)
 	{
 		puntaje+=p;
+		puntaje_temporal+=p;
+		if (puntaje_temporal>20000)
+		{
+			this.aumentar_vida();
+			puntaje_temporal-=20000;
+		}
 		getJuego().setPuntajeJugador(puntaje);
 	}
 	
@@ -185,8 +195,6 @@ public class Tanque_Jugador extends EntidadMovil {
 			setNivel1();
 			this.getEtiqueta().setIcon(graficos.getArriba());
 			direccion='n';
-			
-			
 		}
 		
 		
@@ -201,43 +209,15 @@ public class Tanque_Jugador extends EntidadMovil {
 		return nivel.getVel_mov();
 	}
 	
-	/*
+	
 	public void adelante()
 	{
 		//extendiendo funcionalidad
 		super.adelante();
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
 	}
-	*/
 	
-	public void adelante()
-	{
-		
-			if (direccion=='n')
-			{
-				//le preguna al terreno logico si puede avanzar en esa direccion
-				if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
-				{
-					y = y - getVel_mov();
-					etiqueta.setLocation(x,y);
-				}
-				else
-				{
-					
-				}
-			}
-			else
-			{
-				etiqueta.setIcon(graficos.getArriba());
-				direccion = 'n';
-			}
-			getJuego().getTerreno_logico().control_tanque_pwp(this);
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
-	}
-	
-	
-	
-	
+
 	
 	
 	public void atras()

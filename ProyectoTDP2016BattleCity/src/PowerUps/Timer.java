@@ -4,7 +4,8 @@ import javax.swing.JLabel;
 
 import Entidades_Moviles.Tanque_Jugador;
 import Juego.Juego;
-import logica_pwp_timer.Temporizador_detener;
+import Temporizadores.Temporizador_detener;
+
 
 public class Timer extends PowerUp {
 

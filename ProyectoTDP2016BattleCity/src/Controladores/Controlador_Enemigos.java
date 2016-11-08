@@ -21,10 +21,12 @@ public class Controlador_Enemigos implements Runnable
 	private List<Enemigo> lista_enemigos_agregar;
 	private boolean terminar_hilo;
 	private boolean pausa;
+	private Juego juego;
 	
 	
-	public Controlador_Enemigos()
+	public Controlador_Enemigos(Juego j)
 	{
+		juego=j;
 		pausa=false;
 		lista_enemigos = new ArrayList<Enemigo>();
 		lista_enemigos_borrar = new ArrayList<Enemigo>();
@@ -139,6 +141,21 @@ public class Controlador_Enemigos implements Runnable
 		
 	}
 	
+	private void control_tanque()
+	{
+		Area at = new Area(juego.getTanque().getEtiqueta().getBounds());
+		for (int i=0; i<lista_enemigos.size(); i++)
+		{
+			Enemigo ene = lista_enemigos.get(i);
+			Area a2 = new Area(ene.getEtiqueta().getBounds());
+			if (at.intersects(a2.getBounds2D()))
+				{
+					juego.eliminar_enemigo(ene);
+					juego.getTanque().reducir_vida();
+				}
+		}
+	}
+	
 	/**dado un enemigo, y una posicion (x,y) que corresponde a la posicion de "e" si se realizara cierto movimiento
 	 * controla si tras ese posible movimiento, el enemigo e choca con otro de los enemigos
 	 * 
@@ -170,6 +187,7 @@ public class Controlador_Enemigos implements Runnable
 	{
 		while (!terminar_hilo)
 		{
+			control_tanque();
 			eliminar_enemigos();		//elimina los eliminables
 			agregar_enemigos();			//agrega los agregables
 			if (!pausa)

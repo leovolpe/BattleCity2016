@@ -11,7 +11,8 @@ import Juego.Juego;
 import Obstaculos.Obstaculo;
 import PowerUps.PowerUp;
 import Proyectil.Proyectil;
-import intercambio_paredes.Temporizador_intercambio_paredes;
+import Temporizadores.Temporizador_intercambio_paredes;
+
 
 
 public class TerrenoLogico {
@@ -37,6 +38,13 @@ public class TerrenoLogico {
 		}		
 	}
 	
+	//se fija si no fue atrapado y lo borra
+	public void intentar_borrar(PowerUp p)
+	{
+		if (pwps_en_pantalla.contains(p))
+			removePwp(p);
+	}
+	
 	public void paredes_acero()
 	{
 		Temporizador_intercambio_paredes t = new Temporizador_intercambio_paredes(listaObstaculos,juego,10);
@@ -54,7 +62,6 @@ public class TerrenoLogico {
 	public void removePwp(PowerUp p)
 	{
 		pwps_en_pantalla.remove(p);
-		System.out.println(pwps_en_pantalla.size());
 		
 	}
 	

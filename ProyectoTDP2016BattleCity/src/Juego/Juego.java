@@ -53,6 +53,7 @@ public class Juego
 		gui = new Gui_Juego(tanque);		//creo la gui
 		gui.setVisible(true);
 		
+		
 		//POR AHORA TENGO DOS MANEJADORES DE TECLADO QUE LUEGO SERAN UNO
 		
 		teclado = new manejador_teclado_jugador(tanque);
@@ -67,7 +68,7 @@ public class Juego
 		hilo_balas = new Thread(cont_balas);
 		hilo_balas.start();
 		
-		cont_ene = new Controlador_Enemigos();
+		cont_ene = new Controlador_Enemigos(this);
 		hilo_enemigos = new Thread(cont_ene);
 		hilo_enemigos.start();
 		

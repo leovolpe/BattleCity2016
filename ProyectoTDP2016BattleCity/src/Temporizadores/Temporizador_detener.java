@@ -1,4 +1,4 @@
-package logica_pwp_timer;
+package Temporizadores;
 
 import Juego.Juego;
 

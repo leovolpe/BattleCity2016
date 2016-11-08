@@ -1,4 +1,4 @@
-package intercambio_paredes;
+package Temporizadores;
 
 import java.util.ArrayList;
 import java.util.List;

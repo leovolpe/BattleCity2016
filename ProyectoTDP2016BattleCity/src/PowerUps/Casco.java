@@ -3,8 +3,9 @@ package PowerUps;
 import javax.swing.JLabel;
 
 import Entidades_Moviles.Tanque_Jugador;
-import Inmunidad.Temporizador_inmunidad;
+
 import Juego.Juego;
+import Temporizadores.Temporizador_inmunidad;
 
 public class Casco extends PowerUp{
 

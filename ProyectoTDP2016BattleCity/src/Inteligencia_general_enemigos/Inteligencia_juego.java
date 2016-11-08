@@ -7,6 +7,7 @@ import java.util.Random;
 import Enemigos.*;
 import Juego.Juego;
 import PowerUps.*;
+import Temporizadores.Temporizador_pwp;
 
 public class Inteligencia_juego implements Runnable 
 {
@@ -46,6 +47,7 @@ public class Inteligencia_juego implements Runnable
 		enemigos_muertos++;
 		if (enemigos_muertos%4==0)
 			agregar_powerup();
+			
 		cant_ene--;
 	}
 	
@@ -91,6 +93,7 @@ public class Inteligencia_juego implements Runnable
 			case 5 : {p = new Timer(juego,0,0); break;}
 		}
 		buscar_posicion_pwp(p);
+		new Thread(new Temporizador_pwp(juego,p,10)).start();
 		juego.getTerreno_logico().addPwp(p);
 	}
 	

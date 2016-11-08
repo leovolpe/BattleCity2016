@@ -1,4 +1,4 @@
-package Inmunidad;
+package Temporizadores;
 
 import Entidades_Moviles.Tanque_Jugador;
 
