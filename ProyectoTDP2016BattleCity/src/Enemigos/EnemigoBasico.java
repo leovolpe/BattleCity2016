@@ -16,7 +16,7 @@ public class EnemigoBasico extends Enemigo
 
 	public EnemigoBasico( Juego j) 
 	{
-		super(1, 2, 3, 1, 100, j);
+		super(1, 2, 4, 1, 100, j);
 		graficos = new graficos_tanque_basico();
 		etiqueta=new JLabel(graficos.getAbajo());
 		etiqueta.setSize(60, 60);

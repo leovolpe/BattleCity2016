@@ -47,10 +47,10 @@ public class Controlador_Enemigos implements Runnable
 	
 	//retorna true si se puede agregar un enemigo en este lugar
 	//el y recibido es cero
-	public boolean se_puede_agregar(int x,int l, int a)
+	public boolean se_puede_agregar(int x, int y,int l, int a)
 	{
 		boolean puede=true;
-		Rectangle r = new Rectangle(x,0,l,a);
+		Rectangle r = new Rectangle(x,y,l,a);
 		Area area = new Area(r);
 		
 		for (int i=0; i<lista_enemigos.size(); i++)

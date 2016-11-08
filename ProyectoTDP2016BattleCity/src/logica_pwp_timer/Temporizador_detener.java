@@ -11,6 +11,7 @@ public class Temporizador_detener implements Runnable
 	public Temporizador_detener(Juego j, int segs)
 	{
 		juego=j;
+		juego.getIntjuego().setpausa(true);
 		segundos=segs;
 		if(segundos>50) segundos=50;	//le pongo un maximo
 		cont=0;
@@ -31,7 +32,11 @@ public class Temporizador_detener implements Runnable
 				e.printStackTrace();
 			}
 			if(segundos==cont)
+			{
 				juego.getCont_ene().set_pausa(false);
+				juego.getIntjuego().setpausa(false);
+			}
+				
 		}
 	
 		System.out.println("fin deten");

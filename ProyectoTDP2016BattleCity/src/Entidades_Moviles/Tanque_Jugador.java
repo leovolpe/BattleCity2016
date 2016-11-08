@@ -201,12 +201,44 @@ public class Tanque_Jugador extends EntidadMovil {
 		return nivel.getVel_mov();
 	}
 	
+	/*
 	public void adelante()
 	{
 		//extendiendo funcionalidad
 		super.adelante();
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
 	}
+	*/
+	
+	public void adelante()
+	{
+		
+			if (direccion=='n')
+			{
+				//le preguna al terreno logico si puede avanzar en esa direccion
+				if (getJuego().getTerreno_logico().Puede_Avanzar(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+				{
+					y = y - getVel_mov();
+					etiqueta.setLocation(x,y);
+				}
+				else
+				{
+					
+				}
+			}
+			else
+			{
+				etiqueta.setIcon(graficos.getArriba());
+				direccion = 'n';
+			}
+			getJuego().getTerreno_logico().control_tanque_pwp(this);
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
+	}
+	
+	
+	
+	
+	
 	
 	public void atras()
 	{

@@ -1,16 +1,17 @@
 package Juego;
 
+import java.awt.Rectangle;
+import java.awt.geom.Area;
 import java.util.Random;
 
 import ControladorDeTeclado.manejador_auxiliar_teclado;
 import ControladorDeTeclado.manejador_teclado_jugador;
 import Controladores.Controlador_Enemigos;
 import Controladores.Controlador_balas;
-import Enemigos.Enemigo;
-import Enemigos.EnemigoBlindado;
 import Enemigos.*;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
+import Inteligencia_general_enemigos.Inteligencia_juego;
 import Obstaculos.Obstaculo;
 
 import PowerUps.*;
@@ -33,7 +34,10 @@ public class Juego
 	private Thread hilo_balas;
 	
 	private Controlador_Enemigos cont_ene;	//controla a los enemigos
-	private Thread hilo_enemigos;	
+	private Thread hilo_enemigos;
+	
+	private Inteligencia_juego intjuego;
+	private Thread hilo_int;
 	
 	
 	//se usa para crear el enemigo, sera borrado mas tarde
@@ -66,6 +70,10 @@ public class Juego
 		cont_ene = new Controlador_Enemigos();
 		hilo_enemigos = new Thread(cont_ene);
 		hilo_enemigos.start();
+		
+		intjuego = new Inteligencia_juego(this);
+		hilo_int = new Thread(intjuego);
+		hilo_int.start();
 		
 		
 
@@ -114,15 +122,38 @@ public class Juego
 		{
 			int posx = (rnd.nextInt()%13)*60;
 			if (posx<0) posx*=-1;
-			if (cont_ene.se_puede_agregar(posx,EnemigoEnPantalla.getEtiqueta().getHeight() , EnemigoEnPantalla.getEtiqueta().getWidth()))
+			if (cont_ene.se_puede_agregar(posx,0,EnemigoEnPantalla.getEtiqueta().getHeight() , EnemigoEnPantalla.getEtiqueta().getWidth()))
 			{
-				agregue=true;
-				EnemigoEnPantalla.setX(posx);
-				gui.getGj().agregar_enemigo(EnemigoEnPantalla);
-				cont_ene.add_Enemigo(EnemigoEnPantalla);
+				//veo si justo esta el tanque en ese lugar
+				if (!intersecta_con_Tanque(posx,0,EnemigoEnPantalla.getEtiqueta().getHeight() , EnemigoEnPantalla.getEtiqueta().getWidth()))
+				{
+					agregue=true;
+					EnemigoEnPantalla.setX(posx);
+					gui.getGj().agregar_enemigo(EnemigoEnPantalla);
+					cont_ene.add_Enemigo(EnemigoEnPantalla);
+				}
 			}
 		}	
 	}
+	
+	
+	
+	private boolean intersecta_con_Tanque(int x,int y, int h, int w) 
+	{
+		boolean inter=false;
+		
+		Rectangle r = new Rectangle(x,y,h,w);
+		Area ae = new Area(r.getBounds());
+		Area at = new Area(getTanque().getEtiqueta().getBounds());
+		if (ae.intersects(at.getBounds2D()))
+			inter=true;
+		
+		return inter;
+	}
+	
+	
+	
+	
 	
 
 	public TerrenoLogico getTerreno_logico() 
@@ -158,6 +189,7 @@ public class Juego
 	 */
 	public void eliminar_enemigo(Enemigo e)
 	{
+		intjuego.enemigo_muerto();
 		cont_ene.elim_enemigo(e);
 		gui.getGj().borrar_enemigo(e);
 	}
@@ -225,6 +257,19 @@ public class Juego
 	public void set_vidas(int vidas) 
 	{
 		gui.getGi().setVidas(vidas);
+	}
+
+
+	public void agregar_enemigo(Enemigo e) 
+	{
+		gui.getGj().agregar_enemigo(e);
+		cont_ene.add_Enemigo(e);
+		
+	}
+
+
+	public Inteligencia_juego getIntjuego() {
+		return intjuego;
 	}
 	
 	

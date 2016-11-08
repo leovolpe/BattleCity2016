@@ -14,7 +14,7 @@ public class EnemigoBlindado extends Enemigo
 {
 
 	public EnemigoBlindado(Juego j) {
-		super(4, 2, 3, 1, 100, j); //entrega 100 puntos por cada disparo recibido
+		super(4, 2, 4, 1, 100, j); //entrega 100 puntos por cada disparo recibido
 		graficos = new graficos_tanque_blindado();
 		etiqueta=new JLabel(graficos.getAbajo());
 		etiqueta.setSize(60, 60);
