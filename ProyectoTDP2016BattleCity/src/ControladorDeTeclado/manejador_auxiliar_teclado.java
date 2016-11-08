@@ -14,7 +14,7 @@ public class manejador_auxiliar_teclado implements KeyListener {
 	final static int aumentar_nivel = KeyEvent.VK_Q;
 	
 	/**Constante de la tecla para disparar*/
-	final static int disparar = KeyEvent.VK_SPACE;
+	final static int disparar = KeyEvent.VK_S;
 	
 	final static int powerup = KeyEvent.VK_Z;
 	

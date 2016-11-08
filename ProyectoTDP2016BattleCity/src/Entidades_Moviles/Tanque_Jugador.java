@@ -191,10 +191,15 @@ public class Tanque_Jugador extends EntidadMovil {
 		if (!inmunidad)
 		{
 			vidas--;
-			getJuego().set_vidas(vidas);
-			setNivel1();
-			this.getEtiqueta().setIcon(graficos.getArriba());
-			direccion='n';
+			if (vidas==0) getJuego().perder();
+			else
+			{
+				getJuego().set_vidas(vidas);
+				setNivel1();
+				this.getEtiqueta().setIcon(graficos.getArriba());
+				direccion='n';
+			}
+			
 		}
 		
 		

@@ -1,5 +1,6 @@
 package Visitor_Proyectiles;
 
+import Juego.Juego;
 import Obstaculos.Agua;
 import Obstaculos.Arbol;
 import Obstaculos.Base;
@@ -15,8 +16,9 @@ import Proyectil.Proyectil;
 public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obstaculo
 {
 	
-	public Visitor_proyectil_jugador_obstaculo(Proyectil p)
+	public Visitor_proyectil_jugador_obstaculo(Proyectil p,Juego j)
 	{
+		juego=j;
 		proy = p;
 	}
 
@@ -39,7 +41,7 @@ public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obsta
 		// TODO Auto-generated method stub
 		//implementacion mas adelante
 		proy.destruirse();
-		System.out.println("perdi");
+		juego.perder();
 		
 	}
 

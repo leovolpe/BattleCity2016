@@ -38,7 +38,7 @@ public class ProyectilEnemigo extends Proyectil {
 	@Override
 	public void impactar(Obstaculo o) 
 	{
-		o.aceptar_visitor_proyectil(new Visitor_proyectil_enemigo_obstaculo(this));
+		o.aceptar_visitor_proyectil(new Visitor_proyectil_enemigo_obstaculo(this,getJuego()));
 		
 	}
 

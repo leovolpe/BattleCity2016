@@ -1,5 +1,6 @@
 package Visitor_Proyectiles;
 
+import Juego.Juego;
 import Obstaculos.Agua;
 import Obstaculos.Arbol;
 import Obstaculos.Base;
@@ -10,9 +11,10 @@ import Proyectil.Proyectil;
 public class Visitor_proyectil_enemigo_obstaculo extends Visitor_Proyectil_obstaculo 
 {
 	
-	public Visitor_proyectil_enemigo_obstaculo(Proyectil p)
+	public Visitor_proyectil_enemigo_obstaculo(Proyectil p,Juego j)
 	{
 		proy=p;
+		juego=j;
 	}
 
 	@Override
@@ -31,7 +33,8 @@ public class Visitor_proyectil_enemigo_obstaculo extends Visitor_Proyectil_obsta
 	public void visitar(Base b) {
 		// TODO Auto-generated method stub
 		proy.destruirse();
-		System.out.println("base destruida, fin del juego");
+		juego.perder();
+		
 	}
 
 	@Override

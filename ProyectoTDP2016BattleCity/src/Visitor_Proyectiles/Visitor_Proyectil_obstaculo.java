@@ -1,5 +1,6 @@
 package Visitor_Proyectiles;
 
+import Juego.Juego;
 import Obstaculos.*;
 import Proyectil.Proyectil;
 
@@ -10,6 +11,7 @@ import Proyectil.Proyectil;
 public abstract class Visitor_Proyectil_obstaculo 
 {
 	protected Proyectil proy;
+	protected Juego juego;
 	
 	/**Visita de un proyectil con el obstaculo agua
 	 * 

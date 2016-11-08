@@ -45,10 +45,16 @@ public class Inteligencia_juego implements Runnable
 	public void enemigo_muerto()
 	{
 		enemigos_muertos++;
-		if (enemigos_muertos%4==0)
-			agregar_powerup();
-			
-		cant_ene--;
+		if(enemigos_muertos==10)
+			juego.ganar();
+		else
+		{
+			if (enemigos_muertos%4==0)
+				agregar_powerup();
+				
+			cant_ene--;
+		}
+		
 	}
 	
 	public void agregar()
@@ -159,6 +165,11 @@ public class Inteligencia_juego implements Runnable
 			inter=true;
 		
 		return inter;
+	}
+	
+	public void fin_hilo()
+	{
+		fin_hilo=true;
 	}
 
 	@Override

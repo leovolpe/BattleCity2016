@@ -18,7 +18,7 @@ public class Proyectil_Jugador_N4 extends ProyectilJugador {
 	public void impactar(Obstaculo o)
 	{
 		//o.aceptar_visitor_proyectil(new Visitor_proyectil_jugador_obstaculo(this));
-		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugadorN4_obstaculo(this));
+		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugadorN4_obstaculo(this,getJuego()));
 	}
 
 }

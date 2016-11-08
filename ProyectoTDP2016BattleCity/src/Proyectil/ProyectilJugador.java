@@ -58,7 +58,7 @@ public class ProyectilJugador extends Proyectil
 	{
 		//si se detecto una interseccion entre obstaculo y bala entonces 
 		//el obstaculo sera afectado de acuerdo a lo definido en el visitor_proyectil_jugador
-		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugador_obstaculo(this));
+		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugador_obstaculo(this,getJuego()));
 	}
 
 	@Override

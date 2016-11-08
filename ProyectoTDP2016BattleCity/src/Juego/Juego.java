@@ -11,6 +11,7 @@ import Controladores.Controlador_balas;
 import Enemigos.*;
 import Entidades_Moviles.Tanque_Jugador;
 import Gui.Gui_Juego;
+import Gui.Gui_informacionInicialFinal;
 import Inteligencia_general_enemigos.Inteligencia_juego;
 import Obstaculos.Obstaculo;
 
@@ -25,7 +26,7 @@ import Terreno.TerrenoLogico;
  */
 public class Juego 
 {
-	
+	private Gui_informacionInicialFinal guippal;
 	private Gui_Juego gui;					//gui del juego, parte grafica
 	private Tanque_Jugador tanque;			//tanque del jugador
 	private TerrenoLogico terreno_logico;	//terreno logico que maneja los obstaculos
@@ -49,6 +50,16 @@ public class Juego
 	
 	public Juego()
 	{
+		guippal = new Gui_informacionInicialFinal(this);
+		guippal.setInicio();
+		guippal.setVisible(true);
+		
+	}
+	
+	public void iniciar_juego()
+	{
+		guippal.setVisible(false);
+		
 		tanque = new Tanque_Jugador(this);		//creo el tanque
 		gui = new Gui_Juego(tanque);		//creo la gui
 		gui.setVisible(true);
@@ -75,9 +86,29 @@ public class Juego
 		intjuego = new Inteligencia_juego(this);
 		hilo_int = new Thread(intjuego);
 		hilo_int.start();
+	}
+	
+	public void perder()
+	{
+		gui.setVisible(false);
+		cont_balas.terminar_hilo();
+		cont_ene.terminar_hilo();
+		intjuego.fin_hilo();
 		
+		guippal.derrota(tanque.getPuntaje());
+		guippal.setVisible(true);
 		
-
+	}
+	
+	public void ganar()
+	{
+		gui.setVisible(false);
+		cont_balas.terminar_hilo();
+		cont_ene.terminar_hilo();
+		intjuego.fin_hilo();
+		
+		guippal.victoria(tanque.getPuntaje());
+		guippal.setVisible(true);
 	}
 
 	
@@ -89,7 +120,7 @@ public class Juego
 	
 	
 	
-	public Tanque_Jugador getTanque() 
+	public Tanque_Jugador getTanque()
 	{
 		return tanque;
 	}
