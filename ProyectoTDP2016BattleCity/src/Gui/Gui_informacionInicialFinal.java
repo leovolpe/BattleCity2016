@@ -38,6 +38,11 @@ public class Gui_informacionInicialFinal extends JFrame
 	private JLabel nomb, puntaje;
 	private JButton reiniciar;
 	
+	//seleccionar mapa
+	private JPanel panel_mapa;
+	private JButton b1,b2,b3,b4;
+	private ImageIcon m1,m2,m3,m4;
+	
 	
 	
 	public Gui_informacionInicialFinal(Juego j)
@@ -49,6 +54,63 @@ public class Gui_informacionInicialFinal extends JFrame
 		centrar_pantalla();
 		inicializar_panel_inicial();
 		inicializar_panel_final();
+		inicializar_panel_mapas();
+	}
+	
+	private void inicializar_panel_mapas()
+	{
+		panel_mapa = new JPanel();
+		panel_mapa.setLayout(null);
+		panel_mapa.setBackground(Color.black);
+		panel_mapa.setBounds(0, 0, 800, 600);
+		
+		m1 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m1.png"));
+		b1 = new JButton();
+		b1.setIcon(m1);
+		b1.setBounds(100, 33, 250, 250);
+		b1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				juego.iniciar_juego(1);	
+			}
+		});
+		panel_mapa.add(b1);
+		
+		m2 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m2.png"));
+		b2 = new JButton();
+		b2.setIcon(m2);
+		b2.setBounds(100, 316, 250, 250);
+		b2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				juego.iniciar_juego(2);	
+			}
+		});
+		panel_mapa.add(b2);
+		
+		m3 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m3.png"));
+		b3 = new JButton();
+		b3.setIcon(m3);
+		b3.setBounds(450, 33, 250, 250);
+		b3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				juego.iniciar_juego(3);	
+			}
+		});
+		panel_mapa.add(b3);
+		
+		m4 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m4.png"));
+		b4 = new JButton();
+		b4.setIcon(m4);
+		b4.setBounds(450, 316, 250, 250);
+		b4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				juego.iniciar_juego(4 );	
+			}
+		});
+		panel_mapa.add(b4);
 	}
 	
 	private void inicializar_panel_final()
@@ -161,7 +223,8 @@ public class Gui_informacionInicialFinal extends JFrame
 				System.out.println("--"+nombrejugador);
 				System.out.println("--"+apellidojugador);
 				
-				juego.iniciar_juego();
+				mapas();
+				//juego.iniciar_juego();
 				
 			}
 		});
@@ -207,6 +270,13 @@ public class Gui_informacionInicialFinal extends JFrame
 		getContentPane().repaint();
 		getContentPane().add(panel_inicial);
 		
+	}
+	
+	public void mapas()
+	{
+		getContentPane().removeAll();
+		getContentPane().repaint();
+		getContentPane().add(panel_mapa);
 	}
 	 
 	

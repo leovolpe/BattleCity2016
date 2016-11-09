@@ -56,7 +56,7 @@ public class Juego
 		
 	}
 	
-	public void iniciar_juego()
+	public void iniciar_juego(int n)
 	{
 		guippal.setVisible(false);
 		
@@ -71,7 +71,7 @@ public class Juego
 		gui.agregar_manejador_teclado(teclado);
 		
 		gui.addKeyListener(new manejador_auxiliar_teclado(this));
-		terreno_logico = new TerrenoLogico(this);
+		terreno_logico = new TerrenoLogico(this,n);
 		//////////////////////////////////////////////////////
 		 
 		

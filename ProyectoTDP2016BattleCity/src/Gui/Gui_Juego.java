@@ -69,6 +69,7 @@ public class Gui_Juego extends JFrame {
 	 */
 	private void agregar_paneles()
 	{
+		this.getContentPane().add(gj.getPanel_pwp());
 		this.getContentPane().add(gj.getPanel_obstaculos());
 		this.getContentPane().add(gj.getPanel_tanque());
 		this.getContentPane().add(gi.getPanel_info());

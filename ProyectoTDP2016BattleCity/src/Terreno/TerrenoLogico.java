@@ -24,11 +24,21 @@ public class TerrenoLogico {
 	protected GeneradorDeMapa generador;
 	
 	
-	public TerrenoLogico(Juego j)
+	public TerrenoLogico(Juego j, int n)
 	{
 		juego=j;
 		generador=new GeneradorDeMapa(juego);	//creo un generador de mapa
-		listaObstaculos=generador.generarMapa1(); //obtengo los obtaculos correspondientes al mapa 1
+		
+		switch(n)
+		{
+			case 1 : {listaObstaculos=generador.generarMapa1(); break;}
+			case 2 : {listaObstaculos=generador.generarMapa2(); break;}
+			case 3 : {listaObstaculos=generador.generarMapa3(); break;}
+			case 4 : {listaObstaculos=generador.generarMapa4(); break;}
+			default: {listaObstaculos=generador.generarMapa1(); break;}
+		}
+		
+		 //obtengo los obtaculos correspondientes al mapa 1
 		pwps_en_pantalla = new LinkedList<PowerUp>();
 		
 		//agrego en pantalla los obstaculos
@@ -118,6 +128,34 @@ public class TerrenoLogico {
 		{
 			Obstaculo o = listaObstaculos.get(i);
 			Area area_obstaculo = new Area(o.getEtiqueta().getBounds());
+			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
+				puede_avanzar = puede_avanzar && o.atravesable();		
+			//en el caso de que algun obstaculo con el que chocaria le impide avanzar, entonces el valor de puede_avanzar sera falso
+		}
+		
+		//no se le permite a la entidad movil sobrepasar los limites
+		if (x<0 || x > (juego.getGui().getGj().getPanel_tanque().getWidth()-60) ||
+			y <0 || y>(juego.getGui().getGj().getPanel_tanque().getHeight()-60) ) puede_avanzar=false;
+		
+		return puede_avanzar;
+	}
+	
+	
+	public boolean Puede_Avanzar_relajado_para_tanque(int x, int y, int ancho, int largo)
+	{
+		Rectangle r = new Rectangle(x,y,ancho-10,largo-10);
+		Area area_entidad = new Area(r);
+		
+		Boolean puede_avanzar=true;
+		
+		//cada obstaculo implementa el metodo atravezable el cual indica si puede ser transpasado por una entidad movil
+		for (int i=0; i< listaObstaculos.size(); i++)
+		{
+			Obstaculo o = listaObstaculos.get(i);
+			Rectangle r2 = new Rectangle(o.getX(),o.getY(),o.getEtiqueta().getWidth()-10,o.getEtiqueta().getHeight()-10);
+			
+			Area area_obstaculo = new Area(r2);
+			
 			if (area_entidad.intersects(area_obstaculo.getBounds2D()))
 				puede_avanzar = puede_avanzar && o.atravesable();		
 			//en el caso de que algun obstaculo con el que chocaria le impide avanzar, entonces el valor de puede_avanzar sera falso

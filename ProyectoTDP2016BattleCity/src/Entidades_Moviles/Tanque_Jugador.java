@@ -214,16 +214,13 @@ public class Tanque_Jugador extends EntidadMovil {
 		return nivel.getVel_mov();
 	}
 	
-	
+	/*
 	public void adelante()
 	{
 		//extendiendo funcionalidad
 		super.adelante();
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
 	}
-	
-
-	
 	
 	public void atras()
 	{
@@ -241,6 +238,90 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		super.derecha();
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
+	}
+	*/
+	
+	public void adelante()
+	{
+		
+			if (direccion=='n')
+			{
+				//le preguna al terreno logico si puede avanzar en esa direccion
+				if (getJuego().getTerreno_logico().Puede_Avanzar_relajado_para_tanque(x, y - this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+				{
+					y = y - getVel_mov();
+					etiqueta.setLocation(x,y);
+				}
+			}
+			else
+			{
+				etiqueta.setIcon(graficos.getArriba());
+				direccion = 'n';
+			}
+			getJuego().getTerreno_logico().control_tanque_pwp(this);
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
+	}
+	
+	public void atras()
+	{
+		
+		if (direccion=='s')
+		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
+			if (getJuego().getTerreno_logico().Puede_Avanzar_relajado_para_tanque(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight()))
+			{
+				y= y + getVel_mov();
+				etiqueta.setLocation(x,y);
+			}
+		}
+		else
+		{
+			etiqueta.setIcon(graficos.getAbajo());
+			direccion='s';
+		}
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
+	}
+	
+	public void izquierda()
+	{
+		if (direccion=='i')
+		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
+			if (getJuego().getTerreno_logico().Puede_Avanzar_relajado_para_tanque(x - this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+			{
+				x = x - getVel_mov();
+				etiqueta.setLocation(x,y);
+			}
+		}
+		else
+		{
+			etiqueta.setIcon(graficos.getIzquierda());
+			direccion='i';
+		}
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
+	}
+	
+	
+	public void derecha()
+	{
+		if (direccion=='d')
+		{
+			//le preguna al terreno logico si puede avanzar en esa direccion
+			if (getJuego().getTerreno_logico().Puede_Avanzar_relajado_para_tanque(x + this.getVel_mov(), y, etiqueta.getWidth(), etiqueta.getHeight()))
+			{
+				x= x + getVel_mov();
+				etiqueta.setLocation(x,y);
+			}
+		}
+		else
+		{
+			etiqueta.setIcon(graficos.getDerecha());
+			direccion='d';
+		}
+		getJuego().getTerreno_logico().control_tanque_pwp(this);
+		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 
 }

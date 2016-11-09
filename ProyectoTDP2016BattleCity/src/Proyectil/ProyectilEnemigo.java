@@ -20,7 +20,7 @@ public class ProyectilEnemigo extends Proyectil {
 	{
 		super(vd,d,j);
 		enemigo=e;
-		etiqueta = new JLabel(gb.getBala_Ebasico());
+		etiqueta = new JLabel(gb.getBala_E4());
 		etiqueta.setSize(10,10);
 		
 		super.setPosicion_inicial(d, x, y, ancho, largo);

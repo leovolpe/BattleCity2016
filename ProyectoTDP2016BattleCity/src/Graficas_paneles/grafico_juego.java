@@ -23,6 +23,7 @@ public class grafico_juego {
 	private JPanel panel_tanque;		//panel del tanque
 	private JPanel panel_obstaculos;	//panel de los obstaculos
 	private JPanel panel_balas;			//panel de balas
+	private JPanel panel_pwp;
 	
 	
 	public grafico_juego(Tanque_Jugador tanque)
@@ -30,9 +31,19 @@ public class grafico_juego {
 		inicializar_panel_tanque(tanque);
 		inicializar_panel_obstaculos();
 		inicializar_panel_balas();
+		inicializar_panel_pwp();
 		
 	}
 	
+	private void inicializar_panel_pwp() 
+	{
+		panel_pwp = new JPanel();
+		panel_pwp.setLayout(null);
+		panel_pwp.setOpaque(false);
+		panel_pwp.setBounds(0, 0, 780, 600);	
+		
+	}
+
 	/**inicializa el panel del tanque
 	 * 
 	 * @param t
@@ -151,14 +162,18 @@ public class grafico_juego {
 
 	public void agregar_pwp(PowerUp p) 
 	{
-		panel_obstaculos.add(p.getEtiqueta());
-		panel_obstaculos.repaint();
+		panel_pwp.add(p.getEtiqueta());
+		panel_pwp.repaint();
 	}
 	
 	public void borrar_pwp(PowerUp p)
 	{
-		panel_obstaculos.remove(p.getEtiqueta());
-		panel_obstaculos.repaint();
+		panel_pwp.remove(p.getEtiqueta());
+		panel_pwp.repaint();
+	}
+
+	public JPanel getPanel_pwp() {
+		return panel_pwp;
 	}
 
 

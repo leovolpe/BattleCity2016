@@ -31,6 +31,8 @@ public class EnemigoBasico extends Enemigo
 		v.visitar(this);
 		
 	}
+	
+	
 
 	
 

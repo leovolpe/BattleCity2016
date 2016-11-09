@@ -20,6 +20,7 @@ public class Inteligencia_juego implements Runnable
 	private Random r;
 	private boolean fin_hilo;
 	
+	
 	public Inteligencia_juego(Juego j)
 	{
 		juego=j;
@@ -27,6 +28,7 @@ public class Inteligencia_juego implements Runnable
 		enemigos_muertos=0;
 		cant_ene=0;
 		fin_hilo=false;
+		
 		r = new Random();
 	}
 	
@@ -61,13 +63,8 @@ public class Inteligencia_juego implements Runnable
 	{
 		if (cant_ene<cant_minima_ene)//se asegura que hay dos por pantalla
 		{
-			
-			//while (cant_ene<cant_minima_ene)
-			//{
 				int n = num_aleatorio04();
 				generar_ene_aleatorio(n);
-				
-			//}
 		}
 		else
 		{
@@ -86,27 +83,30 @@ public class Inteligencia_juego implements Runnable
 	
 	private void agregar_powerup()
 	{
-		int n = r.nextInt()%6;
-		if (n<0) n*=-1;
-		PowerUp p = null;
-		switch(n)
-		{
-			case 0 : {p = new Casco(juego,0,0); break;}
-			case 1 : {p = new Estrella(juego,0,0); break;}
-			case 2 : {p = new Granada(juego,0,0); break;}
-			case 3 : {p = new Pala(juego,0,0); break;}
-			case 4 : {p = new Tanque(juego,0,0); break;}
-			case 5 : {p = new Timer(juego,0,0); break;}
-		}
-		buscar_posicion_pwp(p);
-		new Thread(new Temporizador_pwp(juego,p,10)).start();
-		juego.getTerreno_logico().addPwp(p);
+		
+			int n = r.nextInt()%6;
+			if (n<0) n*=-1;
+			PowerUp p = null;
+			switch(n)
+			{
+				case 0 : {p = new Casco(juego,0,0); break;}
+				case 1 : {p = new Estrella(juego,0,0); break;}
+				case 2 : {p = new Granada(juego,0,0); break;}
+				case 3 : {p = new Pala(juego,0,0); break;}
+				case 4 : {p = new Tanque(juego,0,0); break;}
+				case 5 : {p = new Timer(juego,0,0); break;}
+			}
+			buscar_posicion_pwp(p);
+			new Thread(new Temporizador_pwp(juego,p,10)).start();
+			juego.getTerreno_logico().addPwp(p);
+		
+		
 	}
 	
 	private void buscar_posicion_pwp(PowerUp p) 
 	{
-		//posiciones posibles (0,0)	(360,0) (720,0)
-		int n = r.nextInt()%3;
+		//posiciones posibles (0,0)	(360,0) (720,0) // (0,240) (360,240) (720,240) // (0,360)	(360,360) (720,360)
+		int n = r.nextInt()%9;
 		if(n<0) n*=-1;
 		
 		switch(n)
@@ -114,6 +114,12 @@ public class Inteligencia_juego implements Runnable
 			case 0 : {p.setX(0); p.setY(0); break;}
 			case 1 : {p.setX(360); p.setY(0); break;}
 			case 2 : {p.setX(720); p.setY(0); break;}
+			case 3 : {p.setX(0); p.setY(240); break;}
+			case 4 : {p.setX(360); p.setY(240); break;}
+			case 5 : {p.setX(720); p.setY(240); break;}
+			case 6 : {p.setX(0); p.setY(360); break;}
+			case 7 : {p.setX(360); p.setY(360); break;}
+			case 8 : {p.setX(720); p.setY(360); break;}
 		}
 		// TODO Auto-generated method stub
 	}

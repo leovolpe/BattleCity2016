@@ -19,6 +19,10 @@ public class GeneradorDeMapa {
 	
 	private String[][] mapa; //aca se cargara la codificacion
 	private final String archivo_mapa_1 = "src/mapascodificados/mapa1.txt";
+	private final String archivo_mapa_2 = "src/mapascodificados/mapa2.txt";
+	private final String archivo_mapa_3 = "src/mapascodificados/mapa3.txt";
+	private final String archivo_mapa_4 = "src/mapascodificados/mapa4.txt";
+	private String mapafinal;
 	private Juego juego;
 	
 	/**
@@ -36,17 +40,41 @@ public class GeneradorDeMapa {
 		juego=j;
 	}
 	
+	public LinkedList<Obstaculo> generarMapa1()
+	{
+		mapafinal=archivo_mapa_1;
+		return generarMapa();
+	}
+	
+	public LinkedList<Obstaculo> generarMapa2()
+	{
+		mapafinal=archivo_mapa_2;
+		return generarMapa();
+	}
+	
+	public LinkedList<Obstaculo> generarMapa3()
+	{
+		mapafinal=archivo_mapa_3;
+		return generarMapa();
+	}
+	
+	public LinkedList<Obstaculo> generarMapa4()
+	{
+		mapafinal=archivo_mapa_4;
+		return generarMapa();
+	}
+	
 	/**
 	 * Genera una lista con los obtaculos del mapa cargandolos de un archivo de texto
 	 * @return
 	 */
-	public LinkedList<Obstaculo> generarMapa1() 
+	public LinkedList<Obstaculo> generarMapa() 
 	{
 		LinkedList<Obstaculo> listaObs=new LinkedList<Obstaculo>();
 		
 		try {
 			
-			FileReader lector=new FileReader(archivo_mapa_1);
+			FileReader lector=new FileReader(mapafinal);
 			BufferedReader contenido=new BufferedReader(lector);
 			
 			mapa = new String[10][13];
