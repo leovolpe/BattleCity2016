@@ -92,6 +92,7 @@ public class Gui_informacionInicialFinal extends JFrame
 	
 	public void derrota(int pts)
 	{
+		
 		getContentPane().removeAll();
 		getContentPane().add(panel_final);
 		nomb.setText("Jugador : "+nombrejugador+" "+apellidojugador);
@@ -129,7 +130,7 @@ public class Gui_informacionInicialFinal extends JFrame
 		nombre.setOpaque(true);
 		nombre.setBounds(100,200,300,100);
 		panel_inicial.add(nombre);
-		nom = new JTextField("anonimo");
+		nom = new JTextField("AnonimoNom");
 		nom.setFont(new java.awt.Font("Tahoma", 0, 36)); 
 		nom.setBounds(410, 200, 300,100);
 		panel_inicial.add(nom);
@@ -142,7 +143,7 @@ public class Gui_informacionInicialFinal extends JFrame
 		apellido.setOpaque(true);
 		apellido.setBounds(100,301,300,100);
 		panel_inicial.add(apellido);
-		ape = new JTextField("anonimo");
+		ape = new JTextField("AnonimoApe");
 		ape.setFont(new java.awt.Font("Tahoma", 0, 36)); 
 		ape.setBounds(410, 301, 300,100);
 		panel_inicial.add(ape);
@@ -152,11 +153,14 @@ public class Gui_informacionInicialFinal extends JFrame
 		iniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				System.out.println("anda");
 				nombrejugador = nom.getText();
-				apellidojugador = nom.getText();
-				if (nombre.equals("")) nombrejugador ="anonimo";
-				if (apellido.equals("")) apellidojugador ="anonimo";
+				apellidojugador = ape.getText();
+				if (nombrejugador.equals("")) nombrejugador ="AnonimoNom";
+				if (apellidojugador.equals("")) apellidojugador ="AnonimoApe";
+				
+				System.out.println("--"+nombrejugador);
+				System.out.println("--"+apellidojugador);
+				
 				juego.iniciar_juego();
 				
 			}
