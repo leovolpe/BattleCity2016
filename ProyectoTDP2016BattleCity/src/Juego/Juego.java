@@ -47,6 +47,8 @@ public class Juego
 	//manejador de teclado
 	private manejador_teclado_jugador teclado;
 	
+	private final int cant_ene_para_ganar = 10;
+	
 	
 	public Juego()
 	{
@@ -61,7 +63,7 @@ public class Juego
 		guippal.setVisible(false);
 		
 		tanque = new Tanque_Jugador(this);		//creo el tanque
-		gui = new Gui_Juego(tanque);		//creo la gui
+		gui = new Gui_Juego(tanque,cant_ene_para_ganar);		//creo la gui
 		gui.setVisible(true);
 		
 		
@@ -83,7 +85,7 @@ public class Juego
 		hilo_enemigos = new Thread(cont_ene);
 		hilo_enemigos.start();
 		
-		intjuego = new Inteligencia_juego(this);
+		intjuego = new Inteligencia_juego(this,cant_ene_para_ganar);
 		hilo_int = new Thread(intjuego);
 		hilo_int.start();
 	}
@@ -222,6 +224,7 @@ public class Juego
 	public void eliminar_enemigo(Enemigo e)
 	{
 		intjuego.enemigo_muerto();
+		gui.getGi().setRestantes(intjuego.get_cant_p_ganar()-intjuego.get_ene_muertos());
 		cont_ene.elim_enemigo(e);
 		gui.getGj().borrar_enemigo(e);
 	}

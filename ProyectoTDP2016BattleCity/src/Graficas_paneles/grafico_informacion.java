@@ -15,14 +15,13 @@ import javax.swing.SwingConstants;
 public class grafico_informacion {
 	
 	private JPanel panel_info;
-	private JLabel etiqueta_puntaje, etiqueta_txt_vidas; //, etiqueta_vidas;
+	private JLabel etiqueta_puntaje, etiqueta_txt_vidas,enemigos_restantes; //, etiqueta_vidas;
 	
 	
-	private graficos_corazones_vidas graficos_corazones;
 	
-	public grafico_informacion()
+	public grafico_informacion(int restantes)
 	{
-		graficos_corazones = new graficos_corazones_vidas();
+		
 		panel_info = new JPanel();
 		panel_info.setLayout(null);
 		panel_info.setBounds(780, 0, 300, 600);
@@ -30,7 +29,8 @@ public class grafico_informacion {
 		
 		inicializar_etiqueta_puntaje();
 		inicializar_etiqueta_texto_vidas();
-		//inicializar_etiqueta_vidas();
+		inicialziar_etiqueta_restantes(restantes);
+		panel_info.setBackground(Color.BLACK);
 		
 	}
 	
@@ -40,7 +40,9 @@ public class grafico_informacion {
 		etiqueta_puntaje = new JLabel("Puntaje: 0",SwingConstants.CENTER);
 		etiqueta_puntaje.setLocation(0,0);
 		etiqueta_puntaje.setSize(300,100);
-		etiqueta_puntaje.setBorder(new javax.swing.border.LineBorder(Color.RED));
+		
+		etiqueta_puntaje.setForeground(Color.white);
+		//etiqueta_puntaje.setBorder(new javax.swing.border.LineBorder(Color.RED));
 		etiqueta_puntaje.setFont(new Font("Serif", Font.BOLD, 30));
 		panel_info.add(etiqueta_puntaje);
 	}
@@ -51,9 +53,21 @@ public class grafico_informacion {
 		etiqueta_txt_vidas = new JLabel("Vidas : 4",SwingConstants.CENTER);
 		etiqueta_txt_vidas.setLocation(0,100);
 		etiqueta_txt_vidas.setSize(300,50);
-		etiqueta_txt_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
+		etiqueta_txt_vidas.setForeground(Color.white);
+		//etiqueta_txt_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
 		etiqueta_txt_vidas.setFont(new Font("Serif", Font.BOLD, 30));
 		panel_info.add(etiqueta_txt_vidas);
+	}
+	
+	public void inicialziar_etiqueta_restantes(int restantes)
+	{
+		
+		enemigos_restantes = new JLabel("Restantes :"+restantes,SwingConstants.CENTER);
+		enemigos_restantes.setLocation(0,400);
+		enemigos_restantes.setSize(300,50);
+		enemigos_restantes.setForeground(Color.white);
+		enemigos_restantes.setFont(new Font("Serif", Font.BOLD, 30));
+		panel_info.add(enemigos_restantes);
 	}
 	
 	/*
@@ -87,5 +101,11 @@ public class grafico_informacion {
 	{
 		etiqueta_puntaje.setText("Puntaje "+p);
 		panel_info.repaint();
+	}
+
+	public void setRestantes(int i) 
+	{
+		enemigos_restantes.setText("Restantes :"+i);
+		
 	}
 }

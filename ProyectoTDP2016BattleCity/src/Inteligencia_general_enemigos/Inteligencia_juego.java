@@ -19,11 +19,12 @@ public class Inteligencia_juego implements Runnable
 	private Juego juego;
 	private Random r;
 	private boolean fin_hilo;
+	private int cant_para_ganar;
 	
-	
-	public Inteligencia_juego(Juego j)
+	public Inteligencia_juego(Juego j, int cant_ene_para_ganar)
 	{
 		juego=j;
+		cant_para_ganar = cant_ene_para_ganar;
 		pausa=false;
 		enemigos_muertos=0;
 		cant_ene=0;
@@ -48,7 +49,7 @@ public class Inteligencia_juego implements Runnable
 	{
 		enemigos_muertos++;
 		System.out.println("enemigos muertops : "+enemigos_muertos);
-		if(enemigos_muertos==10)
+		if(enemigos_muertos==cant_para_ganar)
 		{
 			System.out.println("gane por diez");
 			juego.ganar();
@@ -199,6 +200,16 @@ public class Inteligencia_juego implements Runnable
 		}
 		// TODO Auto-generated method stub
 		
+	}
+
+	public int get_cant_p_ganar() 
+	{
+		return cant_para_ganar;
+	}
+
+	public int get_ene_muertos() 
+	{
+		return enemigos_muertos;
 	}
 
 }

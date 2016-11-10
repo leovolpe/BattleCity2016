@@ -29,12 +29,12 @@ public class Gui_Juego extends JFrame {
 	private grafico_informacion gi; //contiene el panel de la informacion
 	
 	
-	public Gui_Juego(Tanque_Jugador tanque)
+	public Gui_Juego(Tanque_Jugador tanque, int totalenemigos)
 	{
 		
 		
 		gj = new grafico_juego(tanque);
-		gi = new grafico_informacion();
+		gi = new grafico_informacion(totalenemigos);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panelppal= new JPanel();
