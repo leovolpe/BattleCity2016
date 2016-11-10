@@ -47,8 +47,12 @@ public class Inteligencia_juego implements Runnable
 	public void enemigo_muerto()
 	{
 		enemigos_muertos++;
+		System.out.println("enemigos muertops : "+enemigos_muertos);
 		if(enemigos_muertos==10)
+		{
+			System.out.println("gane por diez");
 			juego.ganar();
+		}
 		else
 		{
 			if (enemigos_muertos%4==0)

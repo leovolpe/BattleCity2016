@@ -34,7 +34,7 @@ public class Gui_informacionInicialFinal extends JFrame
 	//panel final
 	private JPanel panel_final;
 	private JLabel fondofinal;
-	private ImageIcon imgfondofinal;
+	private ImageIcon imgfondofinalv,imgfondofinald;
 	private JLabel nomb, puntaje;
 	private JButton reiniciar;
 	
@@ -149,7 +149,11 @@ public class Gui_informacionInicialFinal extends JFrame
 		reiniciar.setBounds(250,400,300,100);
 		panel_final.add(reiniciar);
 		
-		
+		imgfondofinald = new ImageIcon(getClass().getResource("/Imagenes/fondos/derrotado.png"));
+		imgfondofinalv = new ImageIcon(getClass().getResource("/Imagenes/fondos/victoria.png"));
+		fondofinal = new JLabel();
+		fondofinal.setBounds(0, 0, 800, 600);
+		panel_final.add(fondofinal);
 	}
 	
 	public void derrota(int pts)
@@ -158,11 +162,10 @@ public class Gui_informacionInicialFinal extends JFrame
 		getContentPane().removeAll();
 		getContentPane().add(panel_final);
 		nomb.setText("Jugador : "+nombrejugador+" "+apellidojugador);
-		imgfondofinal = new ImageIcon(getClass().getResource("/Imagenes/fondos/derrotado.png"));
-		fondofinal = new JLabel(imgfondofinal);
-		fondofinal.setBounds(0, 0, 800, 600);
-		panel_final.add(fondofinal);
+		fondofinal.setIcon(imgfondofinald);
 		puntaje.setText("Puntaje : "+pts);
+		getContentPane().repaint();
+		panel_final.repaint();
 	}
 	
 	public void victoria(int pts)
@@ -170,11 +173,10 @@ public class Gui_informacionInicialFinal extends JFrame
 		getContentPane().removeAll();
 		getContentPane().add(panel_final);
 		nomb.setText("Jugador : "+nombrejugador+" "+apellidojugador);
-		imgfondofinal = new ImageIcon(getClass().getResource("/Imagenes/fondos/victoria.png"));
-		fondofinal = new JLabel(imgfondofinal);
-		fondofinal.setBounds(0, 0, 800, 600);
-		panel_final.add(fondofinal);
+		fondofinal.setIcon(imgfondofinalv);
 		puntaje.setText("Puntaje : "+pts);
+		getContentPane().repaint();
+		panel_final.repaint();
 	}
 	
 	private void inicializar_panel_inicial()
@@ -269,6 +271,7 @@ public class Gui_informacionInicialFinal extends JFrame
 		getContentPane().removeAll();
 		getContentPane().repaint();
 		getContentPane().add(panel_inicial);
+		getContentPane().repaint();
 		
 	}
 	
@@ -277,6 +280,7 @@ public class Gui_informacionInicialFinal extends JFrame
 		getContentPane().removeAll();
 		getContentPane().repaint();
 		getContentPane().add(panel_mapa);
+		getContentPane().repaint();
 	}
 	 
 	
