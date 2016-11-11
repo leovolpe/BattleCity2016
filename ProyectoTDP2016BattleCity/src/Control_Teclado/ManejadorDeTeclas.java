@@ -18,7 +18,7 @@ public class ManejadorDeTeclas implements KeyListener
 
 	//procesador de teclas
 	protected Accionadordeteclas procesador;
-	protected AccionadorDisparo disparos;
+	
 	protected Tanque_Jugador tanque;
 	
 	
@@ -34,8 +34,7 @@ public class ManejadorDeTeclas implements KeyListener
 		procesador = new Accionadordeteclas(t,40);
 		procesador.start();
 		
-		disparos = new AccionadorDisparo(t,200);
-		disparos.start();
+		
 		
 	}
 	
@@ -45,7 +44,7 @@ public class ManejadorDeTeclas implements KeyListener
 	public void fin()
 	{
 		procesador.stop();
-		disparos.stop();
+		
 		
 	}
 	
@@ -55,7 +54,7 @@ public class ManejadorDeTeclas implements KeyListener
 	public void pausa()
 	{
 		procesador.pausa();
-		disparos.pausa();
+		
 	}
 	
 	/**
@@ -64,7 +63,7 @@ public class ManejadorDeTeclas implements KeyListener
 	public void fin_pausa()
 	{
 		procesador.fin_pausa();
-		disparos.fin_pausa();
+		
 	}
 	
 	
@@ -81,12 +80,17 @@ public class ManejadorDeTeclas implements KeyListener
 			{
 				procesador.setTecla(k.getKeyCode(), true);
 			}
-		else if ((k.getKeyCode() == KeyEvent.VK_S) 
-				||(k.getKeyCode() == KeyEvent.VK_Q)
-				)
-			disparos.setTecla(k.getKeyCode(), true);
+	
 			
+		if (k.getKeyCode()==KeyEvent.VK_S)
+		{
+			tanque.disparar();
+		}
 		
+		if (k.getKeyCode()==KeyEvent.VK_Q)
+		{
+			tanque.aumentarNivel();
+		}
 
 	}
 	
@@ -106,10 +110,7 @@ public class ManejadorDeTeclas implements KeyListener
 		{
 			procesador.setTecla(k.getKeyCode(), false);
 		}
-		else if ((k.getKeyCode() == KeyEvent.VK_S) 
-				||(k.getKeyCode() == KeyEvent.VK_Q)
-				)
-			disparos.setTecla(k.getKeyCode(), false);
+	
 		
 		
 	}

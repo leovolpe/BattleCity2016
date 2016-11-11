@@ -130,7 +130,8 @@ public class Accionadordeteclas  extends javax.swing.Timer
 	 * @param tecla tecla
 	 * @param estado true o false
 	 */
-	public void setTecla(int tecla, boolean estado) {
+	public void setTecla(int tecla, boolean estado) 
+	{
 		teclas.put(tecla, estado);
 	}
 
