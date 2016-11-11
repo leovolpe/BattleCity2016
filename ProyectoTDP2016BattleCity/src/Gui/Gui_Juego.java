@@ -3,14 +3,13 @@ package Gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import ControladorDeTeclado.manejador_teclado_jugador;
+import Control_Teclado.ManejadorDeTeclas;
 import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_informacion;
 import Graficas_paneles.grafico_juego;
@@ -29,11 +28,11 @@ public class Gui_Juego extends JFrame {
 	private grafico_informacion gi; //contiene el panel de la informacion
 	
 	
-	public Gui_Juego(Tanque_Jugador tanque, int totalenemigos)
+	public Gui_Juego(int totalenemigos)
 	{
 		
 		
-		gj = new grafico_juego(tanque);
+		gj = new grafico_juego();
 		gi = new grafico_informacion(totalenemigos);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,11 +57,12 @@ public class Gui_Juego extends JFrame {
 		
 	}
 	
-	public void agregar_manejador_teclado (manejador_teclado_jugador mt)
-	{
-		this.addKeyListener(mt);
-	}
 	
+	
+	public void add_Tanque(Tanque_Jugador t)
+	{
+		gj.addTanque(t);
+	}
 	
 	/**
 	 * Agraga los paneles
@@ -99,6 +99,11 @@ public class Gui_Juego extends JFrame {
 	
 	public grafico_informacion getGi() {
 		return gi;
+	}
+
+	public void agregar_manejador_teclado(KeyListener k) 
+	{
+		this.addKeyListener(k);
 	}
 
 }

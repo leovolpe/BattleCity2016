@@ -56,7 +56,7 @@ public class Inteligencia_juego implements Runnable
 		}
 		else
 		{
-			if (enemigos_muertos%4==0)
+			if (enemigos_muertos%1==0)
 				agregar_powerup();
 				
 			cant_ene--;

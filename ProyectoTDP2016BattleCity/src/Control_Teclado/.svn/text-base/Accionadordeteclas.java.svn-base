@@ -1,0 +1,168 @@
+package Control_Teclado;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.util.Hashtable;
+import java.util.Map;
+
+import Naves.Tanques.Tanque;
+
+/**Clase que permite realizar acciones cuando dos o  mas teclas se presionan al mismo tiempo
+ * 
+ * @author Javier Graff
+ * @author Eric Avondet
+ * @author Rodrigo Herrera
+ *
+ */
+@SuppressWarnings("serial")
+public class Accionadordeteclas  extends javax.swing.Timer 
+{
+	/** Constante de la tecla para avanzar */
+	final static int adelante = KeyEvent.VK_UP;
+
+	/** Constante de la tecla para ir a la izquierda */
+	final static int izquierda = KeyEvent.VK_LEFT;
+
+	/** Constante de la tecla para ir a la derecha */
+	final static int derecha = KeyEvent.VK_RIGHT;
+	
+	/**Constante de la tecla para retroceder*/
+	final static int atras = KeyEvent.VK_DOWN;
+	
+	/** Mapeo que contiene las letras y un booleano que indica si esta siendo presionada*/
+	private Map<Integer, Boolean> teclas;
+	
+	protected boolean pausa;
+	
+	/**Tanque del jugador que se controlara */
+	private Tanque tanque;
+	
+	
+	
+	/**Constructor
+	 * 
+	 * @param t tanque
+	 * @param retardo cada este tiempo comprueba que teclas hay presionadas y realiza una accion
+	 */
+	public Accionadordeteclas(Tanque t,int retardo)
+	{
+		super(retardo,null);
+		teclas = new Hashtable<Integer, Boolean>();
+		tanque = t;
+		
+		
+		teclas.put(adelante, false);
+		teclas.put(izquierda, false);
+		teclas.put(derecha, false);
+		teclas.put(atras, false);
+		
+		pausa=false;
+		
+		ActionListener oyente = crearOyente();
+		addActionListener(oyente);
+		
+	}
+	
+	/**
+	 * juego en pausa
+	 */
+	public void pausa()
+	{
+		pausa=true;
+	}
+	
+	/**
+	 * juego deja de estar en pausa
+	 */
+	public void fin_pausa()
+	{
+		pausa=false;
+	}
+	
+/**Crea un oyente que realiza determinada accion dependiendo que teclas hay presionadas
+ * 
+ * @return oyente
+ */
+	private ActionListener crearOyente() {
+		ActionListener oyente = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+
+					
+				if (!pausa)
+				{
+				
+					if (teclas.get(adelante) && teclas.get(izquierda)) 
+					{
+						tanque.noroeste();
+						tanque.setIcon(tanque.getIconos().getizq());
+						
+					} 
+					else if (teclas.get(adelante) && teclas.get(derecha)) 
+					{
+						tanque.noreste();
+						tanque.setIcon(tanque.getIconos().getder());
+						
+					} 
+					else if (teclas.get(atras) && teclas.get(izquierda))
+					{
+						tanque.suroeste();
+						tanque.setIcon(tanque.getIconos().getder());
+						
+					}
+					else if (teclas.get(atras) && teclas.get(derecha))
+					{
+						tanque.sureste();
+						tanque.setIcon(tanque.getIconos().getizq());
+						
+					}
+					else if (teclas.get(adelante))
+					{
+						tanque.avanzar();
+						
+					}
+					else if (teclas.get(atras))
+					{
+						tanque.retroceder();
+					}
+					else if (teclas.get(derecha))
+					{
+						tanque.setIcon(tanque.getIconos().getder());
+						tanque.derecha();
+					}
+					else if (teclas.get(izquierda))
+					{
+						tanque.setIcon(tanque.getIconos().getizq());
+						tanque.izquierda();
+					}
+					else if (!teclas.get(derecha) && !teclas.get(izquierda))
+					{
+						tanque.setIcon(tanque.getIconos().getimagen());
+					}
+				}
+				
+				
+			}
+			
+		};
+
+		return oyente;
+	}
+	
+
+	
+	/**
+	 * Setea el estado de una tecla
+	 * @param tecla tecla
+	 * @param estado true o false
+	 */
+	public void setTecla(int tecla, boolean estado) {
+		teclas.put(tecla, estado);
+	}
+
+	
+
+}

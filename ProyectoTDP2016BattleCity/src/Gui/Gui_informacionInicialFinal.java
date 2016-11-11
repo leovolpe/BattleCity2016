@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +28,7 @@ public class Gui_informacionInicialFinal extends JFrame
 	
 	//panel inicial
 	private JPanel panel_inicial;
-	private JLabel nombre, apellido, labelfondo;
+	private JLabel nombre, apellido, labelfondo,labeltitulo;
 	private ImageIcon fondo_inicial;
 	private JTextField nom,ape;
 	private JButton iniciar;
@@ -42,6 +44,7 @@ public class Gui_informacionInicialFinal extends JFrame
 	private JPanel panel_mapa;
 	private JButton b1,b2,b3,b4;
 	private ImageIcon m1,m2,m3,m4;
+	private JLabel infomapa;
 	
 	
 	
@@ -63,6 +66,25 @@ public class Gui_informacionInicialFinal extends JFrame
 		panel_mapa.setLayout(null);
 		panel_mapa.setBackground(Color.black);
 		panel_mapa.setBounds(0, 0, 800, 600);
+		
+		infomapa = new JLabel("Seleccionar Mapa");
+		infomapa.setBounds(0, 0, 800, 30);
+		infomapa.setForeground(Color.white);
+		infomapa.setHorizontalAlignment(JLabel.CENTER);
+		infomapa.setFont(new java.awt.Font("consolas", 0, 36)); 
+		panel_mapa.add(infomapa);
+		
+		/*
+		 * 
+		nomb.setFont(new java.awt.Font("Tahoma", 0, 36)); 
+		nomb.setHorizontalAlignment(JLabel.CENTER);
+		nomb.setOpaque(true);
+		nomb.setBounds(100,200,600,100);
+		nomb.setOpaque(false);
+		nomb.setForeground(Color.white);
+		panel_final.add(nomb);
+		 */
+		
 		
 		m1 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m1.png"));
 		b1 = new JButton();
@@ -186,44 +208,64 @@ public class Gui_informacionInicialFinal extends JFrame
 		panel_inicial.setLayout(null);
 		panel_inicial.setBounds(0, 0, 800, 600);
 		
+		//titulo
+		labeltitulo = new JLabel("Battle City");
+		labeltitulo.setFont(new java.awt.Font("consolas", 0, 70)); 
+		labeltitulo.setHorizontalAlignment(JLabel.CENTER);
+		labeltitulo.setBounds(0, 0, 800, 100);
+		labeltitulo.setOpaque(false);
+		panel_inicial.add(labeltitulo);
 		
 		//NOMBRE
 		nombre = new JLabel("NOMBRE");
-		nombre.setFont(new java.awt.Font("Tahoma", 0, 36)); 
+		nombre.setFont(new java.awt.Font("consolas", 0, 36)); 
 		nombre.setHorizontalAlignment(JLabel.CENTER);
 		nombre.setOpaque(true);
 		nombre.setBounds(100,200,300,100);
 		panel_inicial.add(nombre);
-		nom = new JTextField("AnonimoNom");
-		nom.setFont(new java.awt.Font("Tahoma", 0, 36)); 
+		nom = new JTextField();
+		nom.setFont(new java.awt.Font("consolas", 0, 36)); 
 		nom.setBounds(410, 200, 300,100);
+		nom.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                nom.setText("");
+            }
+        });
+
 		panel_inicial.add(nom);
 		
 		
 		//apellido
 		apellido = new JLabel("APELLIDO");
-		apellido.setFont(new java.awt.Font("Tahoma", 0, 36)); 
+		apellido.setFont(new java.awt.Font("consolas", 0, 36)); 
 		apellido.setHorizontalAlignment(JLabel.CENTER);
 		apellido.setOpaque(true);
 		apellido.setBounds(100,301,300,100);
 		panel_inicial.add(apellido);
-		ape = new JTextField("AnonimoApe");
-		ape.setFont(new java.awt.Font("Tahoma", 0, 36)); 
+		ape = new JTextField();
+		ape.setFont(new java.awt.Font("consolas", 0, 36)); 
 		ape.setBounds(410, 301, 300,100);
+		ape.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                ape.setText("");
+            }
+        });
 		panel_inicial.add(ape);
 		
 		
-		iniciar = new JButton("INICIAR");
+		iniciar = new JButton("INICIAR JUEGO");
+		iniciar.setFont(new java.awt.Font("consolas", 0, 20)); 
 		iniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				nombrejugador = nom.getText();
 				apellidojugador = ape.getText();
-				if (nombrejugador.equals("")) nombrejugador ="AnonimoNom";
-				if (apellidojugador.equals("")) apellidojugador ="AnonimoApe";
+				if (nombrejugador.equals("")) nombrejugador ="Player1Nom";
+				if (apellidojugador.equals("")) apellidojugador ="Player1Ape";
 				
-				System.out.println("--"+nombrejugador);
-				System.out.println("--"+apellidojugador);
+				
 				
 				mapas();
 				//juego.iniciar_juego();

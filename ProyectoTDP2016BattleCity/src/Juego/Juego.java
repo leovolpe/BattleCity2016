@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 import java.awt.geom.Area;
 import java.util.Random;
 
-import ControladorDeTeclado.manejador_auxiliar_teclado;
-import ControladorDeTeclado.manejador_teclado_jugador;
+import Control_Teclado.ManejadorDeTeclas;
+
 import Controladores.Controlador_Enemigos;
 import Controladores.Controlador_balas;
 import Enemigos.*;
@@ -17,6 +17,7 @@ import Obstaculos.Obstaculo;
 
 import PowerUps.*;
 import Proyectil.Proyectil;
+import Temporizadores.efecto_explosion.efecto_explosion;
 import Terreno.TerrenoLogico;
 
 
@@ -40,14 +41,17 @@ public class Juego
 	private Inteligencia_juego intjuego;
 	private Thread hilo_int;
 	
+	private efecto_explosion exp;
+	
 	
 	//se usa para crear el enemigo, sera borrado mas tarde
 	private Enemigo EnemigoEnPantalla;
 	
-	//manejador de teclado
-	private manejador_teclado_jugador teclado;
+	
 	
 	private final int cant_ene_para_ganar = 10;
+	
+	private ManejadorDeTeclas manejador_tec;
 	
 	
 	public Juego()
@@ -60,19 +64,26 @@ public class Juego
 	
 	public void iniciar_juego(int n)
 	{
+		exp = new efecto_explosion(this);
 		guippal.setVisible(false);
 		
+		
+		gui = new Gui_Juego(cant_ene_para_ganar);		//creo la gui
 		tanque = new Tanque_Jugador(this);		//creo el tanque
-		gui = new Gui_Juego(tanque,cant_ene_para_ganar);		//creo la gui
+		gui.add_Tanque(tanque);
 		gui.setVisible(true);
 		
 		
 		//POR AHORA TENGO DOS MANEJADORES DE TECLADO QUE LUEGO SERAN UNO
 		
-		teclado = new manejador_teclado_jugador(tanque);
-		gui.agregar_manejador_teclado(teclado);
+		//teclado = new manejador_teclado_jugador(tanque);
+		//gui.agregar_manejador_teclado(teclado);
 		
-		gui.addKeyListener(new manejador_auxiliar_teclado(this));
+		manejador_tec = new ManejadorDeTeclas(tanque);
+		gui.agregar_manejador_teclado(manejador_tec);
+		
+		
+		
 		terreno_logico = new TerrenoLogico(this,n);
 		//////////////////////////////////////////////////////
 		 
@@ -92,10 +103,12 @@ public class Juego
 	
 	public void perder()
 	{
-		gui.setVisible(false);
-		cont_balas.terminar_hilo();
+		
 		cont_ene.terminar_hilo();
 		intjuego.fin_hilo();
+		cont_balas.terminar_hilo();
+		gui.setVisible(false);
+		
 		
 		guippal.derrota(tanque.getPuntaje());
 		guippal.setVisible(true);
@@ -104,10 +117,13 @@ public class Juego
 	
 	public void ganar()
 	{
-		gui.setVisible(false);
-		cont_balas.terminar_hilo();
+		
+		
+		
 		cont_ene.terminar_hilo();
 		intjuego.fin_hilo();
+		cont_balas.terminar_hilo();
+		gui.setVisible(false);
 		
 		guippal.victoria(tanque.getPuntaje());
 		guippal.setVisible(true);
@@ -227,6 +243,7 @@ public class Juego
 		gui.getGi().setRestantes(intjuego.get_cant_p_ganar()-intjuego.get_ene_muertos());
 		cont_ene.elim_enemigo(e);
 		gui.getGj().borrar_enemigo(e);
+		exp.explotar60x60(e.getX(), e.getY());
 	}
 
 	
@@ -253,6 +270,7 @@ public class Juego
 		gui.getGj().getPanel_obstaculos().remove(o.getEtiqueta());
 		gui.getGj().getPanel_obstaculos().repaint();
 		terreno_logico.eliminar_obstaculo(o);
+		exp.explotar60x60(o.getX(), o.getY());
 	}
 	
 	
@@ -307,5 +325,14 @@ public class Juego
 		return intjuego;
 	}
 	
+	public void efecto_exp_tanque()
+	{
+		exp.explotar60x60(tanque.getX(), tanque.getY());
+	}
+	
+	public void aumentar_nivel_graficamente(int n)
+	{
+		gui.getGi().setNivel(n);
+	}
 	
 }

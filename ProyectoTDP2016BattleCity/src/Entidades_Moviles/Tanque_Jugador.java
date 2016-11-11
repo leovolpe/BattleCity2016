@@ -101,6 +101,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		//num_niv=1;
 		nivel = new Nivel1(this);
+		getJuego().aumentar_nivel_graficamente(1);
 	}
 	
 	/**
@@ -110,6 +111,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		//num_niv=2;
 		nivel = new Nivel2(this);
+		getJuego().aumentar_nivel_graficamente(2);
 	}
 	
 	/**
@@ -119,7 +121,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		//num_niv=3;
 		nivel = new Nivel3(this);
-		
+		getJuego().aumentar_nivel_graficamente(3);
 	}
 	
 	/**
@@ -129,6 +131,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		//num_niv=4;
 		nivel = new Nivel4(this);
+		getJuego().aumentar_nivel_graficamente(4);
 	}
 	
 	
@@ -194,6 +197,7 @@ public class Tanque_Jugador extends EntidadMovil {
 			if (vidas==0) getJuego().perder();
 			else
 			{
+				getJuego().efecto_exp_tanque();
 				getJuego().set_vidas(vidas);
 				setNivel1();
 				this.getEtiqueta().setIcon(graficos.getArriba());

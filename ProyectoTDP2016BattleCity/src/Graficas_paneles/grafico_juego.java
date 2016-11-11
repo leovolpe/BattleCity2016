@@ -3,8 +3,10 @@ package Graficas_paneles;
 
 
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Control_Teclado.ManejadorDeTeclas;
 import Enemigos.Enemigo;
 import Entidades_Moviles.Tanque_Jugador;
 import Obstaculos.Obstaculo;
@@ -26,9 +28,9 @@ public class grafico_juego {
 	private JPanel panel_pwp;
 	
 	
-	public grafico_juego(Tanque_Jugador tanque)
+	public grafico_juego()
 	{
-		inicializar_panel_tanque(tanque);
+		inicializar_panel_tanque();
 		inicializar_panel_obstaculos();
 		inicializar_panel_balas();
 		inicializar_panel_pwp();
@@ -48,13 +50,13 @@ public class grafico_juego {
 	 * 
 	 * @param t
 	 */
-	private void inicializar_panel_tanque(Tanque_Jugador t)
+	private void inicializar_panel_tanque()
 	{
 		panel_tanque = new JPanel();
 		panel_tanque.setLayout(null);
 		panel_tanque.setOpaque(false);
 		panel_tanque.setBounds(0, 0, 780, 600);
-		panel_tanque.add(t.getEtiqueta());
+		
 		panel_tanque.repaint();
 
 	}
@@ -68,6 +70,7 @@ public class grafico_juego {
 		panel_obstaculos.setLayout(null);
 		panel_obstaculos.setOpaque(false);
 		panel_obstaculos.setBounds(0, 0, 780, 600);	
+		
 
 	}
 	
@@ -177,6 +180,24 @@ public class grafico_juego {
 	}
 
 
+
+	public void addexplosion60x60(JLabel j)
+	{
+		panel_obstaculos.add(j);
+		panel_obstaculos.repaint();
+	}
+	
+	public void removeexplosion60x60(JLabel j)
+	{
+		panel_obstaculos.remove(j);
+		panel_obstaculos.repaint();
+	}
+
+	public void addTanque(Tanque_Jugador t) 
+	{
+		panel_tanque.add(t.getEtiqueta());
+		
+	}
 
 	
 	
