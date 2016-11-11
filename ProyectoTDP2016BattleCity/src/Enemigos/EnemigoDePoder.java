@@ -23,11 +23,11 @@ public class EnemigoDePoder extends Enemigo
 		this.setY(0);
 	}
 
+	
 	@Override
 	public void accept(Visitor_Proyectil_enemigos v) 
 	{
 		v.visitar(this);
-		
 	}
 
 }

@@ -8,7 +8,6 @@ import Visitor_Proyectiles.Visitor_Proyectil_enemigos;
 
 /**Enemigo basico
  * 
- * @author Javier
  *
  */
 public class EnemigoBasico extends Enemigo

@@ -1,7 +1,6 @@
 package Enemigos;
 
 import java.util.Random;
-
 import Entidades_Moviles.EntidadMovil;
 import Juego.Juego;
 import Proyectil.ProyectilEnemigo;
@@ -31,7 +30,6 @@ public abstract class Enemigo extends EntidadMovil{
 		int aleatorio = ran.nextInt()%10;
 		if (aleatorio<0) aleatorio*=-1;
 		if (aleatorio==5) disparar();
-		
 		//random para ver si dispara
 		  
 		 
@@ -58,7 +56,7 @@ public abstract class Enemigo extends EntidadMovil{
 							
 						break;
 					}
-			case 1 : {
+			case 1 : {		//esto esta comentado para que el enemigo tienda a bajar en el mapa//
 						if (/*getJuego().getTerreno_logico().Puede_Avanzar(x, y + this.getVel_mov(), etiqueta.getWidth(), etiqueta.getHeight())
 								&&*/ !getJuego().getCont_ene().interseccion_entre_enemigos(this,x,y+this.getVel_mov()))
 							atras();
@@ -89,23 +87,13 @@ public abstract class Enemigo extends EntidadMovil{
 	@Override
 	public void disparar() 
 	{
-		/*
-		 * if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
-		{
-			disparos_en_pantalla++;
-			
-			//Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
-			nivel.nuevo_disparo_jugador(this, direccion, this.getX(), this.getEtiqueta().getWidth(), this.getY(), this.getEtiqueta().getHeight(), getJuego());
-		}
-		 */
 		if (disparos_en_pantalla<disparos_simultaneos)
 		{
 			disparos_en_pantalla++;
 			new ProyectilEnemigo(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),vel_disp);
 		}
-		
-		
 	}
+	
 	
 	public void destruirse()
 	{
@@ -126,8 +114,6 @@ public abstract class Enemigo extends EntidadMovil{
 	}
 	
 	
-	
-
 	public abstract void accept(Visitor_Proyectil_enemigos v);
 	
 

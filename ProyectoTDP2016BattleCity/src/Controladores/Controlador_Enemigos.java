@@ -10,8 +10,6 @@ import Juego.Juego;
 import Proyectil.Proyectil;
 
 /**Controla a los enemigos
- * 
- *
  */
 public class Controlador_Enemigos implements Runnable 
 {
@@ -34,6 +32,8 @@ public class Controlador_Enemigos implements Runnable
 		terminar_hilo=false;
 	}
 	
+	
+	//elimina todos los enemigos (usado por el powerup)
 	public void destruir_todos(Juego j)
 	{
 		for (int i=0; i<lista_enemigos.size();i++)
@@ -42,10 +42,13 @@ public class Controlador_Enemigos implements Runnable
 		}
 	}
 	
+	
+	//pausa en el hilo
 	public void set_pausa(Boolean b)
 	{
 		pausa=b;
 	}
+	
 	
 	//retorna true si se puede agregar un enemigo en este lugar
 	//el y recibido es cero
@@ -64,6 +67,7 @@ public class Controlador_Enemigos implements Runnable
 		return puede;
 	}
 	
+	
 	/**
 	 * indica que el enemigo e debe ser agregado
 	 * @param e
@@ -72,6 +76,7 @@ public class Controlador_Enemigos implements Runnable
 	{
 		lista_enemigos_agregar.add(e);
 	}
+	
 	
 	/**
 	 * Agraga los enemigos que se indico que debian ser agregados
@@ -94,6 +99,7 @@ public class Controlador_Enemigos implements Runnable
 		lista_enemigos_borrar.add(e);
 	}
 	
+	
 	/**
 	 * Elimina los enemigos que se indico que debian eliminarse
 	 */
@@ -107,18 +113,20 @@ public class Controlador_Enemigos implements Runnable
 	}
 	
 	
+	//finaliza le ejecucion del hilo
 	public void terminar_hilo()
 	{
 		terminar_hilo=true;
 	}
 	
 	
-	
+	//mueve todos los enemigos
 	private void mover_enemigos()
 	{
 		for (int i=0; i<lista_enemigos.size(); i++)
 			lista_enemigos.get(i).mover();
 	}
+	
 	
 	/**
 	 * Recibe un proyectil y controla si choca con algun enemigo, en caso de
@@ -141,6 +149,8 @@ public class Controlador_Enemigos implements Runnable
 		
 	}
 	
+	
+	//controla si un enemigo choca con un tanque, si ambos chocan ambos mueren
 	private void control_tanque()
 	{
 		Area at = new Area(juego.getTanque().getEtiqueta().getBounds());
@@ -155,6 +165,7 @@ public class Controlador_Enemigos implements Runnable
 				}
 		}
 	}
+	
 	
 	/**dado un enemigo, y una posicion (x,y) que corresponde a la posicion de "e" si se realizara cierto movimiento
 	 * controla si tras ese posible movimiento, el enemigo e choca con otro de los enemigos
@@ -182,12 +193,14 @@ public class Controlador_Enemigos implements Runnable
 		return intersecta;
 	}
 	
+	
+	
 	@Override
 	public void run() 
 	{
 		while (!terminar_hilo)
 		{
-			control_tanque();
+			control_tanque();			//controla si choca alguno con el jugador
 			eliminar_enemigos();		//elimina los eliminables
 			agregar_enemigos();			//agrega los agregables
 			if (!pausa)
@@ -200,13 +213,8 @@ public class Controlador_Enemigos implements Runnable
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			
-			
-			
 		}
-		
-		// TODO Auto-generated method stub
-		
 	}
 
+	
 }

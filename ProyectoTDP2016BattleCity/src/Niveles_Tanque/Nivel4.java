@@ -14,7 +14,7 @@ public class Nivel4 extends Nivel
 	//resistencia, velocidad de movimiento, velocidad de disparo, disparos simultaneos permitidos
 	public Nivel4(Tanque_Jugador t) 
 	{
-		super(4, 10, 9, 3);
+		super(4, 8, 12, 3);
 		nueva_pos(t);
 	}
 

@@ -8,8 +8,6 @@ import Juego.Juego;
 import Proyectil.Proyectil;
 
 /**controla a los proyectiles
- * 
- *
  */
 public class Controlador_balas implements Runnable 
 {
@@ -84,6 +82,7 @@ public class Controlador_balas implements Runnable
 
 	}
 	
+	//Controla si una bala choca con un tanque
 	public void control_tanque()
 	{
 		Area atanque = new Area(juego.getTanque().getEtiqueta().getBounds());
@@ -142,7 +141,7 @@ public class Controlador_balas implements Runnable
 			
 			
 			try {
-				Thread.sleep(80);
+				Thread.sleep(70);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

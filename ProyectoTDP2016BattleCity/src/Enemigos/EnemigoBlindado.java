@@ -20,9 +20,9 @@ public class EnemigoBlindado extends Enemigo
 		etiqueta.setSize(60, 60);
 		this.setX(0);
 		this.setY(0);
-	
 	}
 
+	
 	@Override
 	public void accept(Visitor_Proyectil_enemigos v) 
 	{

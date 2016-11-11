@@ -29,12 +29,8 @@ public class Accionadordeteclas  extends javax.swing.Timer
 	/**Constante de la tecla para retroceder*/
 	final static int atras = KeyEvent.VK_DOWN;
 	
-	
-	
 	/** Mapeo que contiene las letras y un booleano que indica si esta siendo presionada*/
 	private Map<Integer, Boolean> teclas;
-	
-	protected boolean pausa;
 	
 	/**Tanque del jugador que se controlara */
 	private Tanque_Jugador tanque;
@@ -55,43 +51,20 @@ public class Accionadordeteclas  extends javax.swing.Timer
 		teclas.put(atras, false);
 		
 		
-		pausa=false;
 		
 		ActionListener oyente = crearOyente();
 		addActionListener(oyente);
 		
 	}
 	
-	/**
-	 * juego en pausa
-	 */
-	public void pausa()
-	{
-		pausa=true;
-	}
+
 	
-	/**
-	 * juego deja de estar en pausa
-	 */
-	public void fin_pausa()
-	{
-		pausa=false;
-	}
-	
-/**Crea un oyente que realiza determinada accion dependiendo que teclas hay presionadas
- * 
- * @return oyente
- */
 	private ActionListener crearOyente() {
 		ActionListener oyente = new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-
-					
-				if (!pausa)
-				{
 				
 					if (teclas.get(adelante))
 					{
@@ -110,11 +83,6 @@ public class Accionadordeteclas  extends javax.swing.Timer
 					{
 						tanque.izquierda();
 					}
-					
-					
-					
-				}
-				
 				
 			}
 			
@@ -125,11 +93,6 @@ public class Accionadordeteclas  extends javax.swing.Timer
 	
 
 	
-	/**
-	 * Setea el estado de una tecla
-	 * @param tecla tecla
-	 * @param estado true o false
-	 */
 	public void setTecla(int tecla, boolean estado) 
 	{
 		teclas.put(tecla, estado);
