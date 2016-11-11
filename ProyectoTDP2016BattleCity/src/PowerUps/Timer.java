@@ -22,6 +22,7 @@ public class Timer extends PowerUp {
 	@Override
 	public void contacto(Tanque_Jugador ta) 
 	{
+		getJuego().getSounds().timer();
 		ta.aumentarPuntaje(puntos);
 		Temporizador_detener t = new Temporizador_detener(getJuego(),10);
 		new Thread(t).start();

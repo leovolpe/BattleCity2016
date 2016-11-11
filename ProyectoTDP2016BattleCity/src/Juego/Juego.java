@@ -17,6 +17,7 @@ import PowerUps.*;
 import Proyectil.Proyectil;
 import Temporizadores.efecto_explosion.efecto_explosion;
 import Terreno.TerrenoLogico;
+import sonidos.sonidos;
 
 
 /*
@@ -43,6 +44,8 @@ public class Juego
 	private final int cant_ene_para_ganar = 20;
 	private ManejadorDeTeclas manejador_tec;
 	
+	private sonidos sounds;
+	
 	
 	public Juego()
 	{
@@ -55,6 +58,7 @@ public class Juego
 	
 	public void iniciar_juego(int n)
 	{
+		sounds = new sonidos();
 		exp = new efecto_explosion(this);
 		guippal.setVisible(false);
 		
@@ -87,7 +91,7 @@ public class Juego
 	
 	public void perder()
 	{
-		
+		sounds.derrota();
 		cont_ene.terminar_hilo();
 		intjuego.fin_hilo();
 		cont_balas.terminar_hilo();
@@ -100,7 +104,7 @@ public class Juego
 	
 	public void ganar()
 	{
-
+		sounds.victoria();
 		cont_ene.terminar_hilo();
 		intjuego.fin_hilo();
 		cont_balas.terminar_hilo();
@@ -157,6 +161,7 @@ public class Juego
 	 */
 	public void eliminar_enemigo(Enemigo e)
 	{
+		sounds.explosion();
 		intjuego.enemigo_muerto();
 		gui.getGi().setRestantes(intjuego.get_cant_p_ganar()-intjuego.get_ene_muertos());
 		cont_ene.elim_enemigo(e);
@@ -245,6 +250,12 @@ public class Juego
 	public void aumentar_nivel_graficamente(int n)
 	{
 		gui.getGi().setNivel(n);
+	}
+
+
+
+	public sonidos getSounds() {
+		return sounds;
 	}
 	
 }

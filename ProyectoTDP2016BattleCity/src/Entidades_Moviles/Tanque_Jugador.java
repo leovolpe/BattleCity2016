@@ -17,6 +17,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	private Nivel nivel;
 	
 	
+	
 	public Tanque_Jugador(Juego j) 
 	{
 		super(1, 1, 1, 1,'n',j); //valores por defecto que no se usaran
@@ -41,6 +42,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	{
 		if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
 		{
+			getJuego().getSounds().disparo_t();
 			disparos_en_pantalla++;
 			nivel.nuevo_disparo_jugador(this, direccion, this.getX(), this.getEtiqueta().getWidth(), this.getY(), this.getEtiqueta().getHeight(), getJuego());
 		}
@@ -58,6 +60,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	public void aumentarNivel()
 	{
 		nivel.aumentar_nivel(this);
+		getJuego().getSounds().cambio_nivel();
 	}
 	
 	
@@ -163,7 +166,10 @@ public class Tanque_Jugador extends EntidadMovil {
 		if (!inmunidad)
 		{
 			vidas--;
-			if (vidas==0) getJuego().perder();
+			if (vidas==0) 
+				{
+					getJuego().perder();
+				}
 			else
 			{
 				getJuego().efecto_exp_tanque();
@@ -171,6 +177,7 @@ public class Tanque_Jugador extends EntidadMovil {
 				setNivel1();
 				this.getEtiqueta().setIcon(graficos.getArriba());
 				direccion='n';
+				getJuego().getSounds().explosion();
 			}
 		}
 	}
@@ -272,7 +279,8 @@ public class Tanque_Jugador extends EntidadMovil {
 
 
 	@Override
-	protected void destruirse() {
+	protected void destruirse() 
+	{
 		// TODO Auto-generated method stub
 		
 	}

@@ -91,6 +91,7 @@ public abstract class Enemigo extends EntidadMovil{
 		{
 			disparos_en_pantalla++;
 			new ProyectilEnemigo(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),vel_disp);
+			getJuego().getSounds().disparo_e();
 		}
 	}
 	

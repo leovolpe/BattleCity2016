@@ -21,6 +21,7 @@ public class Pala extends PowerUp {
 	@Override
 	public void contacto(Tanque_Jugador ta) 
 	{
+		getJuego().getSounds().paredes();
 		ta.aumentarPuntaje(puntos);
 		getJuego().getTerreno_logico().paredes_acero();
 		destruirse();

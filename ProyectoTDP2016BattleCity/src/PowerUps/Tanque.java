@@ -21,6 +21,7 @@ public class Tanque extends PowerUp {
 	@Override
 	public void contacto(Tanque_Jugador ta) 
 	{
+		getJuego().getSounds().vida();
 		ta.aumentarPuntaje(puntos);
 		ta.aumentar_vida();
 		destruirse();

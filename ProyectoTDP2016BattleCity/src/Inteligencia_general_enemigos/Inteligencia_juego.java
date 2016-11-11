@@ -91,7 +91,7 @@ public class Inteligencia_juego implements Runnable
 	private void agregar_powerup()
 	{
 		
-			int n = r.nextInt()%6;
+			int n = r.nextInt()%9;
 			if (n<0) n*=-1;
 			PowerUp p = null;
 			switch(n)
@@ -102,6 +102,9 @@ public class Inteligencia_juego implements Runnable
 				case 3 : {p = new Pala(juego,0,0); break;}
 				case 4 : {p = new Tanque(juego,0,0); break;}
 				case 5 : {p = new Timer(juego,0,0); break;}
+				case 6 : {p = new Estrella(juego,0,0); break;}
+				case 7 : {p = new Estrella(juego,0,0); break;}
+				case 8 : {p = new Estrella(juego,0,0); break;}
 			}
 			buscar_posicion_pwp(p);
 			new Thread(new Temporizador_pwp(juego,p,10)).start();
