@@ -39,16 +39,17 @@ public class Nivel2 extends Nivel
 		
 	}
 
+	
 	@Override
 	public void aumentar_nivel(Tanque_Jugador t) 
 	{
 		t.setNivel3();
 	}
+	
 
 	@Override
 	public void nuevo_disparo_jugador(Tanque_Jugador t, char d, int x, int ancho, int y, int largo, Juego j) 
 	{
-		// TODO Auto-generated method stub
 		new ProyectilJugador(t,d,x,ancho,y,largo,j,getVel_disp());
 	}
 

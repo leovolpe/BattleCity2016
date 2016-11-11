@@ -18,7 +18,6 @@ public class grafico_informacion {
 	private JLabel etiqueta_puntaje, etiqueta_txt_vidas,enemigos_restantes,nivel; //, etiqueta_vidas;
 	
 	
-	
 	public grafico_informacion(int restantes)
 	{
 		
@@ -84,17 +83,7 @@ public class grafico_informacion {
 		panel_info.add(nivel);
 	}
 	
-	/*
-	public void inicializar_etiqueta_vidas()
-	{
-		//etiqueta puntaje inicializacion
-		etiqueta_vidas = new JLabel(graficos_corazones.getC4());
-		etiqueta_vidas.setLocation(0,150);
-		etiqueta_vidas.setSize(300,300);
-		etiqueta_vidas.setBorder(new javax.swing.border.LineBorder(Color.RED));
-		panel_info.add(etiqueta_vidas);
-	}
-	*/
+	
 
 	/**
 	 * Retorna el panel que contiene la informacion

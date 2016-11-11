@@ -26,9 +26,8 @@ public class Temporizador_intercambio_paredes implements Runnable
 		juego=j;
 		listaObstaculos = listaobs;
 		set_paredes();
-		
-		
 	}
+	
 	
 	private void set_paredes()
 	{
@@ -46,12 +45,7 @@ public class Temporizador_intercambio_paredes implements Runnable
 			{
 				eliminables.add(o);
 				agregables.add(new ParedAcero(x,y,juego));
-				//juego.eliminar_obstaculo(o);
-				//Obstaculo obs = new ParedAcero(x,y,juego);
-				//listaObstaculos.add(obs);
-				//juego.agregar_obstaculo_graficamente(obs);
 			}
-			
 		}
 		
 		for(int i=0; i<eliminables.size();i++)
@@ -65,8 +59,8 @@ public class Temporizador_intercambio_paredes implements Runnable
 			listaObstaculos.add(o);
 			juego.agregar_obstaculo_graficamente(o);
 		}
-		
 	}
+	
 	
 	private void reset_paredes()
 	{
@@ -83,9 +77,7 @@ public class Temporizador_intercambio_paredes implements Runnable
 			{
 				eliminables.add(o);
 				agregables.add(new ParedLadrillo(x,y,juego));
-				
 			}
-			
 		}
 		
 		for(int i=0; i<eliminables.size();i++)
@@ -102,10 +94,11 @@ public class Temporizador_intercambio_paredes implements Runnable
 		
 	}
 	
+	
 	@Override
 	public void run() 
 	{
-		System.out.println("inidico paredes");
+		
 		while (segundos!=cont)
 		{
 			cont++;
@@ -118,11 +111,6 @@ public class Temporizador_intercambio_paredes implements Runnable
 			if(segundos==cont)
 				reset_paredes();
 		}
-	
-		System.out.println("fin paredes");
-		 
-		
-		
 	}
 
 }

@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import Control_Teclado.ManejadorDeTeclas;
 import Entidades_Moviles.Tanque_Jugador;
 import Graficas_paneles.grafico_informacion;
 import Graficas_paneles.grafico_juego;
@@ -17,7 +16,6 @@ import Graficas_paneles.grafico_juego;
 
 /**Gui del juego, maneja la parte grafica
  * 
- *
  */
 @SuppressWarnings("serial")
 public class Gui_Juego extends JFrame {

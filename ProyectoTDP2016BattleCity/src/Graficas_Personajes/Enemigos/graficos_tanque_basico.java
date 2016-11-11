@@ -6,7 +6,6 @@ import Graficas_Personajes.graficos_entidad;
 
 /**Graficos del tanque basico
  * 
- * @author Javier
  *
  */
 public class graficos_tanque_basico extends graficos_entidad {

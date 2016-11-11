@@ -31,14 +31,10 @@ public class Base extends Obstaculo
 	}
 
 
-
-	
-
 	@Override
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
-		
 	}
 	
 

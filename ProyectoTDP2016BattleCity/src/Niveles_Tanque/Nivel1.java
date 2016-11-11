@@ -33,11 +33,7 @@ public class Nivel1 extends Nivel {
 	@Override
 	public void nuevo_disparo_jugador(Tanque_Jugador t, char d, int x, int ancho, int y, int largo, Juego j) 
 	{
-		//new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
 		new ProyectilJugador(t,d,x,ancho,y,largo,j,getVel_disp());
-		
 	}
 	
-	
-
 }

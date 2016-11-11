@@ -18,37 +18,38 @@ public class Visitor_proyectil_jugadorN4_obstaculo extends Visitor_Proyectil_obs
 	
 
 	@Override
-	public void visitar(Agua a) {
+	public void visitar(Agua a) 
+	{
 		// TODO Auto-generated method stub
-		
 	}
 
+	
 	@Override
-	public void visitar(Arbol a) {
+	public void visitar(Arbol a) 
+	{
 		// TODO Auto-generated method stub
-		
 	}
 
+	
 	@Override
-	public void visitar(Base b) {
-		// TODO Auto-generated method stub
+	public void visitar(Base b) 
+	{
 		System.out.println("perdi");
 		juego.perder();
 	}
 
+	
 	@Override
 	public void visitar(ParedAcero p) 
 	{
-		// TODO Auto-generated method stub
 		p.reducir_energia();
 		proy.destruirse();
-		
 	}
+	
 
 	@Override
 	public void visitar(ParedLadrillo p) 
 	{
-		// TODO Auto-generated method stub
 		p.reducir_energia();
 		proy.destruirse();
 	}

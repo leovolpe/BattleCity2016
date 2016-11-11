@@ -12,8 +12,6 @@ import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 public class Agua extends Obstaculo
 {
 
-	
-	
 	public Agua(int xx, int yy, Juego j) 
 	{
 		super(2,j);
@@ -25,7 +23,6 @@ public class Agua extends Obstaculo
 
 
 
-
 	@Override
 	public boolean atravesable() 
 	{
@@ -33,14 +30,11 @@ public class Agua extends Obstaculo
 		//el agua no es atravesable
 	}
 
-
-
 	
 	@Override
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
-		
 	}
 
 

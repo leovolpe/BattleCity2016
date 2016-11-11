@@ -6,10 +6,7 @@ public class Efecto_explosion_grafico
 {
 	private static ImageIcon explosion;
 	
-	public Efecto_explosion_grafico()
-	{
-		
-	}
+	
 	
 	public ImageIcon getExplosion()
 	{

@@ -2,7 +2,6 @@ package Terreno;
 
 import java.awt.Rectangle;
 import java.awt.geom.Area;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,6 +47,7 @@ public class TerrenoLogico {
 		}		
 	}
 	
+	
 	//se fija si no fue atrapado y lo borra
 	public void intentar_borrar(PowerUp p)
 	{
@@ -55,11 +55,11 @@ public class TerrenoLogico {
 			removePwp(p);
 	}
 	
+	
 	public void paredes_acero()
 	{
 		Temporizador_intercambio_paredes t = new Temporizador_intercambio_paredes(listaObstaculos,juego,10);
 		new Thread(t).start();
-		
 	}
 	
 	
@@ -69,10 +69,10 @@ public class TerrenoLogico {
 		juego.agregar_powerup_graficamente(p);
 	}
 	
+	
 	public void removePwp(PowerUp p)
 	{
 		pwps_en_pantalla.remove(p);
-		
 	}
 	
 	
@@ -102,7 +102,6 @@ public class TerrenoLogico {
 	{
 		listaObstaculos.remove(o);
 	}
-	
 	
 
 	
@@ -140,7 +139,8 @@ public class TerrenoLogico {
 		return puede_avanzar;
 	}
 	
-	
+	//este metodo esta para que el tanque no deba encajar perfecto entre paredes
+	//sino que se incrustan un poco en los obstaculos
 	public boolean Puede_Avanzar_relajado_para_tanque(int x, int y, int ancho, int largo)
 	{
 		Rectangle r = new Rectangle(x,y,ancho-10,largo-10);
@@ -168,9 +168,9 @@ public class TerrenoLogico {
 		return puede_avanzar;
 	}
 	
+	//se fija si el tanque toca un powerup
 	public void control_tanque_pwp(Tanque_Jugador t)
 	{
-	
 		Area atanque = new Area(t.getEtiqueta().getBounds());
 		for (int i=0; i<pwps_en_pantalla.size();i++)
 		{
@@ -178,14 +178,10 @@ public class TerrenoLogico {
 			Area apwp = new Area(p.getEtiqueta().getBounds());
 			if (atanque.intersects(apwp.getBounds2D()))
 			{
-				System.out.println("contacto");
 				p.contacto(t);
 			}
-			
 		}
 	}
-	
-
 	
 		
 }

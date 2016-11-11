@@ -6,7 +6,6 @@ import Graficas_Personajes.graficos_entidad;
 
 /**Graficos del tanque blindado
  * 
- * @author Javier
  *
  */
 public class graficos_tanque_blindado extends graficos_entidad 
@@ -22,4 +21,3 @@ public class graficos_tanque_blindado extends graficos_entidad
 	
 }
 
-//arriba = new ImageIcon(getClass().getResource("/Imagenes/Tanque/t_ar.png"));

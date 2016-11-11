@@ -7,16 +7,17 @@ import Juego.Juego;
 
 public class Estrella extends PowerUp {
 
-	public Estrella(Juego j, int x, int y) {
+	public Estrella(Juego j, int x, int y) 
+	{
 		super(j);
 		etiqueta = new JLabel(graficos.getEstrella());
 		etiqueta.setSize(60,60);
 		
 		this.setX(x);
 		this.setY(y);
-		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Override
 	public void contacto(Tanque_Jugador ta) 
 	{

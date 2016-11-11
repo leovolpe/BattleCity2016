@@ -12,8 +12,6 @@ import Visitor_Proyectiles.Visitor_Proyectil_obstaculo;
 public class ParedLadrillo extends Obstaculo
 {
 
-	
-	
 	public ParedLadrillo(int xx, int yy, Juego j) 
 	{
 		super(4,j);
@@ -21,7 +19,6 @@ public class ParedLadrillo extends Obstaculo
 		this.setX(xx);
 		this.setY(yy);
 		etiqueta.setSize(60, 60);
-		
 	}
 
 	
@@ -46,13 +43,11 @@ public class ParedLadrillo extends Obstaculo
 	}
 
 
-
 	
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
 	}
-
 	
 
 }

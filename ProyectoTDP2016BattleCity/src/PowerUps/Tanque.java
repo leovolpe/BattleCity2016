@@ -15,8 +15,8 @@ public class Tanque extends PowerUp {
 		
 		this.setX(x);
 		this.setY(y);
-		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
 	public void contacto(Tanque_Jugador ta) 
@@ -24,10 +24,7 @@ public class Tanque extends PowerUp {
 		ta.aumentarPuntaje(puntos);
 		ta.aumentar_vida();
 		destruirse();
-		
 	}
-
-	
 
 
 

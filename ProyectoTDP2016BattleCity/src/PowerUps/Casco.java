@@ -11,14 +11,14 @@ public class Casco extends PowerUp{
 
 	
 	
-	public Casco(Juego j, int x, int y) {
+	public Casco(Juego j, int x, int y) 
+	{
 		super(j);
 		etiqueta = new JLabel(graficos.getCasco());
 		etiqueta.setSize(60,60);
 		
 		this.setX(x);
 		this.setY(y);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -28,11 +28,7 @@ public class Casco extends PowerUp{
 		Temporizador_inmunidad t = new Temporizador_inmunidad(10,ta);
 		new Thread(t).start();
 		destruirse();
-		
 	}
-
-	
-	
 
 	
 }

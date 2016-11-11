@@ -42,7 +42,6 @@ public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obsta
 		//implementacion mas adelante
 		proy.destruirse();
 		juego.perder();
-		
 	}
 
 	@Override
@@ -51,7 +50,6 @@ public class Visitor_proyectil_jugador_obstaculo extends Visitor_Proyectil_obsta
 		// TODO Auto-generated method stub
 		//las balas comunes no le afectan
 		proy.destruirse();
-		
 	}
 
 	@Override

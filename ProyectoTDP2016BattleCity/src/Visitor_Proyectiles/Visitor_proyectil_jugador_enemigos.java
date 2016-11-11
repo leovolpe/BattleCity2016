@@ -20,40 +20,37 @@ public class Visitor_proyectil_jugador_enemigos extends Visitor_Proyectil_enemig
 		proy=p;
 		tanque=t;
 	}
+	
+	
 	@Override
 	public void visitar(EnemigoBasico e) 
 	{
 		int pts = e.recibirDisparo();
 		tanque.aumentarPuntaje(pts);
-		// TODO Auto-generated method stub
-		
 	}
+	
 
 	@Override
 	public void visitar(EnemigoBlindado e) 
 	{
 		int pts = e.recibirDisparo();
 		tanque.aumentarPuntaje(pts);
-		// TODO Auto-generated method stub
-		
 	}
+	
 
 	@Override
 	public void visitar(EnemigoDePoder e) 
 	{
 		int pts = e.recibirDisparo();
 		tanque.aumentarPuntaje(pts);
-		// TODO Auto-generated method stub
-		
 	}
+	
 
 	@Override
 	public void visitar(EnemigoRapido e) 
 	{
 		int pts = e.recibirDisparo();
 		tanque.aumentarPuntaje(pts);
-		// TODO Auto-generated method stub
-		
 	}
 
 }

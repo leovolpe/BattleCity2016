@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +19,7 @@ import Juego.Juego;
 
 
 
+@SuppressWarnings("serial")
 public class Gui_informacionInicialFinal extends JFrame 
 {
 	private Juego juego;
@@ -74,16 +74,6 @@ public class Gui_informacionInicialFinal extends JFrame
 		infomapa.setFont(new java.awt.Font("consolas", 0, 36)); 
 		panel_mapa.add(infomapa);
 		
-		/*
-		 * 
-		nomb.setFont(new java.awt.Font("Tahoma", 0, 36)); 
-		nomb.setHorizontalAlignment(JLabel.CENTER);
-		nomb.setOpaque(true);
-		nomb.setBounds(100,200,600,100);
-		nomb.setOpaque(false);
-		nomb.setForeground(Color.white);
-		panel_final.add(nomb);
-		 */
 		
 		
 		m1 = new ImageIcon(getClass().getResource("/Imagenes/mapas/m1.png"));
@@ -284,21 +274,10 @@ public class Gui_informacionInicialFinal extends JFrame
 		
 	}
 	
-	/*
-	 * panel_tanque = new JPanel();
-		panel_tanque.setLayout(null);
-		panel_tanque.setOpaque(false);
-		panel_tanque.setBounds(0, 0, 780, 600);
-		panel_tanque.add(t.getEtiqueta());
-		panel_tanque.repaint();
-	 */
-	
-	
-	
 	
 	 
-	 public void centrar_pantalla()
-		{
+	public void centrar_pantalla()
+	{
 			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 			int y = (int) dim.getHeight()/2;
 			int x = (int) dim.getWidth()/2;
@@ -306,7 +285,7 @@ public class Gui_informacionInicialFinal extends JFrame
 			x-=getContentPane().getWidth()/2;
 			
 			this.setLocation(x,y);
-		}
+	}
 
 	public void setInicio() 
 	{

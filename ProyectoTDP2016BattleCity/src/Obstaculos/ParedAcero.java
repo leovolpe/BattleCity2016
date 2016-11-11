@@ -22,7 +22,6 @@ public class ParedAcero extends Obstaculo
 		etiqueta.setSize(60, 60);
 	}
 
-	
 
 
 	@Override
@@ -31,7 +30,6 @@ public class ParedAcero extends Obstaculo
 		return false;
 		//la pared de acero no es atravesable
 	}
-
 
 
 	@Override
@@ -50,7 +48,7 @@ public class ParedAcero extends Obstaculo
 	public void aceptar_visitor_proyectil(Visitor_Proyectil_obstaculo v) 
 	{
 		v.visitar(this);
-		
 	}
+	
 	
 }

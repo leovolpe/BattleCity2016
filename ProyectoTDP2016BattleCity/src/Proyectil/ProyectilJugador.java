@@ -28,7 +28,8 @@ public class ProyectilJugador extends Proyectil
 	 * @param j	juego
 	 * @param vd 	velocidad del proyectil
 	 */
-	public ProyectilJugador(Tanque_Jugador t,char d,int x, int ancho, int y, int largo, Juego j, int vd) {
+	public ProyectilJugador(Tanque_Jugador t,char d,int x, int ancho, int y, int largo, Juego j, int vd) 
+	{
 		super(vd,d,j);
 		tanque=t;
 		etiqueta = new JLabel(gb.getBala_jugador());
@@ -39,20 +40,16 @@ public class ProyectilJugador extends Proyectil
 		//le pide al juego que agregue el proyectil
 		getJuego().agregar_proyectil(this);
 		
-	
 	}
 	
-	
 
-	
 	@Override
 	public void impactar(Tanque_Jugador t) 
 	{
 		//vacio, si un tanque toca a su proyectil no se vera afectado
-		
-		
 	}
 
+	
 	@Override
 	public void impactar(Obstaculo o) 
 	{
@@ -61,6 +58,7 @@ public class ProyectilJugador extends Proyectil
 		o.aceptar_visitor_proyectil(new Visitor_proyectil_jugador_obstaculo(this,getJuego()));
 	}
 
+	
 	@Override
 	public void destruirse() 
 	{
@@ -70,6 +68,7 @@ public class ProyectilJugador extends Proyectil
 		getJuego().eliminar_proyectil(this);
 	}
 
+	
 	@Override
 	public void impactar(Enemigo e) 
 	{

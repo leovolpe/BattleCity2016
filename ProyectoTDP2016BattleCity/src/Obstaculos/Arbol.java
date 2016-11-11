@@ -19,7 +19,6 @@ public class Arbol extends Obstaculo
 		etiqueta.setSize(60, 60);
 	}
 
-	
 
 	@Override
 	public boolean atravesable() 
@@ -27,7 +26,6 @@ public class Arbol extends Obstaculo
 		return true;
 		//el arbol es atravesable
 	}
-
 
 
 	@Override

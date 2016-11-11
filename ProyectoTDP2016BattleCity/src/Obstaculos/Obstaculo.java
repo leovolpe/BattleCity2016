@@ -16,12 +16,13 @@ public abstract class Obstaculo extends ObjetoDeJuego
 	protected graficos_obstaculo graficos;
 	
 	
-	public Obstaculo(int r, Juego j)
+	protected Obstaculo(int r, Juego j)
 	{
 		super(j);
 		resistencia=r;
 		graficos=new graficos_obstaculo();
 	}
+	
 	
 	/**Los obstaculos concretos deben implementar este metodo para indicar si una entidad movil lo puede atravesar
 	 * 
@@ -37,6 +38,7 @@ public abstract class Obstaculo extends ObjetoDeJuego
 	{
 		getJuego().eliminar_obstaculo(this);
 	}
+	
 	
 	/**
 	 * Reduce la resistencia en uno

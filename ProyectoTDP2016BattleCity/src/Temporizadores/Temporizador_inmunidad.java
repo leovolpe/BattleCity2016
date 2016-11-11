@@ -21,7 +21,7 @@ public class Temporizador_inmunidad implements Runnable
 	@Override
 	public void run() 
 	{
-		System.out.println("inicio inmu");
+
 		while(segundos!=cont)
 		{
 			cont++;
@@ -37,7 +37,5 @@ public class Temporizador_inmunidad implements Runnable
 			if (segundos==cont)
 				tanque.setInmunidad(false);
 		}
-		System.out.println("fin inmu");
 	}
-
 }

@@ -33,10 +33,12 @@ public class Inteligencia_juego implements Runnable
 		r = new Random();
 	}
 	
+	
 	public void setpausa(boolean b)
 	{
 		pausa=b;
 	}
+	
 	
 	private int num_aleatorio04()
 	{
@@ -45,24 +47,23 @@ public class Inteligencia_juego implements Runnable
 		return n;
 	}
 	
+	
 	public void enemigo_muerto()
 	{
 		enemigos_muertos++;
-		System.out.println("enemigos muertops : "+enemigos_muertos);
 		if(enemigos_muertos==cant_para_ganar)
 		{
-			System.out.println("gane por diez");
 			juego.ganar();
 		}
 		else
 		{
-			if (enemigos_muertos%1==0)
+			if (enemigos_muertos%4==0)
 				agregar_powerup();
 				
 			cant_ene--;
 		}
-		
 	}
+	
 	
 	public void agregar()
 	{
@@ -86,6 +87,7 @@ public class Inteligencia_juego implements Runnable
 		
 	}
 	
+	
 	private void agregar_powerup()
 	{
 		
@@ -104,9 +106,8 @@ public class Inteligencia_juego implements Runnable
 			buscar_posicion_pwp(p);
 			new Thread(new Temporizador_pwp(juego,p,10)).start();
 			juego.getTerreno_logico().addPwp(p);
-		
-		
 	}
+	
 	
 	private void buscar_posicion_pwp(PowerUp p) 
 	{
@@ -126,9 +127,9 @@ public class Inteligencia_juego implements Runnable
 			case 7 : {p.setX(360); p.setY(360); break;}
 			case 8 : {p.setX(720); p.setY(360); break;}
 		}
-		// TODO Auto-generated method stub
 	}
 
+	
 	private void generar_ene_aleatorio(int n)
 	{
 		switch(n)
@@ -139,6 +140,7 @@ public class Inteligencia_juego implements Runnable
 			case 3 : { generar_pos_y_agregar(new EnemigoRapido(juego)); break;}
 		}
 	}
+	
 	
 	private void generar_pos_y_agregar(Enemigo e)
 	{

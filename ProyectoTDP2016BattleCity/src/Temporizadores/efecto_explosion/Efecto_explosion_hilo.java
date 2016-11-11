@@ -13,6 +13,7 @@ public class Efecto_explosion_hilo implements Runnable
 	private int segundos;
 	private int cont;
 	
+	
 	public Efecto_explosion_hilo(int x, int y, ImageIcon i, Juego j)
 	{
 		juego=j;
@@ -40,8 +41,6 @@ public class Efecto_explosion_hilo implements Runnable
 			if (segundos==cont)
 				juego.getGui().getGj().removeexplosion60x60(l);
 		}
-		System.out.println("fin inmu");
-		
 	}
 
 }

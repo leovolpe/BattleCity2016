@@ -16,9 +16,9 @@ public class Timer extends PowerUp {
 		
 		this.setX(x);
 		this.setY(y);
-		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Override
 	public void contacto(Tanque_Jugador ta) 
 	{
@@ -26,10 +26,7 @@ public class Timer extends PowerUp {
 		Temporizador_detener t = new Temporizador_detener(getJuego(),10);
 		new Thread(t).start();
 		destruirse();
-		
 	}
-
-	
 
 
 }

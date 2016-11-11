@@ -6,8 +6,7 @@ import Graficas_Personajes.Tanque.graficos_tanque;
 import Graficas_Personajes.Tanque.graficos_tanque_inmunidad;
 import Juego.Juego;
 import Niveles_Tanque.*;
-import Proyectil.Proyectil;
-import Proyectil.ProyectilJugador;
+
 
 public class Tanque_Jugador extends EntidadMovil {
 
@@ -15,10 +14,7 @@ public class Tanque_Jugador extends EntidadMovil {
 	private int puntaje_temporal;
 	private int vidas;
 	private boolean inmunidad;
-	//private int num_niv;
 	private Nivel nivel;
-	
-	
 	
 	
 	public Tanque_Jugador(Juego j) 
@@ -30,8 +26,6 @@ public class Tanque_Jugador extends EntidadMovil {
 		
 		etiqueta = new JLabel(graficos.getArriba());
 		etiqueta.setSize(60, 60);
-		//this.setX(0);
-		//this.setY(540);
 		setNivel1();
 		
 		puntaje=0;
@@ -39,25 +33,21 @@ public class Tanque_Jugador extends EntidadMovil {
 		vidas=4;
 		inmunidad=false;
 		
-		
-		
 	}
 
 
 	@Override
 	public void disparar() 
 	{
-		
 		if (disparos_en_pantalla<nivel.getDisparos_simultaneos())
 		{
 			disparos_en_pantalla++;
-			
-			//Proyectil p = new ProyectilJugador(this, direccion,this.getX(),this.getEtiqueta().getWidth(),this.getY(),this.getEtiqueta().getHeight(),getJuego(),nivel.getVel_disp());
 			nivel.nuevo_disparo_jugador(this, direccion, this.getX(), this.getEtiqueta().getWidth(), this.getY(), this.getEtiqueta().getHeight(), getJuego());
 		}
-		
 	}
 
+	
+	
 	public void aumentar_vida()
 	{
 		vidas++;
@@ -65,71 +55,48 @@ public class Tanque_Jugador extends EntidadMovil {
 	}
 
 	
-
-	@Override
-	public void destruirse() 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	
 	public void aumentarNivel()
 	{
 		nivel.aumentar_nivel(this);
 	}
 	
-	/**
-	 * ubica al tanque en su lugar original
-	 */
-	/*
-	private void reestablecer_posicion()
-	{
-		
-		setX(0);
-		setY(540);
-		this.getEtiqueta().setIcon(graficos.getArriba());
-		direccion='n';
-	}
-	*/
+	
 	
 	/**
 	 * setea nivel 1
 	 */
 	public void setNivel1()
 	{
-		//num_niv=1;
 		nivel = new Nivel1(this);
 		getJuego().aumentar_nivel_graficamente(1);
 	}
+	
 	
 	/**
 	 * setea nivel 2
 	 */
 	public void setNivel2()
 	{
-		//num_niv=2;
 		nivel = new Nivel2(this);
 		getJuego().aumentar_nivel_graficamente(2);
 	}
+	
 	
 	/**
 	 * setea nivel 3
 	 */
 	public void setNivel3()
 	{
-		//num_niv=3;
 		nivel = new Nivel3(this);
 		getJuego().aumentar_nivel_graficamente(3);
 	}
+	
 	
 	/**
 	 * setea nivel 4
 	 */
 	public void setNivel4()
 	{
-		//num_niv=4;
 		nivel = new Nivel4(this);
 		getJuego().aumentar_nivel_graficamente(4);
 	}
@@ -151,13 +118,13 @@ public class Tanque_Jugador extends EntidadMovil {
 		getJuego().setPuntajeJugador(puntaje);
 	}
 	
+	
 	/**
 	 * retorna el puntaje
 	 * @return
 	 */
 	public int getPuntaje()
 	{
-		
 		return puntaje;
 	}
 	
@@ -189,6 +156,8 @@ public class Tanque_Jugador extends EntidadMovil {
 		}
 	}
 	
+	
+	
 	public void reducir_vida()
 	{
 		if (!inmunidad)
@@ -203,11 +172,9 @@ public class Tanque_Jugador extends EntidadMovil {
 				this.getEtiqueta().setIcon(graficos.getArriba());
 				direccion='n';
 			}
-			
 		}
-		
-		
 	}
+	
 	
 	
 	/**
@@ -218,32 +185,8 @@ public class Tanque_Jugador extends EntidadMovil {
 		return nivel.getVel_mov();
 	}
 	
-	/*
-	public void adelante()
-	{
-		//extendiendo funcionalidad
-		super.adelante();
-		getJuego().getTerreno_logico().control_tanque_pwp(this);
-	}
 	
-	public void atras()
-	{
-		super.atras();
-		getJuego().getTerreno_logico().control_tanque_pwp(this);
-	}
-	
-	public void izquierda()
-	{
-		super.izquierda();
-		getJuego().getTerreno_logico().control_tanque_pwp(this);
-	}
-	
-	public void derecha()
-	{
-		super.derecha();
-		getJuego().getTerreno_logico().control_tanque_pwp(this);
-	}
-	*/
+	//metodos de movimiento redefinidos
 	
 	public void adelante()
 	{
@@ -263,8 +206,8 @@ public class Tanque_Jugador extends EntidadMovil {
 				direccion = 'n';
 			}
 			getJuego().getTerreno_logico().control_tanque_pwp(this);
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
+	
 	
 	public void atras()
 	{
@@ -284,8 +227,9 @@ public class Tanque_Jugador extends EntidadMovil {
 			direccion='s';
 		}
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
+	
+	
 	
 	public void izquierda()
 	{
@@ -304,7 +248,6 @@ public class Tanque_Jugador extends EntidadMovil {
 			direccion='i';
 		}
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	
@@ -325,7 +268,13 @@ public class Tanque_Jugador extends EntidadMovil {
 			direccion='d';
 		}
 		getJuego().getTerreno_logico().control_tanque_pwp(this);
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
+	}
+
+
+	@Override
+	protected void destruirse() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

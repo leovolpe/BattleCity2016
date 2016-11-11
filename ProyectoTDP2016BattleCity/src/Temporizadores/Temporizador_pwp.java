@@ -19,10 +19,11 @@ public class Temporizador_pwp implements Runnable
 		pwp=p;
 	}
 	
+	
 	@Override
 	public void run() 
 	{
-		System.out.println("inicio pwp");
+		
 		while (segundos!=cont)
 		{
 			cont++;
@@ -37,11 +38,7 @@ public class Temporizador_pwp implements Runnable
 			{
 				juego.destruir_pwp(pwp);
 			}
-		
 		}
-		System.out.println("fin pwp");
-		// TODO Auto-generated method stub
-		
 	}
 
 }

@@ -12,7 +12,7 @@ public abstract class Enemigo extends EntidadMovil{
 	protected int cant_movs;	//cantidad de movimientos seguidos que realizara
 	protected int num_random;	//random que se genera, puede ser 0,1,2,3 y representa una direccion
 	
-	public Enemigo (int r, int vm, int vd, int ds, int p, Juego j)
+	protected Enemigo (int r, int vm, int vd, int ds, int p, Juego j)
 	{
 		super(r, vm, vd, ds, 's',j);
 		cant_movs=0;
@@ -95,7 +95,7 @@ public abstract class Enemigo extends EntidadMovil{
 	}
 	
 	
-	public void destruirse()
+	protected void destruirse()
 	{
 		getJuego().eliminar_enemigo(this);
 	}

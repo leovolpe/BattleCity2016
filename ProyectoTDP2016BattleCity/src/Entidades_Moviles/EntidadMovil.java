@@ -21,7 +21,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	protected char direccion; //'n' 's' 'e' 'o'
 	
 	
-	public EntidadMovil(int r, int vm, int vd, int ds, char dir, Juego j)
+	protected EntidadMovil(int r, int vm, int vd, int ds, char dir, Juego j)
 	{
 		super(j);
 		resistencia = r;
@@ -36,7 +36,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	
 	public void adelante()
 	{
-		
 			if (direccion=='n')
 			{
 				//le preguna al terreno logico si puede avanzar en esa direccion
@@ -51,12 +50,12 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 				etiqueta.setIcon(graficos.getArriba());
 				direccion = 'n';
 			}
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
+	
+	
 	
 	public void atras()
 	{
-		
 		if (direccion=='s')
 		{
 			//le preguna al terreno logico si puede avanzar en esa direccion
@@ -71,8 +70,9 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getAbajo());
 			direccion='s';
 		}
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
+	
+	
 	
 	public void izquierda()
 	{
@@ -90,8 +90,8 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getIzquierda());
 			direccion='i';
 		}
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
+	
 	
 	
 	public void derecha()
@@ -110,7 +110,6 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 			etiqueta.setIcon(graficos.getDerecha());
 			direccion='d';
 		}
-		//System.out.println("x= "+this.getX()+" - y= "+this.getY());
 	}
 	
 	
@@ -119,6 +118,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	{
 		return vel_mov;
 	}
+	
 	
 	public void reducir_disparo()
 	{
@@ -137,7 +137,7 @@ public abstract class EntidadMovil extends ObjetoDeJuego {
 	/**
 	 * la entidad movil se destruye
 	 */
-	public abstract void destruirse();
+	protected abstract void destruirse();
 	
 	
 	

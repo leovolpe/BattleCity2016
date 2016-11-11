@@ -17,11 +17,12 @@ public class Temporizador_detener implements Runnable
 		cont=0;
 		juego.getCont_ene().set_pausa(true);
 	}
+	
 
 	@Override
 	public void run() 
 	{
-		System.out.println("inidico deten");
+		
 		while (segundos!=cont)
 		{
 			cont++;
@@ -38,9 +39,6 @@ public class Temporizador_detener implements Runnable
 			}
 				
 		}
-	
-		System.out.println("fin deten");
-		
 	}
 
 }
