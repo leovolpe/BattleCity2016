@@ -2,8 +2,9 @@ package Terreno;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.*;
 
 import Juego.Juego;
@@ -18,10 +19,10 @@ public class GeneradorDeMapa {
 
 	
 	private String[][] mapa; //aca se cargara la codificacion
-	private final String archivo_mapa_1 = "src/mapascodificados/mapa1.txt";
-	private final String archivo_mapa_2 = "src/mapascodificados/mapa2.txt";
-	private final String archivo_mapa_3 = "src/mapascodificados/mapa3.txt";
-	private final String archivo_mapa_4 = "src/mapascodificados/mapa4.txt";
+	private final String archivo_mapa_1 = "/mapascodificados/mapa1.txt";
+	private final String archivo_mapa_2 = "/mapascodificados/mapa2.txt";
+	private final String archivo_mapa_3 = "/mapascodificados/mapa3.txt";
+	private final String archivo_mapa_4 = "/mapascodificados/mapa4.txt";
 	private String mapafinal;
 	private Juego juego;
 	
@@ -74,8 +75,11 @@ public class GeneradorDeMapa {
 		
 		try {
 			
-			FileReader lector=new FileReader(mapafinal);
-			BufferedReader contenido=new BufferedReader(lector);
+			InputStream is = getClass().getResourceAsStream(mapafinal);
+			BufferedReader contenido=new BufferedReader(new InputStreamReader(is));
+			
+			//FileReader lector=new FileReader(mapafinal);
+			//BufferedReader contenido=new BufferedReader(lector);
 			
 			mapa = new String[10][13];
 			
